@@ -9,6 +9,7 @@
     <ul>
         <?php 
         print_r($artists);
+        var_drump($artists);
         ?>
     </ul>
 </body>
