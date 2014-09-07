@@ -13,15 +13,13 @@ class MusicFactory {
     public static function getArtists () {
         $artists = array();
         $session = FacebookSessionFactory::getSession();
-        if ($session) {
+        if (!is_null($session)) {
             try {
                 $musicRequest = new FacebookRequest($session, 'GET', '/me/music');
                 $resp = $musicRequest->execute()->getGraphObjectList(GraphPage::className());
                 $artists = $resp->getProperty('data');
             } catch (Exception $e) {
             }
-        } else {
-            array_push($artists, 'No session');
         }
         return $artists;
     }

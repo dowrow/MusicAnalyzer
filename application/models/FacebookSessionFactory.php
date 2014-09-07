@@ -19,7 +19,7 @@ class FacebookSessionFactory {
         $helper = new FacebookCanvasLoginHelper();
 
         try {
-            return $session = $helper->getSession();
+            return $helper->getSession();
         } catch(Exception $ex) {
             return null;
         }
