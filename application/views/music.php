@@ -7,9 +7,9 @@
 <body>
     <h1>List of artists</h1>
     <ul>
-        <?php foreach ($artists as $a):?>
-        <li><?php echo $a; ?></li>
-        <?php endforeach;?>
+        <?php 
+        print_r($artists);
+        ?>
     </ul>
 </body>
 </html>
