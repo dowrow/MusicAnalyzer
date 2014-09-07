@@ -17,7 +17,7 @@ class MusicFactory {
             try {
                 $musicRequest = new FacebookRequest($session, 'GET', '/me/music');
                 $resp = $musicRequest->execute()->getGraphObjectList(GraphPage::className());
-                $artists = $resp['data'];
+                $artists = $resp;
             } catch (Exception $e) {
             }
         } 
