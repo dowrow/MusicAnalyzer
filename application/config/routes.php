@@ -38,7 +38,8 @@
 |
 */
 
-$route['default_controller'] = "login";
+$route['default_controller'] = 'login';
+$route['music'] = 'music';
 $route['404_override'] = '';
 
 

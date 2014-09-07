@@ -8,9 +8,10 @@
     
     function logInCallback (response) {
          if(response.status === 'connected') {
-             alert('Connected!');
-         } else {
-             alert('Not connected');
+            // Route to new screen
+            location.href = '/music';
+        } else {
+            alert('Unable to log in');
          }
     }
     
