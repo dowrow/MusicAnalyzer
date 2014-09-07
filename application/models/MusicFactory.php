@@ -20,7 +20,9 @@ class MusicFactory {
                 $artists = $resp->getProperty('data');
             } catch (Exception $e) {
             }
-        } 
+        } else {
+            array_push($artists, 'No session');
+        }
         return $artists;
     }
 }
