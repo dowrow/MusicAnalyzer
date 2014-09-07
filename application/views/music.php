@@ -9,7 +9,7 @@
     <ul>
         <?php 
         print_r($artists);
-        var_drump($artists);
+        var_dump($artists);
         ?>
     </ul>
 </body>
