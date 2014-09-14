@@ -37,14 +37,14 @@
           xfbml      : true,  // parse social plugins on this page
           version    : 'v2.1' // use version 2.1
         });
+        
+        // If session is lost redirect to login
+        FB.Event.subscribe('auth.login', function(response) {
+            if (response.status !== 'connected') {
+                location.href = '/';
+            }
+        });
     };
-    
-    // If session is lost redirect to login
-    FB.Event.subscribe('auth.login', function(response) {
-        if (response.status !== 'connected') {
-            location.href = '/';
-        }
-    });
     
     // Load the SDK asynchronously
     (function(d, s, id) {
