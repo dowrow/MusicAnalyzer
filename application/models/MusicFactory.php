@@ -11,6 +11,7 @@ use Facebook\GraphPage;
 
 class MusicFactory {
     public static function getArtists () {
+        session_start();
         $artists = array();
         $session = FacebookSessionFactory::getSession();
         if (!is_null($session)) {

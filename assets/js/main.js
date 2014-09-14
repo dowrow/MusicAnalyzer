@@ -7,7 +7,7 @@
 (function (FB) {
     
     function logInCallback (response) {
-         if(response.status === 'connected') {
+         if (response.status === 'connected') {
             // Route to new screen
             location.href = '/music';
          } else {
