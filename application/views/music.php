@@ -7,10 +7,11 @@
 <body>
     <h1>List of artists</h1>
     <ul>
-        <?php 
-        print_r($artists);
-        var_dump($artists);
-        ?>
+        <?php foreach ($artists as $a):?>
+        
+        <li><?php echo $a; ?></li>
+        
+        <?php endforeach; ?>
     </ul>
 </body>
 </html>

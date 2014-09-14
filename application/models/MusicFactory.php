@@ -14,14 +14,17 @@ class MusicFactory {
         $artists = array();
         $session = FacebookSessionFactory::getSession();
         if (!is_null($session)) {
-            try {
+        try {
                 $musicRequest = new FacebookRequest($session, 'GET', '/me/music');
-                $objectList = $musicRequest->execute()->getGraphObjectList(GraphPage::className());
+                $objectList = $musicRequest->execute()->getGraphObjectList();
                 foreach ($objectList as $obj) {
                     array_push($artists, $obj->getProperty('name'));
                 }
             } catch (Exception $e) {
+                array_push($artists, 'No music');
             }
+        } else {
+            array_push($artists, 'No session');
         }
         return $artists;
     }
