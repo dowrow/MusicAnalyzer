@@ -16,7 +16,7 @@
     }
     
     function logIn() {
-        FB.login(logInCallback, {scope: 'user_likes'});
+        FB.login(logInCallback, {scope: ['user_likes', 'public_profile', 'user_friends']});
     }
     
     /*
