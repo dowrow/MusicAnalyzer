@@ -46,7 +46,7 @@ class MusicFactory {
             // For every fan get its age
             foreach ($fanNames as $name) {
                 $userInfoJSON = json_decode(file_get_contents($userInfoURL . urlencode($name)), true);
-                $age = parseInt($userInfoJSON['user']['age']);
+                $age = intval($userInfoJSON['user']['age']);
                 array_push($fanAges, $age);
             }
 
