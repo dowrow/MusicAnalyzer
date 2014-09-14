@@ -39,6 +39,13 @@
         });
     };
     
+    // If session is lost redirect to login
+    FB.Event.subscribe('auth.login', function(response) {
+        if (response.status !== 'connected') {
+            location.href = '/';
+        }
+    });
+    
     // Load the SDK asynchronously
     (function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];

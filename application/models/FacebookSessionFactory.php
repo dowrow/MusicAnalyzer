@@ -8,26 +8,20 @@ session_start();
 
 // Namespaces
 use Facebook\FacebookSession;
-use Facebook\FacebookCanvasLoginHelper;
-use Facebook\FacebookRequest;
-use Facebook\FacebookRequestException;
-use Facebook\GraphUser;
-use Facebook\GraphPage;
+use Facebook\FacebookJavaScriptLoginHelper;
 
 // Set app keys
- FacebookSession::setDefaultApplication('1468034890110746','09e80af7d50f86bc41d5d4895e0a978d');
+FacebookSession::setDefaultApplication('1468034890110746','09e80af7d50f86bc41d5d4895e0a978d');
 
 class FacebookSessionFactory {
     
     public static function getSession() {
         try {            
             // Get login helper
-            $helper = new FacebookCanvasLoginHelper();
+            $helper = new FacebookJavaScriptLoginHelper();
             $session = $helper->getSession(); 
             return $session;
-            
         } catch(Exception $ex) {
-            echo $ex->getMessage();
             return null;
         }
     }
