@@ -36,10 +36,6 @@
           xfbml      : true,  // parse social plugins on this page
           version    : 'v2.1' // use version 2.1
         });
-        //
-        FB.getLoginStatus(function(response) {
-            statusChangeCallback(response);
-        });
     };
     
     // Load the SDK asynchronously
