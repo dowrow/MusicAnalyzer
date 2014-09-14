@@ -15,7 +15,6 @@ use Facebook\FacebookRequestException;
 use Facebook\GraphUser;
 use Facebook\GraphPage;
 
-
 class MusicFactory {
     public static function getArtists () {
         $artists = array();
@@ -35,7 +34,7 @@ class MusicFactory {
                  array_push($artists, 'Exception: ' . $ex->getMessage());
             }
             
-            if (!is_null($session)) {
+            if ($session) {
 
                     $musicRequest = new FacebookRequest($session, 'GET', '/me/music');
                     $objectList = $musicRequest->execute()->getGraphObjectList();
@@ -44,11 +43,11 @@ class MusicFactory {
                     }
 
             } else {
-                array_push($artists, 'No session');
+                array_push($artists, 'No session wtf');
             }
             
         } catch (Exception $e) {
-                array_push($artists, 'No music');
+                array_push($artists, 'No music wtf');
         }
         
         return $artists;
