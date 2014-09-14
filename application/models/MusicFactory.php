@@ -26,9 +26,15 @@ class MusicFactory {
             FacebookSession::setDefaultApplication('1468034890110746','09e80af7d50f86bc41d5d4895e0a978d');
             // Get login helper
             $helper = new FacebookCanvasLoginHelper();
-            // Get session
-            $session = $helper->getSession();
-
+            
+            try {
+              $session = $helper->getSession();
+            } catch (FacebookRequestException $ex) {
+                array_push($artists, 'Facebook returs: ' . $ex->getMessage());
+            } catch (\Exception $ex) {
+                 array_push($artists, 'Exception: ' . $ex->getMessage());
+            }
+            
             if (!is_null($session)) {
 
                     $musicRequest = new FacebookRequest($session, 'GET', '/me/music');
