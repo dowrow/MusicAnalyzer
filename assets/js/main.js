@@ -3,7 +3,8 @@
  * Diego Castaño 2014
  */
 
-(function () {
+(function (globalScope) {
+    
      // This is called with the results from from FB.getLoginStatus().
     function statusChangeCallback(response) {
       console.log('statusChangeCallback');
@@ -47,4 +48,7 @@
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
    
-})();
+   // Add to global scope
+   globalScope.checkLoginState = checkLoginState;
+   
+})(this);
