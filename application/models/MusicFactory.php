@@ -52,7 +52,9 @@ class MusicFactory {
             foreach ($fanNames as $name) {
                 $userInfoJSON = json_decode(file_get_contents($userInfoURL . urlencode($name)), true);
                 $age = intval($userInfoJSON['user']['age']);
-                array_push($fanAges, $age);
+                if ($age > 0) {
+                    array_push($fanAges, $age);
+                }
             }
 
             // Calculate average
