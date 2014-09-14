@@ -4,11 +4,6 @@
 require 'vendor/autoload.php';
 require 'FacebookSessionFactory.php';
 
-use Facebook\FacebookRequest;
-use Facebook\FacebookRequestException;
-use Facebook\GraphUser;
-use Facebook\GraphPage;
-
 class MusicFactory {
     public static function getArtists () {
         $artists = array();
