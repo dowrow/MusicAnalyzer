@@ -5,9 +5,8 @@
 	<title>LogIn</title>  
 </head>
 <body>
-    <div id="fb-root"></div>
-    <a id="logIn" href="#">Log in with Facebook</a>
-    <script src="//connect.facebook.net/en_US/sdk.js"></script>
+    <fb:login-button scope="public_profile,email,user_likes" onlogin="checkLoginState();">
+    </fb:login-button>  
     <script src="/assets/js/main.js"></script>
 </body>
 </html>
