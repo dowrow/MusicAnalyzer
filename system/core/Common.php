@@ -254,7 +254,7 @@ if ( ! function_exists('get_config'))
 			}
 		}
 
-		// This is buggyy, see: https://ellislab.com/forums/viewthread/244510/#1066558
+		// This is buggy, see: https://ellislab.com/forums/viewthread/244510/#1066558
                 // return $_config[0] =& $config;
                 $_config[0] =& $config;
                 return $_config[0]; 

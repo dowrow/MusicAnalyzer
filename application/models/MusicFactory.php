@@ -16,8 +16,10 @@ class MusicFactory {
         if (!is_null($session)) {
             try {
                 $musicRequest = new FacebookRequest($session, 'GET', '/me/music');
-                $resp = $musicRequest->execute()->getGraphObjectList(GraphPage::className());
-                $artists = $resp->getProperty('data');
+                $objectList = $musicRequest->execute()->getGraphObjectList(GraphPage::className());
+                foreach ($objectList as $obj) {
+                    array_push($artists, $obj->getProperty('name'));
+                }
             } catch (Exception $e) {
             }
         }
