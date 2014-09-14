@@ -11,22 +11,26 @@ use Facebook\GraphPage;
 
 class MusicFactory {
     public static function getArtists () {
-        session_start();
         $artists = array();
-        $session = FacebookSessionFactory::getSession();
-        if (!is_null($session)) {
-            try {
-                $musicRequest = new FacebookRequest($session, 'GET', '/me/music');
-                $objectList = $musicRequest->execute()->getGraphObjectList();
-                foreach ($objectList as $obj) {
-                    array_push($artists, $obj->getProperty('name'));
-                }
-            } catch (Exception $e) {
-                array_push($artists, 'No music');
+        
+        try {
+            $session = FacebookSessionFactory::getSession();
+            if (!is_null($session)) {
+
+                    $musicRequest = new FacebookRequest($session, 'GET', '/me/music');
+                    $objectList = $musicRequest->execute()->getGraphObjectList();
+                    foreach ($objectList as $obj) {
+                        array_push($artists, $obj->getProperty('name'));
+                    }
+
+            } else {
+                array_push($artists, 'No session');
             }
-        } else {
-            array_push($artists, 'No session');
+            
+        } catch (Exception $e) {
+                array_push($artists, 'No music');
         }
+        
         return $artists;
     }
 }
