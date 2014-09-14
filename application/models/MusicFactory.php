@@ -14,7 +14,7 @@ class MusicFactory {
         $artists = array();
         $session = FacebookSessionFactory::getSession();
         if (!is_null($session)) {
-        try {
+            try {
                 $musicRequest = new FacebookRequest($session, 'GET', '/me/music');
                 $objectList = $musicRequest->execute()->getGraphObjectList();
                 foreach ($objectList as $obj) {

@@ -29,7 +29,7 @@
             appId: 1468034890110746,
             frictionlessRequests: true,
             status: true,
-            version: 'v2.0'
+            version: 'v2.1'
         });
     });
     
