@@ -36,11 +36,16 @@ class MusicFactory {
         
         try {
             
-            // Get fan names
+            // Get 5 fan names
             $topFansJSON = json_decode(file_get_contents($topFansURL), true);
             $topFans = $topFansJSON['topfans']['user'];
+            $i = 0;
             foreach ($topFans as $fan) {
+                if ($i >= 4) {
+                    break;
+                }
                 array_push($fanNames, $fan['name']);
+                $i++;                
             }
             
             // For every fan get its age
