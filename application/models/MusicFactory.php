@@ -37,7 +37,7 @@ class MusicFactory {
         try {
             
             // Get fan names
-            $topFansJSON = json_decode(file_get_contents($topFansURL));
+            $topFansJSON = json_decode(file_get_contents($topFansURL), true);
             $topFans = $topFansJSON['topfans']['user'];
             foreach ($topFans as $fan) {
                 array_push($fanNames, $fan['name']);
@@ -45,7 +45,7 @@ class MusicFactory {
             
             // For every fan get its age
             foreach ($fanNames as $name) {
-                $userInfoJSON = json_decode(file_get_contents($userInfoURL . urlencode($name)));
+                $userInfoJSON = json_decode(file_get_contents($userInfoURL . urlencode($name)), true);
                 $age = parseInt($userInfoJSON['user']['age']);
                 array_push($fanAges, $age);
             }
