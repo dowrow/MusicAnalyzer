@@ -14,10 +14,14 @@ class MusicFactory {
         $artists = array();
         $session = FacebookSessionFactory::getSession();
         if (!is_null($session)) {
+            
             try {
                 $musicRequest = new FacebookRequest($session, 'GET', '/me/music');
-                $resp = $musicRequest->execute()->getGraphObjectList(GraphPage::className());
-                $artists = $resp->getProperty('data');
+                $objectList = $musicRequest->execute()->getGraphObjectList(GraphPage::className());
+                foreach ($objectList as $object) {
+                    array_push($artists, $object->getProperty('name'));
+                }
+                
             } catch (Exception $e) {
             }
         }
