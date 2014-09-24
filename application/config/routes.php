@@ -40,6 +40,7 @@
 
 $route['default_controller'] = 'login';
 $route['music'] = 'music';
+$route['prueba'] = 'prueba';
 $route['404_override'] = '';
 
 

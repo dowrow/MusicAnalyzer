@@ -5,13 +5,15 @@
 	<title>LogIn</title>  
 </head>
 <body>
-    <h1>List of artists</h1>
+    <h1>Prueba</h1>
     <ul>
-        <?php foreach ($artists as $a):?>
+        <?php
         
-        <li><?php echo $a; ?></li>
+        foreach ($videos as $video) {
+            echo($video['title'] . '<br>');
+        }
         
-        <?php endforeach; ?>
+        ?>
     </ul>
     <script src="/assets/js/main.js"></script>
 </body>
