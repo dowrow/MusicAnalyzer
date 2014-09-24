@@ -9,7 +9,7 @@ class Prueba extends CI_Controller {
 
 	public function index()
 	{
-		$data['videos'] = $this->Modelo->getVideos();
+		$data['videos'] = $this->modelo->getVideos();
                 $this->load->view('prueba', $data);
 	}
 }
