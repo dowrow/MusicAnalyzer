@@ -9,9 +9,19 @@
     <ul>
         <?php
         
-        foreach ($videos as $video) {
-            echo($video['title'] . '<br>');
-        }
+        print_r($artist);
+        echo "<br/>";
+        echo "<br/>";
+        print_r($tags);
+        echo "<br/>";
+        echo "<br/>";
+        print_r($albums);
+        echo "<br/>";
+        echo "<br/>";
+        print_r($fans);
+        echo "<br/>";
+        echo "<br/>";
+        print_r($similar);
         
         ?>
     </ul>
