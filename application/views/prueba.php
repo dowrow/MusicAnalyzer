@@ -22,7 +22,9 @@
         echo "<br/>";
         echo "<br/>";
         print_r($similar);
-        
+        echo "<br/>";
+        echo "<br/>";
+        print_r($all);
         ?>
     </ul>
     <script src="/assets/js/main.js"></script>

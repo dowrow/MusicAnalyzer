@@ -215,12 +215,17 @@ class MY_Model extends CI_Model
         {
             $data = $this->trigger('before_create', $data);
 
-            $this->_database->insert($this->_table, $data);
-            $insert_id = $this->_database->insert_id();
+            if ($this->_database->insert($this->_table, $data)) {
+                 $insert_id = $this->_database->insert_id();
 
-            $this->trigger('after_create', $insert_id);
+                $this->trigger('after_create', $insert_id);
 
-            return $insert_id;
+                return $insert_id;
+            } else {
+                // Detect failed inserts
+                return FALSE;
+            }
+           
         }
         else
         {
