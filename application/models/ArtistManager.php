@@ -1,6 +1,6 @@
 <?php
 
-include 'Artist.php';
+include __DIR__.'/Artist.php';
 
 /**
  * ArtistManager
