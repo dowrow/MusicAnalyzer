@@ -5,6 +5,7 @@ class Prueba extends CI_Controller {
         parent::__construct();
         $this->load->model('LastFM');
         $this->load->model('ArtistManager');
+        $this->load->model('Artist_model');
     }
     
     public function index() {
@@ -35,7 +36,9 @@ class Prueba extends CI_Controller {
         $data['similar'] = $this->LastFM->getSimilar("Linkin Park");
         
        // $data['all'] = $this->Artist->probar();
-        
+        $this->Artist_model->insert(array(
+            'name' => 'Linkin Park'
+        ));
         $this->load->view("prueba", $data);
     }
 }

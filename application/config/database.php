@@ -48,10 +48,10 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'alumnodb';
-$db['default']['password'] = 'alumnodb';
-$db['default']['database'] = 'tfg';
+$db['default']['hostname'] = 'jano.ii.uam.es';
+$db['default']['username'] = 'dcc';
+$db['default']['password'] = 'tfg1415dcc';
+$db['default']['database'] = 'tfg1415dcc';
 $db['default']['dbdriver'] = 'postgre';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
@@ -63,7 +63,7 @@ $db['default']['dbcollat'] = 'utf8_general_ci';
 $db['default']['swap_pre'] = '';
 $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
-
+$db['default']['port'] = 5432;
 
 /* End of file database.php */
 /* Location: ./application/config/database.php */

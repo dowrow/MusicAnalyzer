@@ -9,8 +9,7 @@
     <ul>
         <?php
         
-        print_r($artist);
-        echo "<br/>";
+
         echo "<br/>";
         print_r($tags);
         echo "<br/>";

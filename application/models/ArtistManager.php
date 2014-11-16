@@ -17,7 +17,8 @@ class ArtistManager extends CI_Model {
     public function __construct() {
         parent::__construct();
         $this->load->model('LastFM');
-        $this->load->model('Artist_Model', 'Artist');
+        $this->load->model('Artist_model');
+        $this->load->model('LastfmArtist_model');
     }
     
     /*
@@ -43,8 +44,10 @@ class ArtistManager extends CI_Model {
         return new Artist($artist);
     }
 
-
+    /*******************/
     /* Proxy functions */
+    /*******************/
+    
     private function getInfoFromLastFM ($artist) {
         $this->getArtistFromLastFM($artist);
         $this->getAlbumsFromLastFM($artist);
@@ -53,11 +56,37 @@ class ArtistManager extends CI_Model {
     }
     
     private function getArtistFromLastFM($artist) {
+        
         // Insert name in Artists
-        $id = $this->Artist->insert();
+        $id = $this->Artist_model->insert(array('name' => $artist));
+        
         // Get id
+        if ($id == FALSE){
+            return FALSE;
+        }
+        
         // Get LastfmArtist 
+        $lastfmArtist = $this->LastFM->getArtist($artist);
+        
+        if ($lastfmArtist == FALSE) {
+            return FALSE;
+        }
+        
         // Insert in LastfmArtists
+        $lastfmId = $this->LastfmArtist_model->insert(array(
+            'url' => $lastfmArtist->artist->url,
+            'image' => $lastfmArtist->artist->image[3]->{'#text'}
+        ));
+        
+        if ($lastfmId == FALSE) {
+            return FALSE;
+        }
+        
+        // Insert reference in Artists
+        $this->Artist_model->update($id, 
+                array('lastfmartistid' => $lastfmId)
+        );
+        
     }
     
     private function getAlbumsFromLastFM($artist) {
