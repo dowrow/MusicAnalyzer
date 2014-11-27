@@ -24,7 +24,7 @@ class ArtistManager extends CI_Model {
         $this->load->model('/CRUD/ArtistFan_model');
         $this->load->model('/CRUD/Tag_model');
         $this->load->model('/CRUD/ArtistTag_model');
-
+        $this->load->model('/CRUD/SimilarArtist_model');
     }
     
     /*
@@ -94,6 +94,7 @@ class ArtistManager extends CI_Model {
                 array('lastfmartistid' => $lastfmId)
         );
         
+        return $id;
     }
     
     private function getAlbumsFromLastFM($artist) {
@@ -204,6 +205,15 @@ class ArtistManager extends CI_Model {
         
         if (isset($similarArtists->similarartists->artist)) {
             foreach ($similarArtists->similarartists->artist as $artist) {
+
+                // Insert artist into Artists and LastFMArtists tables
+                $similarId = self::getArtistFromLastFM($artist->name);
+            
+                // Insert in SimilarArtists
+                $this->SimilarArtist_model->insert(array(
+                    'artistid1' => $artistId,
+                    'artistid2' => $similarId
+                ));
                 
             }
         }
