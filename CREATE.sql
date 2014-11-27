@@ -33,7 +33,8 @@ CREATE TABLE Tags (
 
 CREATE TABLE ArtistTags (
     tagId int REFERENCES Tags(id),
-    artistId int REFERENCES Artists(id)
+    artistId int REFERENCES Artists(id),
+    PRIMARY KEY (tagId, artistId)
 );
 
 CREATE TABLE Fans (
@@ -45,12 +46,14 @@ CREATE TABLE Fans (
 
 CREATE TABLE ArtistFans (
     fanId int REFERENCES Fans(id),
-    artistId int REFERENCES Artists(id)
+    artistId int REFERENCES Artists(id),
+    PRIMARY KEY (fanId, artistId)
 );
 
 
 CREATE TABLE SimilarArtists (
     artistId1 int REFERENCES Artists(id),
-    artistId2 int REFERENCES Artists(id)
+    artistId2 int REFERENCES Artists(id),
+    PRIMARY KEY (artistId1, artistId2)
 );
 

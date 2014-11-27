@@ -17,12 +17,13 @@ class ArtistManager extends CI_Model {
     public function __construct() {
         parent::__construct();
         $this->load->model('LastFM');
-        $this->load->model('Artist_model');
-        $this->load->model('LastfmArtist_model');
-        $this->load->model('Album_model');
-        $this->load->model('Fan_model');
-        $this->load->model('Tag_model');
-        $this->load->model('ArtistTag_model');
+        $this->load->model('/CRUD/Artist_model');
+        $this->load->model('/CRUD/LastfmArtist_model');
+        $this->load->model('/CRUD/Album_model');
+        $this->load->model('/CRUD/Fan_model');
+        $this->load->model('/CRUD/ArtistFan_model');
+        $this->load->model('/CRUD/Tag_model');
+        $this->load->model('/CRUD/ArtistTag_model');
 
     }
     
@@ -57,6 +58,7 @@ class ArtistManager extends CI_Model {
         $this->getArtistFromLastFM($artist);
         $this->getAlbumsFromLastFM($artist);
         $this->getTagsFromLastFM($artist);
+        $this->getFansFromLastFM($artist);
         $this->getSimilarFromLastFM($artist);
     }
     
@@ -146,14 +148,43 @@ class ArtistManager extends CI_Model {
                     'url' => $tag->url
                 ), true);
                 
-                    $this->Tag_model->insert(array(
-                        'tagid' => $tagId,
-                        'artistid' => $artistId
-                    ), true);
-                
+                $this->ArtistTag_model->insert(array(
+                    'tagid' => $tagId,
+                    'artistid' => $artistId
+                ), true);
             }
+        }      
+    }
+    
+        private function getFansFromLastFM($artist) {
+        // Get id
+        $artistId = $this->Artist_model->get_by('name', $artist)->id;
+        if ($artistId == FALSE) {
+            return FALSE;
         }
+        
+        // Get lastfm tags
+        $fans = $this->LastFM->getTopFans($artist);
+        
+        // Insert each tag in Tags and ArtistTags
+        if ($fans == FALSE) {
+            return FALSE;
+        }
+        
+        if (isset($fans->topfans->user)) {
+            
+            foreach ($fans->topfans->user as $fan) {
+                $fanId = $this->Fan_model->insert(array(
+                    'age' => $this->LastFM->getUser($fan->name)->user->age,
+                    'url' => $fan->url
+                ), true);
                 
+                $this->ArtistFan_model->insert(array(
+                    'fanid' => $fanId,
+                    'artistid' => $artistId
+                ), true);
+            }
+        }      
     }
     
     private function getSimilarFromLastFM($artist) {

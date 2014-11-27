@@ -16,10 +16,10 @@ class LastFM extends CI_Model {
     /*
      * API query limits
      */
-    const MAX_ARTISTS = 100;
-    const MAX_ALBUMS = 100;
-    const MAX_TAGS = 100;
-    const MAX_FANS = 100;
+    const MAX_ARTISTS = 50;
+    const MAX_ALBUMS = 50;
+    const MAX_TAGS = 50;
+    const MAX_FANS = 50;
     
     /*
      * Constructor
