@@ -19,6 +19,11 @@ class ArtistManager extends CI_Model {
         $this->load->model('LastFM');
         $this->load->model('Artist_model');
         $this->load->model('LastfmArtist_model');
+        $this->load->model('Album_model');
+        $this->load->model('Fan_model');
+        $this->load->model('Tag_model');
+        $this->load->model('ArtistTag_model');
+
     }
     
     /*
@@ -91,20 +96,88 @@ class ArtistManager extends CI_Model {
     
     private function getAlbumsFromLastFM($artist) {
         // Get id
+        $artistId = $this->Artist_model->get_by('name', $artist)->id;
+        if ($artistId == FALSE) {
+            return FALSE;
+        }
+        
         // Get Lastfm albums
-        // Insert each album in Albums and AlbumTags
+        $albums = $this->LastFM->getTopAlbums($artist);
+                
+        // Insert each album in Albums
+        if ($albums == FALSE) {
+            return FALSE;
+        }
+        
+        if (isset($albums->topalbums->album)) {
+            foreach ($albums->topalbums->album as $album) {
+                
+                $albumId = $this->Album_model->insert(array(
+                    'name' => $album->name,
+                    'url' => $album->url,
+                    'artistid' => $artistId,
+                    'date' => $this->LastFM->getAlbum($artist, $album->name)->album->releasedate
+                ));
+            }
+        }
+        
     }
     
     private function getTagsFromLastFM($artist) {
         // Get id
+        $artistId = $this->Artist_model->get_by('name', $artist)->id;
+        if ($artistId == FALSE) {
+            return FALSE;
+        }
+        
         // Get lastfm tags
-        // Insert each tag in Artist and ArtistTags
+        $tags = $this->LastFM->getTopTags($artist);
+        
+        // Insert each tag in Tags and ArtistTags
+        if ($tags == FALSE) {
+            return FALSE;
+        }
+        
+        if (isset($tags->toptags->tag)) {
+            
+            foreach ($tags->toptags->tag as $tag) {
+                $tagId = $this->Tag_model->insert(array(
+                    'name' => $tag->name,
+                    'url' => $tag->url
+                ), true);
+                
+                    $this->Tag_model->insert(array(
+                        'tagid' => $tagId,
+                        'artistid' => $artistId
+                    ), true);
+                
+            }
+        }
+                
     }
     
     private function getSimilarFromLastFM($artist) {
         // Get id
+        $artistId = $this->Artist_model->get_by('name', $artist)->id;
+        if ($artistId == FALSE) {
+            return FALSE;
+        }
+        
         // Get lastfm similar artists
+        $similarArtists = $this->LastFM->getSimilar($artist);
+        
         // Insert each similar in Artists and SimilarArtists
+        if ($similarArtists == FALSE) {
+            return FALSE;
+        }
+        
+        if (isset($similarArtists->similarartists->artist)) {
+            foreach ($similarArtists->similarartists->artist as $artist) {
+                
+            }
+        }
+    
+        
     }
     
     
