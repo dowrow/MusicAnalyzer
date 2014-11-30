@@ -54,12 +54,13 @@ class ArtistManager extends CI_Model {
     /* Proxy functions */
     /*******************/
     
+    // TOO SLOW FOR HEROKU (30+ seconds)
     public function getInfoFromLastFM ($artist) {
-        $this->getArtistFromLastFM($artist);
+        //$this->getArtistFromLastFM($artist);
         $this->getAlbumsFromLastFM($artist);
-        $this->getTagsFromLastFM($artist);
-        $this->getFansFromLastFM($artist);
-        $this->getSimilarFromLastFM($artist);
+        //$this->getTagsFromLastFM($artist);
+        //$this->getFansFromLastFM($artist);
+        //$this->getSimilarFromLastFM($artist);
     }
     
     public function getArtistFromLastFM($artist) {
