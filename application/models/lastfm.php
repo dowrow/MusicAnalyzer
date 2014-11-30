@@ -40,7 +40,7 @@ class LastFM extends CI_Model {
     public function getArtist($name="") {
         $url = "http://ws.audioscrobbler.com/2.0/?method=artist.getinfo";
         $url .= "&artist=" . urlencode($name);
-        $url .= "&limit=" . self::MAX_ARTISTS;
+        $url .= "&limit=1";
         $url .= "&api_key=" . self::API_KEY . "&format=json";
         $obj = json_decode(file_get_contents($url));
         if (is_string($obj)) {
@@ -59,7 +59,7 @@ class LastFM extends CI_Model {
         $url = "http://ws.audioscrobbler.com/2.0/?method=album.getinfo";
         $url .= "&artist=" . urlencode($artist);
         $url .= "&album=" . urlencode($album);
-        $url .= "&limit=" . self::MAX_ALBUMS;
+        $url .= "&limit=1";
         $url .= "&api_key=" . self::API_KEY . "&format=json";
         $obj = json_decode(file_get_contents($url));
         if (is_string($obj)) {
@@ -76,7 +76,7 @@ class LastFM extends CI_Model {
     public function getUser($name="") {
         $url = "http://ws.audioscrobbler.com/2.0/?method=user.getinfo";
         $url .= "&user=" . urlencode($name);
-        $url .= "&limit=" . self::MAX_FANS;
+        $url .= "&limit=1";
         $url .= "&api_key=" . self::API_KEY . "&format=json";
         $obj = json_decode(file_get_contents($url));
         if (is_string($obj)) {
@@ -94,7 +94,7 @@ class LastFM extends CI_Model {
     public function getTag($name="") {
         $url = "http://ws.audioscrobbler.com/2.0/?method=tag.getinfo";
         $url .= "&tag=" . urlencode($name);
-        $url .= "&limit=" . self::MAX_TAGS;
+        $url .= "&limit=1";
         $url .= "&api_key=" . self::API_KEY . "&format=json";
         $obj = json_decode(file_get_contents($url));
         if (is_string($obj)) {
