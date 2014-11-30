@@ -55,11 +55,11 @@ class ArtistManager extends CI_Model {
     /*******************/
     
     private function getInfoFromLastFM ($artist) {
-        $this->getArtistFromLastFM($artist);
+        //$this->getArtistFromLastFM($artist);
         $this->getAlbumsFromLastFM($artist);
-        $this->getTagsFromLastFM($artist);
-        $this->getFansFromLastFM($artist);
-        $this->getSimilarFromLastFM($artist);
+        //$this->getTagsFromLastFM($artist);
+        //$this->getFansFromLastFM($artist);
+        //$this->getSimilarFromLastFM($artist);
     }
     
     private function getArtistFromLastFM($artist) {
