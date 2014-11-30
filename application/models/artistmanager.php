@@ -54,15 +54,15 @@ class ArtistManager extends CI_Model {
     /* Proxy functions */
     /*******************/
     
-    private function getInfoFromLastFM ($artist) {
-        //$this->getArtistFromLastFM($artist);
+    public function getInfoFromLastFM ($artist) {
+        $this->getArtistFromLastFM($artist);
         $this->getAlbumsFromLastFM($artist);
-        //$this->getTagsFromLastFM($artist);
-        //$this->getFansFromLastFM($artist);
-        //$this->getSimilarFromLastFM($artist);
+        $this->getTagsFromLastFM($artist);
+        $this->getFansFromLastFM($artist);
+        $this->getSimilarFromLastFM($artist);
     }
     
-    private function getArtistFromLastFM($artist) {
+    public function getArtistFromLastFM($artist) {
         
         // Insert name in Artists
         $id = $this->Artist_model->insert(array('name' => $artist));
@@ -97,12 +97,15 @@ class ArtistManager extends CI_Model {
         return $id;
     }
     
-    private function getAlbumsFromLastFM($artist) {
+    public function getAlbumsFromLastFM($artist) {
         // Get id
-        $artistId = $this->Artist_model->get_by('name', $artist)->id;
-        if ($artistId == FALSE) {
+        $artist = $this->Artist_model->get_by('name', $artist);
+        
+        if (!is_object($artist)) {
             return FALSE;
         }
+        
+        $artistId = $artist->id;
         
         // Get Lastfm albums
         $albums = $this->LastFM->getTopAlbums($artist);
@@ -126,12 +129,15 @@ class ArtistManager extends CI_Model {
         
     }
     
-    private function getTagsFromLastFM($artist) {
-        // Get id
-        $artistId = $this->Artist_model->get_by('name', $artist)->id;
-        if ($artistId == FALSE) {
+    public function getTagsFromLastFM($artist) {
+         // Get id
+        $artist = $this->Artist_model->get_by('name', $artist);
+        
+        if (!is_object($artist)) {
             return FALSE;
         }
+        
+        $artistId = $artist->id;
         
         // Get lastfm tags
         $tags = $this->LastFM->getTopTags($artist);
@@ -157,12 +163,15 @@ class ArtistManager extends CI_Model {
         }      
     }
     
-        private function getFansFromLastFM($artist) {
-        // Get id
-        $artistId = $this->Artist_model->get_by('name', $artist)->id;
-        if ($artistId == FALSE) {
+    public function getFansFromLastFM($artist) {
+         // Get id
+        $artist = $this->Artist_model->get_by('name', $artist);
+        
+        if (!is_object($artist)) {
             return FALSE;
         }
+        
+        $artistId = $artist->id;
         
         // Get lastfm tags
         $fans = $this->LastFM->getTopFans($artist);
@@ -188,12 +197,15 @@ class ArtistManager extends CI_Model {
         }      
     }
     
-    private function getSimilarFromLastFM($artist) {
+    public function getSimilarFromLastFM($artist) {
         // Get id
-        $artistId = $this->Artist_model->get_by('name', $artist)->id;
-        if ($artistId == FALSE) {
+        $artist = $this->Artist_model->get_by('name', $artist);
+        
+        if (!is_object($artist)) {
             return FALSE;
         }
+        
+        $artistId = $artist->id;
         
         // Get lastfm similar artists
         $similarArtists = $this->LastFM->getSimilar($artist);
@@ -218,7 +230,6 @@ class ArtistManager extends CI_Model {
             }
         }
     
-        
     }
     
     
