@@ -99,13 +99,13 @@ class ArtistManager extends CI_Model {
     
     public function getAlbumsFromLastFM($artist) {
         // Get id
-        $artist = $this->Artist_model->get_by('name', $artist);
+        $artistObj = $this->Artist_model->get_by('name', $artist);
         
-        if (!is_object($artist)) {
+        if (!is_object($artistObj)) {
             return FALSE;
         }
         
-        $artistId = $artist->id;
+        $artistId = $artistObj->id;
         
         // Get Lastfm albums
         $albums = $this->LastFM->getTopAlbums($artist);
@@ -130,14 +130,14 @@ class ArtistManager extends CI_Model {
     }
     
     public function getTagsFromLastFM($artist) {
-         // Get id
-        $artist = $this->Artist_model->get_by('name', $artist);
+        // Get id
+        $artistObj = $this->Artist_model->get_by('name', $artist);
         
-        if (!is_object($artist)) {
+        if (!is_object($artistObj)) {
             return FALSE;
         }
         
-        $artistId = $artist->id;
+        $artistId = $artistObj->id;
         
         // Get lastfm tags
         $tags = $this->LastFM->getTopTags($artist);
@@ -164,14 +164,14 @@ class ArtistManager extends CI_Model {
     }
     
     public function getFansFromLastFM($artist) {
-         // Get id
-        $artist = $this->Artist_model->get_by('name', $artist);
+        // Get id
+        $artistObj = $this->Artist_model->get_by('name', $artist);
         
-        if (!is_object($artist)) {
+        if (!is_object($artistObj)) {
             return FALSE;
         }
         
-        $artistId = $artist->id;
+        $artistId = $artistObj->id;
         
         // Get lastfm tags
         $fans = $this->LastFM->getTopFans($artist);
@@ -199,13 +199,13 @@ class ArtistManager extends CI_Model {
     
     public function getSimilarFromLastFM($artist) {
         // Get id
-        $artist = $this->Artist_model->get_by('name', $artist);
+        $artistObj = $this->Artist_model->get_by('name', $artist);
         
-        if (!is_object($artist)) {
+        if (!is_object($artistObj)) {
             return FALSE;
         }
         
-        $artistId = $artist->id;
+        $artistId = $artistObj->id;
         
         // Get lastfm similar artists
         $similarArtists = $this->LastFM->getSimilar($artist);
