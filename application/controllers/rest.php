@@ -1,5 +1,5 @@
 <?php
-class REST extends CI_Controller {
+class Rest extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
@@ -19,7 +19,7 @@ class REST extends CI_Controller {
         }
         $artist = urldecode($parameter);
         if ($this->ArtistManager->hasLastFM($artist)) {
-            $this->ArtistManager->getAlbumsFromLastFM($artist);
+            $this->ArtistManager->getArtistFromLastFM($artist);
             echo 'Ok';
         } else {
             echo 'No info';
