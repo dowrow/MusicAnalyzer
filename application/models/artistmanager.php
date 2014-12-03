@@ -37,7 +37,7 @@ class ArtistManager extends CI_Model {
      * @return Boolean 
      */
     public function hasLastFM ($artist) {
-        if ($this->LastFM->getArtist() != false) {
+        if ($this->LastFM->getArtist($artist) != false) {
             return true;   
         } else {
             return false;

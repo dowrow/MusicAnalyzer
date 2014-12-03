@@ -1,5 +1,5 @@
 <?php
-class getInfo extends CI_Controller {
+class GetAlbumsInfo extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
@@ -16,7 +16,7 @@ class getInfo extends CI_Controller {
         }
         $artist = urldecode($parameter);
         if ($this->ArtistManager->hasLastFM($artist)) {
-            $this->ArtistManager->getArtist($artist);
+            $this->ArtistManager->getAlbumsFromLastFM($artist);
             echo 'Ok';
         } else {
             echo 'No info';

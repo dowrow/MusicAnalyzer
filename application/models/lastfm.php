@@ -43,7 +43,8 @@ class LastFM extends CI_Model {
         $url .= "&limit=1";
         $url .= "&api_key=" . self::API_KEY . "&format=json";
         $obj = json_decode(file_get_contents($url));
-        if (is_string($obj)) {
+
+        if (isset($obj->error)) {
             return false;
         }
         return $obj;
@@ -62,7 +63,7 @@ class LastFM extends CI_Model {
         $url .= "&limit=1";
         $url .= "&api_key=" . self::API_KEY . "&format=json";
         $obj = json_decode(file_get_contents($url));
-        if (is_string($obj)) {
+        if (isset($obj->error)) {
             return false;
         }
         return $obj;
@@ -79,7 +80,7 @@ class LastFM extends CI_Model {
         $url .= "&limit=1";
         $url .= "&api_key=" . self::API_KEY . "&format=json";
         $obj = json_decode(file_get_contents($url));
-        if (is_string($obj)) {
+        if (isset($obj->error)) {
             return false;
         }
         return $obj;
@@ -97,7 +98,7 @@ class LastFM extends CI_Model {
         $url .= "&limit=1";
         $url .= "&api_key=" . self::API_KEY . "&format=json";
         $obj = json_decode(file_get_contents($url));
-        if (is_string($obj)) {
+        if (isset($obj->error)) {
             return false;
         }
         return $obj;
@@ -120,7 +121,7 @@ class LastFM extends CI_Model {
         $url .= "&limit=" . self::MAX_TAGS;
         $url .= "&api_key=" . self::API_KEY . "&format=json";
         $obj = json_decode(file_get_contents($url));
-        if (is_string($obj)) {
+        if (isset($obj->error)) {
             return false;
         } else {
             return $obj;
@@ -140,7 +141,7 @@ class LastFM extends CI_Model {
         $url .= "&limit=" . self::MAX_FANS;
         $url .= "&api_key=" . self::API_KEY . "&format=json";
         $obj = json_decode(file_get_contents($url));
-        if (is_string($obj)) {
+        if (isset($obj->error)) {
             return false;
         } else {
             return $obj;
@@ -160,7 +161,7 @@ class LastFM extends CI_Model {
         $url .= "&limit=" . self::MAX_ALBUMS;
         $url .= "&api_key=" . self::API_KEY . "&format=json";
         $obj = json_decode(file_get_contents($url));
-        if (is_string($obj)) {
+        if (isset($obj->error)) {
             return false;
         } else {
             return $obj;
@@ -180,7 +181,7 @@ class LastFM extends CI_Model {
         $url .= "&limit=" . self::MAX_ARTISTS;
         $url .= "&api_key=" . self::API_KEY . "&format=json";
         $obj = json_decode(file_get_contents($url));
-        if (is_string($obj)) {
+        if (isset($obj->error)) {
             return false;
         } else {
             return $obj;
