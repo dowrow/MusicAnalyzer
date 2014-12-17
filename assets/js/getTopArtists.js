@@ -2,10 +2,7 @@
 require(['jquery'], function ($) {
     
     var API_KEY = "5554fc23346ee78a88be13fa9a5201c7",
-        tags = ["acoustic", "ambient", "blues", "classical", "country", 
-            "electronic", "emo", "folk", "hardcore", "hip hop", "indie", 
-            "jazz", "latin", "metal", "pop", "pop punk", "punk", "reggae", 
-            "rnb", "rock", "soul", "world", "60s", "70s", "80s", "90s"],
+        tags = ["acoustic"],
        artistCount = 0,
        completedCount = 0,
        ARTISTS_PER_TAG = 2;
