@@ -47,6 +47,9 @@ require.config({
         // is using jQuery 1.9.0 located at
         // js/lib/jquery-1.9.0.js, relative to
         // the HTML page.
-        jquery: 'jquery.min'
+        jquery: 'jquery.min',
+        LastFM: 'lastfm.api',
+        LastFMCache: 'lastfm.api.cache',
+        md5: 'lastfm.api.md5'
     }
 });
