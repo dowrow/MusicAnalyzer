@@ -3,13 +3,25 @@ class Rest extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->model('ArtistManager');
+        $this->load->model('Stats');
     }
     
     public function index() {
         echo 'REST API OK';
     }
     
+    public function stats() {
+        
+        // Get parameter
+        $parameter = $this->input->get('artist', TRUE);
+        if ($parameter == FALSE) {
+            echo 'Error. Missig ?artist=URL_ENCODED_ARTIST';
+            return;
+        }
+        
+        echo json_encode($this->Stats->getStats($parameter));
+    }
+    /*
     public function GetArtistInfo () {
         // Get parameter
         $parameter = $this->input->get('artist', TRUE);
@@ -89,5 +101,5 @@ class Rest extends CI_Controller {
             echo 'No info';
         }
     }
-    
+    */
 }

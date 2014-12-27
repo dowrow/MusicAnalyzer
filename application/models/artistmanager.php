@@ -1,11 +1,7 @@
 <?php
-
-include __DIR__.'/Artist.php';
-
 /**
  * ArtistManager
  * 
- *
  * @author Diego
  */
 class ArtistManager extends CI_Model {
@@ -16,7 +12,6 @@ class ArtistManager extends CI_Model {
      */
     public function __construct() {
         parent::__construct();
-        $this->load->model('LastFM');
         $this->load->model('/CRUD/Artist_model');
         $this->load->model('/CRUD/LastfmArtist_model');
         $this->load->model('/CRUD/Album_model');
@@ -27,43 +22,56 @@ class ArtistManager extends CI_Model {
         $this->load->model('/CRUD/SimilarArtist_model');
     }
     
-    /*
-     * DB queries *
-     */
     
     /*
-     * Has lastfm
-     * @param String $artist
-     * @return Boolean 
+     * DB population
      */
-    public function hasLastFM ($artist) {
-        if ($this->LastFM->getArtist($artist) != false) {
-            return true;   
-        } else {
-            return false;
+    
+    public function insertArtist ($name, $url, $image) {
+        
+        // Insert name in Artists
+        $id = $this->Artist_model->insert(array('name' => $name));
+        
+        // Already inserted?
+        if ($id == FALSE){
+            return FALSE;
         }
+        
+        // Insert in LastfmArtists
+        $lastfmId = $this->LastfmArtist_model->insert(array(
+            'url' => $url,
+            'image' => $image
+        ));
+        
+        // Already inserted?
+        if ($lastfmId == FALSE) {
+            return FALSE;
+        }
+        
+        // Insert reference in Artists
+        $this->Artist_model->update($id, 
+                array('lastfmartistid' => $lastfmId)
+        );
+        
+    }
+     
+    public function insertAlbum () {
         
     }
     
-    public function getArtist ($artist) {
-        $this->getInfoFromLastFM($artist);
-        return new Artist($artist);
-    }
-
-    /*******************/
-    /* Proxy functions */
-    /*******************/
-    
-    // TOO SLOW FOR HEROKU (30+ seconds)
-    public function getInfoFromLastFM ($artist) {
-        //$this->getArtistFromLastFM($artist);
-        $this->getAlbumsFromLastFM($artist);
-        //$this->getTagsFromLastFM($artist);
-        //$this->getFansFromLastFM($artist);
-        //$this->getSimilarFromLastFM($artist);
+    public function insertFan () {
+        
     }
     
-    public function getArtistFromLastFM($artist) {
+    public function insertSimilar () {
+        
+    }
+    
+    public function insertTag () {
+        
+    }
+    /*
+     * public function getArtistFromLastFM($artist) {
         
         // Insert name in Artists
         $id = $this->Artist_model->insert(array('name' => $artist));
@@ -230,8 +238,10 @@ class ArtistManager extends CI_Model {
                 
             }
         }
+        
     
     }
+    */
     
     
 }
