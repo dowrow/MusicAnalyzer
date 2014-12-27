@@ -4,12 +4,15 @@ class Rest extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('Stats');
+        $this->load->mode('DatabaseManager');
     }
     
+    // Default
     public function index() {
         echo 'REST API OK';
     }
     
+    // Get stats for given artist
     public function stats() {
         
         // Get parameter
@@ -21,85 +24,31 @@ class Rest extends CI_Controller {
         
         echo json_encode($this->Stats->getStats($parameter));
     }
-    /*
-    public function GetArtistInfo () {
-        // Get parameter
-        $parameter = $this->input->get('artist', TRUE);
-        if ($parameter == FALSE) {
-            echo 'Error. Missig ?artist=URL_ENCODED_ARTIST';
-            return;
-        }
-        $artist = urldecode($parameter);
-        if ($this->ArtistManager->hasLastFM($artist)) {
-            $this->ArtistManager->getArtistFromLastFM($artist);
-            echo 'Ok';
-        } else {
-            echo 'No info';
-        }
-    }
-    public function GetTagsInfo () {
+    
+    // Insert an artist
+    public function insertArtist () {
         
-        // Get parameter
-        $parameter = $this->input->get('artist', TRUE);
-        if ($parameter == FALSE) {
-            echo 'Error. Missig ?artist=URL_ENCODED_ARTIST';
-            return;
-        }
-        $artist = urldecode($parameter);
-        if ($this->ArtistManager->hasLastFM($artist)) {
-            $this->ArtistManager->getTagsFromLastFM($artist);
-            echo 'Ok';
-        } else {
-            echo 'No info';
-        }
     }
-    public function GetAlbumsInfo () {
+    
+    // Insert an album
+    public function insertAlbum () {
         
-        // Get parameter
-        $parameter = $this->input->get('artist', TRUE);
-        if ($parameter == FALSE) {
-            echo 'Error. Missig ?artist=URL_ENCODED_ARTIST';
-            return;
-        }
-        $artist = urldecode($parameter);
-        if ($this->ArtistManager->hasLastFM($artist)) {
-            $this->ArtistManager->getAlbumsFromLastFM($artist);
-            echo 'Ok';
-        } else {
-            echo 'No info';
-        }
     }
-    public function GetFansInfo () {
+    
+    // Insert a fan
+    public function insertFan () {
         
-        // Get parameter
-        $parameter = $this->input->get('artist', TRUE);
-        if ($parameter == FALSE) {
-            echo 'Error. Missig ?artist=URL_ENCODED_ARTIST';
-            return;
-        }
-        $artist = urldecode($parameter);
-        if ($this->ArtistManager->hasLastFM($artist)) {
-            $this->ArtistManager->getFansFromLastFM($artist);
-            echo 'Ok';
-        } else {
-            echo 'No info';
-        }
     }
-    public function GetSimilarsInfo() {
+    
+    // Insert a tag
+    public function insertTag () {
         
-        // Get parameter
-        $parameter = $this->input->get('artist', TRUE);
-        if ($parameter == FALSE) {
-            echo 'Error. Missig ?artist=URL_ENCODED_ARTIST';
-            return;
-        }
-        $artist = urldecode($parameter);
-        if ($this->ArtistManager->hasLastFM($artist)) {
-            $this->ArtistManager->getSimilarFromLastFM($artist);
-            echo 'Ok';
-        } else {
-            echo 'No info';
-        }
     }
-    */
+    
+    // Insert a similar artist
+    public function insertSimilar () {
+        
+    }
+
+    
 }
