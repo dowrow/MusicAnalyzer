@@ -29,9 +29,9 @@ class Rest extends CI_Controller {
     public function insertArtist () {
         
         // Get parameters
-        $name = $this->input->get('name', TRUE);
-        $url = $this->input->get('url', TRUE);
-        $image = $this->input->get('image', TRUE);
+        $name = $this->input->post('name', TRUE);
+        $url = $this->input->post('url', TRUE);
+        $image = $this->input->post('image', TRUE);
         
         if ($name == FALSE || $url == FALSE || $image == FALSE) {
             echo 'Missing arguments';
@@ -47,10 +47,10 @@ class Rest extends CI_Controller {
     public function insertAlbum () {
         
         // Get parameters
-        $artist = $this->input->get('artist', TRUE);
-        $album = $this->input->get('album', TRUE);
-        $url = $this->input->get('url', TRUE);
-        $date = $this->input->get('date', TRUE);
+        $artist = $this->input->post('artist', TRUE);
+        $album = $this->input->post('album', TRUE);
+        $url = $this->input->post('url', TRUE);
+        $date = $this->input->post('date', TRUE);
         
         if ($artist == FALSE || $album == FALSE || $url == FALSE || $date == FALSE) {
             echo 'Missing arguments';
@@ -66,10 +66,10 @@ class Rest extends CI_Controller {
     public function insertFan () {
        
         // Get parameters
-        $artist = $this->input->get('artist', TRUE);
-        $album = $this->input->get('album', TRUE);
-        $url = $this->input->get('url', TRUE);
-        $date = $this->input->get('date', TRUE);
+        $artist = $this->input->post('artist', TRUE);
+        $album = $this->input->post('album', TRUE);
+        $url = $this->input->post('url', TRUE);
+        $date = $this->input->post('date', TRUE);
         
         if ($artist == FALSE || $album == FALSE || $url == FALSE || $date == FALSE) {
             echo 'Missing arguments';
@@ -85,9 +85,9 @@ class Rest extends CI_Controller {
     public function insertTag () {
         
         // Get parameters
-        $artist = $this->input->get('artist', TRUE);
-        $name = $this->input->get('name', TRUE);
-        $url = $this->input->get('url', TRUE);
+        $artist = $this->input->post('artist', TRUE);
+        $name = $this->input->post('name', TRUE);
+        $url = $this->input->post('url', TRUE);
         
         if ($artist == FALSE || $name == FALSE || $url == FALSE) {
             echo 'Missing arguments';
@@ -104,10 +104,10 @@ class Rest extends CI_Controller {
     public function insertSimilar () {
         
         // Get parameters
-        $artist = $this->input->get('artist', TRUE);
-        $similar = $this->input->get('similar', TRUE);
-        $url = $this->input->get('url', TRUE);
-        $image =  $this->input->get('image', TRUE);
+        $artist = $this->input->post('artist', TRUE);
+        $similar = $this->input->post('similar', TRUE);
+        $url = $this->input->post('url', TRUE);
+        $image =  $this->input->post('image', TRUE);
         
         if ($artist == FALSE || $similar == FALSE || $url == FALSE || $image == FALSE) {
             echo 'Missing arguments';
