@@ -37,8 +37,7 @@ define (['jquery'], function ($) {
     $(document).ready(function () {
         
        
-
-        checkLoginState();
+       setTimeout(checkLoginState, 1000);
     
     // Animate progress bar
         $('#appProgress').css('width', '33%');
