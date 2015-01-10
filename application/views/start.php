@@ -13,7 +13,13 @@
     
     <body>
         
-        
+        <div class="container">
+            <div class="jumbotron text-center">
+                <h1 >Music Analyzer</h1>
+                <p class="lead">Discover what your Facebook Music says about you.</p>
+                <p><a class="btn btn-primary btn-lg" href="javascript:void(0);" role="button">Start</a></p>
+            </div>
+         </div>
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
