@@ -7,29 +7,13 @@ define (['jquery'], function ($) {
     function statusChangeCallback(response) {
           if (response.status === 'connected') {
               console.log('Conectado');
+              FB.login();
           } else if (response.status === 'not_authorized') {
              console.log('En FB pero sin login en la app');
           } else {
              console.log('Sin FB');
           }
     }
-    
-    // Init. FB SDK
-    window.fbAsyncInit = function() {
-       
-        
-        // If session is lost redirect to login
-        FB.Event.subscribe('auth.login', onLogin);
-        
-        function onLogin (response) {
-            
-            if (response.status !== 'connected') {
-                location.href = '/';
-            } else {
-                console.log('conected');
-            }
-        }
-    };
     
     // Load async. FB SDK
     (function(d, s, id) {
