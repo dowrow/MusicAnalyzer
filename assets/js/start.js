@@ -10,6 +10,7 @@ define (['jquery'], function ($) {
               FB.login();
           } else if (response.status === 'not_authorized') {
              console.log('En FB pero sin login en la app');
+             FB.login(function(response) { statusChangeCallback(response); }, {scope: 'user_likes'});
           } else {
              console.log('Sin FB');
           }
