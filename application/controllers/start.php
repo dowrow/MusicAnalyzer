@@ -24,11 +24,11 @@ class Start extends CI_Controller {
         
         public function index()
         {
-            // Set global language
+            // Set language
             if (strpos($this->Facebook->getLocale(), 'es') !== false) {
-                $config['language'] = 'spanish';
+                $this->lang->load('start', 'spanish');
             } else {
-                $config['language'] = 'english';
+                $this->lang->load('start', 'english');
             }
             $this->load->view('start');
         }
