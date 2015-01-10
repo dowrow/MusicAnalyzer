@@ -13,9 +13,9 @@ use Facebook\FacebookJavaScriptLoginHelper;
 // Set app keys
 FacebookSession::setDefaultApplication('1468034890110746','09e80af7d50f86bc41d5d4895e0a978d');
 
-class FacebookSessionFactory {
+class Facebook extends CI_Model {
     
-    public static function getSession() {
+    public function getSession() {
         try {            
             // Get login helper
             $helper = new FacebookJavaScriptLoginHelper();

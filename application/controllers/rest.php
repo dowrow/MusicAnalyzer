@@ -4,7 +4,7 @@ class Rest extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('Stats');
-        $this->load->mode('DatabaseManager');
+        $this->load->model('DatabaseManager');
     }
     
     // Default

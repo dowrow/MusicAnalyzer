@@ -38,10 +38,7 @@
 |
 */
 
-$route['default_controller'] = 'login';
-$route['music'] = 'music';
-$route['prueba'] = 'prueba';
-$route['getInfo'] = 'getInfo';
+$route['default_controller'] = 'Start';
 $route['404_override'] = '';
 
 
