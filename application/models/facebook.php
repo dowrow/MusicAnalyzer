@@ -23,14 +23,28 @@ class Facebook extends CI_Model {
     }
     
     public function getSession() {
-        // Get login helper
-        //$helper = new FacebookJavaScriptLoginHelper();
-        $helper = new FacebookCanvasLoginHelper();
-        try {            
-            $session = $helper->getSession(); 
+        
+        
+        // see if  $_SESSION exists
+        if (isset($_SESSION) && isset($_SESSION['fb_token'])) {
+            
+            // create new fb session from saved fb_token
+            $session = new FacebookSession($_SESSION['fb_token']);
+            // validate the fb_token to make sure it's still valid
             return $session;
-        } catch(Exception $ex) {
-            return null;
+            
+        } else {
+
+            // Get login helper
+            //$helper = new FacebookJavaScriptLoginHelper();        
+            $helper = new FacebookCanvasLoginHelper();
+
+            try {            
+                $session = $helper->getSession(); 
+                return $session;
+            } catch(Exception $ex) {
+                return null;
+            }
         }
     }
     
