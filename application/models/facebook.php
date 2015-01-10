@@ -19,13 +19,21 @@ class Facebook extends CI_Model {
     }
     
     public function getSession() {
+        // Get login helper
+        $helper = new FacebookJavaScriptLoginHelper();
         try {            
-            // Get login helper
-            $helper = new FacebookJavaScriptLoginHelper();
             $session = $helper->getSession(); 
             return $session;
         } catch(Exception $ex) {
             return null;
+        }
+    }
+    
+    public function getLocale () {
+        if (isset($_REQUEST['signed_request'])) {
+            echo $_REQUEST['signed_request'];
+        } else {
+            echo 'No signed request';
         }
     }
 }

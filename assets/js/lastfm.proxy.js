@@ -1,7 +1,7 @@
 define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
     
-    var cache = new LastFMCache(),
-        lastfm = new LastFM({
+    var cache = new LastFMCache();
+    var lastfm = new LastFM({
             apiKey    : '5554fc23346ee78a88be13fa9a5201c7',
             cache     : cache
         });

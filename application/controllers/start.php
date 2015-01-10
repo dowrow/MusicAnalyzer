@@ -25,16 +25,7 @@ class Start extends CI_Controller {
         public function index()
         {
             // Set language
-            $session = $this->Facebook->getSession();
-            
-            if (!is_null($session)) {
-                $meRequest = new FacebookRequest($session, 'GET', '/me');
-                $me = $meRequest->execute()->getGraphObject(GraphUser::className());
-                print_r($me);
-            } else {
-                echo 'Session = null';
-            }
-            
+            $session = $this->Facebook->getLocale();
             $this->load->view('start');
         }
         
