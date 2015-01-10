@@ -12,8 +12,17 @@
     </head>
     
     <body>
-        <br>
+        
         <div class="container">
+            
+            <br/>
+            <div class="progress">
+                <div id="appProgress" class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+                    <span class="sr-only">60% Complete</span>
+                </div>
+            </div>
+            
+            <br/>
             <div class="jumbotron text-center">
                 <h1><?php echo $this->lang->line('start_title'); ?></h1>
                 <p class="lead"><?php echo $this->lang->line('start_description'); ?></p>

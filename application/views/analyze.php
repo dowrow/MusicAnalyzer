@@ -14,19 +14,17 @@
     </head>
     
     <body>
-        <br>
         <div class="container">
             
             <br/>
-            
             <div class="progress">
                 <div id="appProgress" class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
                     <span class="sr-only">60% Complete</span>
                 </div>
             </div>
             
-            <br>
-            <div class="row jumbotron">
+            <br/>
+            <div class="jumbotron">
                 <h1>
                     Analyzing your likes<span id="loading"></span>
                 </h1>
