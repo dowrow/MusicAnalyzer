@@ -1,7 +1,7 @@
-HolaMundoFacebook
+Music Analyzer
 =================
 
-Mi primerísima aplicación para Facebook
+Aplicación sobre Facebook para analizar gustos musicales.
 
 Bibliotecas
 ===========
