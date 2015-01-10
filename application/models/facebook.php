@@ -10,17 +10,16 @@ session_start();
 use Facebook\FacebookSession;
 use Facebook\FacebookJavaScriptLoginHelper;
 
-// Constantns
-define ('APP_ID', '1468034890110746');
-define ('APP_SECRET', '09e80af7d50f86bc41d5d4895e0a978d');
     
 class Facebook extends CI_Model {
     
+    const APP_ID = '1468034890110746';
+    const APP_SECRET = '09e80af7d50f86bc41d5d4895e0a978d';
 
     public function __construct() {
         parent::__construct();
         // Set app keys
-        FacebookSession::setDefaultApplication(APP_ID, APP_SECRET);
+        FacebookSession::setDefaultApplication(self::APP_ID, self::APP_SECRET);
     }
     
     public function getSession() {
@@ -43,11 +42,11 @@ class Facebook extends CI_Model {
             
             list($encoded_sig, $payload) = explode('.', $_REQUEST['signed_request'], 2); 
 
-            $secret = APP_SECRET; // Use your app secret here
+            $secret = self::APP_SECRET; // Use your app secret here
 
             // decode the data
             $sig = base64_url_decode($encoded_sig);
-            $data = json_decode(base64_url_decode($payload), true);
+            $data = json_decode($this->base64_url_decode($payload), true);
             
             print_r($data);
             
