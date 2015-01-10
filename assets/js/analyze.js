@@ -7,7 +7,7 @@ define (['jquery'], function ($) {
     
     function statusChangeCallback(response) {
           if (response.status === 'connected') {
-              location.href='/analyze';
+              console.log('ok, reload');
           } else if (response.status === 'not_authorized') {
              FB.login(function(response) { statusChangeCallback(response); }, {scope: 'user_likes'});
           } else {
