@@ -45,7 +45,7 @@ class Facebook extends CI_Model {
             $secret = self::APP_SECRET; // Use your app secret here
 
             // decode the data
-            $sig = base64_url_decode($encoded_sig);
+            $sig = $this->base64_url_decode($encoded_sig);
             $data = json_decode($this->base64_url_decode($payload), true);
             
             print_r($data);
