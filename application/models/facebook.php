@@ -34,6 +34,10 @@ class Facebook extends CI_Model {
         }
     }
     
+    function base64_url_decode($input) {
+        return base64_decode(strtr($input, '-_', '+/'));
+    }
+    
     public function getLocale () {
         if (isset($_REQUEST['signed_request'])) {
             
@@ -58,9 +62,7 @@ class Facebook extends CI_Model {
         }
     }
     
-    private function base64_url_decode($input) {
-        return base64_decode(strtr($input, '-_', '+/'));
-    }
+    
 }
 
 ?>
