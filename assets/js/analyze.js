@@ -1,5 +1,11 @@
 define (['jquery'], function ($) {
     
+    function getLikes() {
+        
+    }
+    
+    
+    // DOM callbacks
     $(document).ready(function () {
         
         // Animate progress bar

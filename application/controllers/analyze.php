@@ -30,6 +30,11 @@ class Analyze extends CI_Controller {
             } else {
                 $this->lang->load('analyze', 'english');
             }
+            
+            // Test session
+            echo $this->Facebook->getSession();
+            
+            // Load view
             $this->load->view('analyze');
         }
         
