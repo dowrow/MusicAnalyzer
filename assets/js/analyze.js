@@ -2,9 +2,11 @@
 define (['jquery'], function ($) {
       window.fbAsyncInit = function() {
         FB.init({
-          appId      : '1468034890110746',
-          xfbml      : true,
-          version    : 'v2.1'
+           appId      : '1468034890110746',
+           xfbml      : true,
+           status     : true,
+           cookie     : true,
+           version    : 'v2.1'
         });
       };
 
