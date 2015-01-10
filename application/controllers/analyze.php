@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Start extends CI_Controller {
+class Analyze extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -26,11 +26,11 @@ class Start extends CI_Controller {
         {
             // Set language
             if (strpos($this->Facebook->getLocale(), 'es_') !== false) {
-                $this->lang->load('start', 'spanish');
+                $this->lang->load('analyze', 'spanish');
             } else {
-                $this->lang->load('start', 'english');
+                $this->lang->load('analyze', 'english');
             }
-            $this->load->view('start');
+            $this->load->view('analyze');
         }
         
         
