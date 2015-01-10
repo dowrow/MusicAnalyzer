@@ -36,8 +36,8 @@ class Facebook extends CI_Model {
         } else {
 
             // Get login helper
-            //$helper = new FacebookJavaScriptLoginHelper();        
-            $helper = new FacebookCanvasLoginHelper();
+            $helper = new FacebookJavaScriptLoginHelper();        
+            //$helper = new FacebookCanvasLoginHelper();
 
             try {            
                 $session = $helper->getSession(); 

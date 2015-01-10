@@ -37,7 +37,8 @@
                     <p>The average fan of Cher is 18 years old.</p>
                 </div>
             </div>
-            
+            <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+        
         </div>
         
         <script data-main="assets/js/analyze.js" src="assets/js/require.js"></script>
