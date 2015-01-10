@@ -12,7 +12,7 @@
     </head>
     
     <body>
-        
+        <br>
         <div class="container">
             <div class="jumbotron text-center">
                 <h1><?php echo $this->lang->line('start_title'); ?></h1>
