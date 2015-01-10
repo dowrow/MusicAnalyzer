@@ -9,7 +9,7 @@ session_start();
 // Namespaces
 use Facebook\FacebookSession;
 use Facebook\FacebookJavaScriptLoginHelper;
-
+use Facebook\FacebookCanvasLoginHelper;
     
 class Facebook extends CI_Model {
     
@@ -24,7 +24,8 @@ class Facebook extends CI_Model {
     
     public function getSession() {
         // Get login helper
-        $helper = new FacebookJavaScriptLoginHelper();
+        //$helper = new FacebookJavaScriptLoginHelper();
+        $helper = new FacebookCanvasLoginHelper();
         try {            
             $session = $helper->getSession(); 
             return $session;
