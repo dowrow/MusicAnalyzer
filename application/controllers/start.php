@@ -25,7 +25,7 @@ class Start extends CI_Controller {
         public function index()
         {
             // Set language
-            $this->Facebook->getLocale();
+            echo $this->Facebook->getLocale();
             $this->load->view('start');
         }
         
