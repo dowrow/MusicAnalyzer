@@ -10,10 +10,13 @@ session_start();
 use Facebook\FacebookSession;
 use Facebook\FacebookJavaScriptLoginHelper;
 
-// Set app keys
-FacebookSession::setDefaultApplication('1468034890110746','09e80af7d50f86bc41d5d4895e0a978d');
-
 class Facebook extends CI_Model {
+    
+    public function __construct() {
+        parent::__construct();
+        // Set app keys
+        FacebookSession::setDefaultApplication('1468034890110746','09e80af7d50f86bc41d5d4895e0a978d');
+    }
     
     public function getSession() {
         try {            

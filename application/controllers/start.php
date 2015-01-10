@@ -26,6 +26,7 @@ class Start extends CI_Controller {
         {
             // Set language
             $session = $this->Facebook->getSession();
+            
             if (!is_null($session)) {
                 $meRequest = new FacebookRequest($session, 'GET', '/me');
                 $me = $meRequest->execute()->getGraphObject(GraphUser::className());
