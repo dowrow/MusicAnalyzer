@@ -37,7 +37,7 @@ class Facebook extends CI_Model {
     public function getLocale () {
         if (isset($_REQUEST['signed_request'])) {
             
-            list($encoded_sig, $payload) = explode('.', $signed_request, 2); 
+            list($encoded_sig, $payload) = explode('.', $_REQUEST['signed_request'], 2); 
 
             $secret = APP_SECRET; // Use your app secret here
 
