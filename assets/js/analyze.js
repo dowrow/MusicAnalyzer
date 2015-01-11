@@ -1,6 +1,6 @@
 
 define (['jquery', 'facebook'], function ($, facebook) {
-      
+      /*
     FB.init({
         appId      : '1468034890110746',
         xfbml      : true,
@@ -24,12 +24,12 @@ define (['jquery', 'facebook'], function ($, facebook) {
              alert("Please login.");
           }
     }
-    
+    */
 
     // DOM callbacks
     $(document).ready(function () {
         
-        setTimeout(checkLoginState, 1000);
+        //setTimeout(checkLoginState, 1000);
     
         // Animate progress bar
         $('#appProgress').css('width', '33%');
@@ -51,5 +51,14 @@ define (['jquery', 'facebook'], function ($, facebook) {
                     break;
             }
         }, 500);
+        
+        FB.api(
+            "/v1.0/me",
+            function (response) {
+              if (response && !response.error) {
+                console.log('Me:' + response);               
+              }
+            }
+        );
     });
 });
