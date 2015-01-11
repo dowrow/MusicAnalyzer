@@ -53,10 +53,10 @@ define (['jquery', 'facebook'], function ($, facebook) {
         }, 500);
         
         FB.api(
-            "/v1.0/me",
+            "/me",
             function (response) {
-              console.log('Me:' + response);               
-              
+              console.log('Me:');         
+              console.log(response);              
             }
         );
     });
