@@ -32,12 +32,7 @@ class Analyze extends CI_Controller {
             }
             
             // Test session
-            $session = $this->Facebook->getSession();
-            if ($session) {
-                echo "<h1>Session</h1>";
-            }  else {
-               echo "<h1>No Session</h1>";
-            }
+            $likes = $this->Facebook->getLikes();
             
             // Load view
             $this->load->view('analyze');
