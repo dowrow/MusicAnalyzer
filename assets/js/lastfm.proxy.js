@@ -57,6 +57,10 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
     // Get artist async.
     function getStatsProxy (artist, artistCallback, albumsCallback, fansCallback, tagsCallback, similarCallback) {
         console.log('TODO. Getting stats for:' + artist);
+        i = 999999;
+        while (i--) {
+            i = i;
+        }
         return {};
     }
     
