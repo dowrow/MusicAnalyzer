@@ -1,6 +1,6 @@
 
 define (['jquery', 'facebook'], function ($, facebook) {
-      /*
+     
     FB.init({
         appId      : '1468034890110746',
         xfbml      : true,
@@ -8,7 +8,7 @@ define (['jquery', 'facebook'], function ($, facebook) {
         cookie     : true,
         version    : 'v2.1'
     });
-    
+     /*
     function checkLoginState() {
         // Reset permission
         FB.getLoginStatus(function (response) { statusChangeCallback(response); });
