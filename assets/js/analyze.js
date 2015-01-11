@@ -53,9 +53,9 @@ define (['jquery', 'facebook'], function ($, facebook) {
         }, 500);
         
         FB.api(
-            "/me",
+            "/me/music",
             function (response) {
-              console.log('Me:');         
+              console.log('me/music:');         
               console.log(response);              
             }
         );
