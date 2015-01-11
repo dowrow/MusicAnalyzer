@@ -56,6 +56,6 @@ require.config({
         LastFM: 'lastfm.api',
         LastFMCache: 'lastfm.api.cache',
         md5: 'lastfm.api.md5',
-        facebook: '//connect.facebook.net/en_US/all.js'
+        facebook: '//connect.facebook.net/en_US/all'
     }
 });
