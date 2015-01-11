@@ -55,9 +55,8 @@ define (['jquery', 'facebook'], function ($, facebook) {
         FB.api(
             "/v1.0/me",
             function (response) {
-              if (response && !response.error) {
-                console.log('Me:' + response);               
-              }
+              console.log('Me:' + response);               
+              
             }
         );
     });
