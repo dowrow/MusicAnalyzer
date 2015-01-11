@@ -32,7 +32,7 @@ class Analyze extends CI_Controller {
             }
             
             // Test session
-            $likes = $this->Facebook->getLikes();
+            //$likes = $this->Facebook->getLikes();
             
             // Load view
             $this->load->view('analyze');

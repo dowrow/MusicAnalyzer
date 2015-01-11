@@ -38,6 +38,11 @@ O),s=s.replace(Q,""),g.jsExtRegExp.test(s)&&(s=I),q.deps=q.deps?q.deps.concat(s)
 // Configuration
 require.config({
     baseUrl: 'assets/js/',
+    shim: {
+        'facebook' : {
+            exports: 'FB'
+        }
+    },
     paths: {
         // the left side is the module ID,
         // the right side is the path to
@@ -50,6 +55,7 @@ require.config({
         jquery: 'jquery.min',
         LastFM: 'lastfm.api',
         LastFMCache: 'lastfm.api.cache',
-        md5: 'lastfm.api.md5'
+        md5: 'lastfm.api.md5',
+        facebook: '//connect.facebook.net/en_US/all.js'
     }
 });
