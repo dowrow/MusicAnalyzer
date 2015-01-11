@@ -1,7 +1,9 @@
 
-define (['jquery', 'facebook'], function ($, facebook) {
+define (['jquery', 'facebook', 'LastFMProxy'], function ($, facebook, LastFMProxy) {
     
-    function getUserMusic(callback) {
+    var artistStats = [];
+    
+    function getArtists(callback) {
         FB.init({
             appId      : '1468034890110746',
             xfbml      : true,
@@ -23,9 +25,19 @@ define (['jquery', 'facebook'], function ($, facebook) {
         }, {scope: 'user_likes'});
     }
     
-    // Get user music ASAP
-    getUserMusic(function (artists) {
-        console.log(artists);
+    // Get stats for every artists;
+    getArtists(function (artists) {
+        
+        // If no artist likes
+        if (artists.length === 0) {
+            // TO DO: show message
+            alert('No artists');
+            return;
+        }
+        
+        artists.forEach(function (artist) {
+            artistStats[artist] = LastFMProxy.getStats(artist.name);
+        });
     });
 
     // DOM callbacks

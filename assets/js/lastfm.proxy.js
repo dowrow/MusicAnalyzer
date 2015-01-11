@@ -16,23 +16,23 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
     // DB insertion methods (POST)
     
     // Save methods (using LastFM API + POST)
-    function getArtist (artist) {
+    function saveArtist (artist) {
     
     }
     
-    function getAlbums (artist) {
+    function saveAlbums (artist) {
     
     }
     
-    function getFans (artist) {
+    function saveFans (artist) {
     
     }
     
-    function getTags (artist) {
+    function saveTags (artist) {
     
     }
     
-    function getSimilar (artist) {
+    function saveSimilar (artist) {
         
     }
     
@@ -55,12 +55,13 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
     
     // Public interface    
     // Get artist async.
-    function getStats (artist, artistCallback, albumsCallback, fansCallback, tagsCallback, similarCallback) {
-        // 
+    function getStatsProxy (artist, artistCallback, albumsCallback, fansCallback, tagsCallback, similarCallback) {
+        console.log('TODO. Getting stats for:' + artist);
+        return {};
     }
     
     return {
-        getStats: getStats
+        getStats: getStatsProxy
     };
 }); 
 
