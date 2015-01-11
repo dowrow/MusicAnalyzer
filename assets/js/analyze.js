@@ -52,12 +52,14 @@ define (['jquery', 'facebook'], function ($, facebook) {
             }
         }, 500);
         
-        FB.api(
-            "/me/music",
-            function (response) {
-              console.log('me/music:');         
-              console.log(response);              
-            }
-        );
+        FB.login(function () {
+            FB.api(
+                "/me/music",
+                function (response) {
+                  console.log('me/music:');         
+                  console.log(response);              
+            });
+        }, {scope: 'user_likes'});
+        
     });
 });
