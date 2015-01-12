@@ -77,7 +77,7 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
         
         // Try to get stats
         getStats(artist, function (stats) {
-            console.log('Stats:' + stats)
+            console.log('Stats:' + stats);
             if (/* TODO: Check if no error*/true) {
                 callback(stats);
                 return;
