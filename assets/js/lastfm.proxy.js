@@ -33,23 +33,23 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
     }
     
     function saveArtist (artist, callback) {
-    
+        callback();
     }
     
     function saveAlbums (artist, callback) {
-    
+        callback();
     }
     
     function saveFans (artist, callback) {
-    
+        callback();
     }
     
     function saveTags (artist, callback) {
-    
+        callback();
     }
     
     function saveSimilar (artist, callback) {
-        
+        callback();
     }
     
     /*
@@ -73,17 +73,16 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
     // Get artist async.
     function getStatsProxy (artist, callback) {
         
-        console.log('Gettin\' stats for ' + artist + '...');
-        
         // Try to get stats
         getStats(artist, function (stats) {
-            console.log('Stats:' + stats);
-            if (/* TODO: Check if no error*/true) {
+            
+            // If ok
+            if (stats != 0) {
                 callback(stats);
                 return;
             }
             
-            // Retry after saving info
+            // Else retry after saving info
             saveAll(artist, function () {
                 getStats(artist, callback);
             });
