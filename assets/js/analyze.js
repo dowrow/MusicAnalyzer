@@ -42,7 +42,9 @@ define (['jquery', 'facebook', 'LastFMProxy'], function ($, facebook, LastFMProx
         
         // Get stats one by one
         artists.forEach(function (artist) {
-            artistStats[artist] = LastFMProxy.getStats(artist.name);
+            LastFMProxy.getStats(artist.name, function (stats) { 
+                artistStats[artist.name] = stats 
+            });
         });
     });
 
