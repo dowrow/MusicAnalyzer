@@ -45,9 +45,15 @@ define (['jquery', 'facebook', 'LastFMProxy'], function ($, facebook, LastFMProx
             LastFMProxy.getStats(artist.name, function (stats) { 
                 artistStats[artist.name] = stats;
             });
+            
         });
+        
+        
     });
 
+    setInterval(function() {
+        console.log(artistStats);
+    }, 1000);
     // DOM callbacks
     $(document).ready(function () {
         
