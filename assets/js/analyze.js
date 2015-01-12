@@ -32,7 +32,7 @@ define (['jquery', 'facebook', 'LastFMProxy'], function ($, facebook, LastFMProx
     // Get stats for every artists;
     getArtists(function (artists) {
         
-        a
+        
         // If no artist likes
         if (artists.length === 0) {
             // TO DO: show message
