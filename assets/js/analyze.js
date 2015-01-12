@@ -1,6 +1,10 @@
 
 define (['jquery', 'facebook', 'LastFMProxy'], function ($, facebook, LastFMProxy) {
     
+    // User likes
+    var artists = [];
+    
+    // Stats object for every artist (associative array)
     var artistStats = [];
     
     function getArtists(callback) {
@@ -28,6 +32,7 @@ define (['jquery', 'facebook', 'LastFMProxy'], function ($, facebook, LastFMProx
     // Get stats for every artists;
     getArtists(function (artists) {
         
+        a
         // If no artist likes
         if (artists.length === 0) {
             // TO DO: show message
@@ -35,6 +40,7 @@ define (['jquery', 'facebook', 'LastFMProxy'], function ($, facebook, LastFMProx
             return;
         }
         
+        // Get stats one by one
         artists.forEach(function (artist) {
             artistStats[artist] = LastFMProxy.getStats(artist.name);
         });

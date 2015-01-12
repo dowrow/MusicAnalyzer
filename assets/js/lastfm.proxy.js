@@ -9,30 +9,46 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
     // Private
     
     // DB selection methods (GET)
-    function getStats (artist, success, error) {
-        
+    function getStats (artist, callback) {
+        $.get('/rest/stats/?artist=' + encodeURIComponent(artist), function (response) {
+            callback(response);
+        });
     }
     
     // DB insertion methods (POST)
     
     // Save methods (using LastFM API + POST)
-    function saveArtist (artist) {
+    function saveAll (artist, callback) {
+        saveArtist(artist, function(response) {
+            saveAlbums(artist, function (response) {
+               saveFans(artist, function (response) {
+                   saveTags(artist, function (response) {
+                       saveSimilar(artist, function (response) {
+                           callback();
+                       });
+                   });
+               });
+            });
+        });
+    }
+    
+    function saveArtist (artist, callback) {
     
     }
     
-    function saveAlbums (artist) {
+    function saveAlbums (artist, callback) {
     
     }
     
-    function saveFans (artist) {
+    function saveFans (artist, callback) {
     
     }
     
-    function saveTags (artist) {
+    function saveTags (artist, callback) {
     
     }
     
-    function saveSimilar (artist) {
+    function saveSimilar (artist, callback) {
         
     }
     
@@ -55,13 +71,24 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
     
     // Public interface    
     // Get artist async.
-    function getStatsProxy (artist, artistCallback, albumsCallback, fansCallback, tagsCallback, similarCallback) {
-        console.log('TODO. Getting stats for:' + artist);
-        i = 999999;
-        while (i--) {
-            i = i;
-        }
-        return {};
+    function getStatsProxy (artist, callback) {
+        
+        console.log('Gettin\' stats for ' + artist + '...');
+        
+        // Try to get stats
+        getStats(artist, function (stats) {
+            console.log('Stats:' + stats)
+            if (/* TODO: Check if no error*/true) {
+                callback(stats);
+                return;
+            }
+            
+            // Retry after saving info
+            saveAll(artist, function () {
+                getStats(artist, callback);
+            });
+        });
+        
     }
     
     return {
