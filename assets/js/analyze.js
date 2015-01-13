@@ -1,9 +1,6 @@
 
 define (['jquery', 'facebook', 'LastFMProxy'], function ($, facebook, LastFMProxy) {
     
-    // User likes
-    var artists = [];
-    
     // Stats object for every artist (associative array)
     var artistStats = [];
     
@@ -22,38 +19,52 @@ define (['jquery', 'facebook', 'LastFMProxy'], function ($, facebook, LastFMProx
                 function (response) {
                   if (!response.data) {
                       console.log('Error getting user music');
+                      //debug 
+                      callback( [{name:'Eminem'}, {name:'Linkin Park'}]);
                   } else {
-                      callback(response.data)
+                      callback(response.data);
                   }       
             });
         }, {scope: 'user_likes'});
     }
     
-    // Get stats for every artists;
+    // Get user artists
     getArtists(function (artists) {
         
-        
-        // If no artist likes
+        // If no artist likes show message
         if (artists.length === 0) {
             // TO DO: show message
             alert('No artists');
             return;
         }
         
-        // Get stats one by one
-        artists.forEach(function (artist) {
-            LastFMProxy.getStats(artist.name, function (stats) { 
-                artistStats[artist.name] = stats;
-            });
-            
-        });
-        
+        // Else get stats one by one
+        getStats(artists, function () {
+            console.log('Finished getting stats!! :D');
+            console.log(artistStats);
+        });        
         
     });
-
-    setInterval(function() {
-        console.log(artistStats);
-    }, 1000);
+    
+    // Get stats one by one recursively and call a callback when finished
+    function getStats (artists, callback) {
+        
+        // Race end: empty array
+        if (artists.length === 0) {
+            callback();
+            return;
+        }
+        
+        // Pop an artist from array
+        var artist = artists.pop();
+        
+        // Get stats for the popped artist and then continue
+        LastFMProxy.getStats(artist.name, function (stats) { 
+            artistStats[artist.name] = stats;
+            getStats(artists, callback);
+        });
+    }
+        
     // DOM callbacks
     $(document).ready(function () {
         

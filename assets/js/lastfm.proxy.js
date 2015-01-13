@@ -33,6 +33,18 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
     }
     
     function saveArtist (artist, callback) {
+        var query = {
+            artist: 'Linkin park'
+        };
+
+        var callbacks = {
+            success: function (response) { console.log(response); },
+            error: function (response) { console.log('Error: ' + response); }
+        };
+
+        lastfm.artist.getInfo(query, callbacks);
+        lastfm.artist.getTopTags(query, callbacks);
+        
         callback();
     }
     
