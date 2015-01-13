@@ -9,7 +9,7 @@ define(['md5'], function (md5) {
             /* Set default values for required options. */
             var apiKey    = options.apiKey    || '';
             var apiSecret = options.apiSecret || '';
-            var apiUrl    = options.apiUrl    || 'http://ws.audioscrobbler.com/2.0/';
+            var apiUrl    = options.apiUrl    || 'https://ws.audioscrobbler.com/2.0/';
             var cache     = options.cache     || undefined;
 
             /* Set API key. */
