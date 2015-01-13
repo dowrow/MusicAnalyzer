@@ -19,11 +19,11 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
     
     // Save methods (using LastFM API + POST)
     function saveAll (artist, callback) {
-        saveArtist(artist, function(response) {
-            saveAlbums(artist, function (response) {
-               saveFans(artist, function (response) {
-                   saveTags(artist, function (response) {
-                       saveSimilar(artist, function (response) {
+        saveArtist(artist, function() {
+            saveAlbums(artist, function () {
+               saveFans(artist, function () {
+                   saveTags(artist, function () {
+                       saveSimilar(artist, function () {
                            callback();
                        });
                    });
@@ -33,19 +33,21 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
     }
     
     function saveArtist (artist, callback) {
+        
         var query = {
-            artist: 'Linkin park'
+            artist: artist
         };
-
+        
+        var realCallback = function (response) { 
+            callback(); 
+        };
+        
         var callbacks = {
-            success: function (response) { console.log(response); },
-            error: function (response) { console.log('Error: ' + response); }
+            success: realCallback,
+            error: realCallback
         };
 
         lastfm.artist.getInfo(query, callbacks);
-        lastfm.artist.getTopTags(query, callbacks);
-        
-        callback();
     }
     
     function saveAlbums (artist, callback) {

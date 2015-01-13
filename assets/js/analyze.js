@@ -19,8 +19,7 @@ define (['jquery', 'facebook', 'LastFMProxy'], function ($, facebook, LastFMProx
                 function (response) {
                   if (!response.data) {
                       console.log('Error getting user music');
-                      //debug 
-                      callback( [{name:'Eminem'}, {name:'Linkin Park'}]);
+                      // TO DO: Show message
                   } else {
                       callback(response.data);
                   }       
@@ -34,7 +33,7 @@ define (['jquery', 'facebook', 'LastFMProxy'], function ($, facebook, LastFMProx
         // If no artist likes show message
         if (artists.length === 0) {
             // TO DO: show message
-            alert('No artists');
+            console.log('No artists');
             return;
         }
         
