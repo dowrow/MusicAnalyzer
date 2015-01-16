@@ -47,7 +47,7 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
                 image: 'PROBANDO'
             };
             
-            var endpoint = '/rest/insertartist/';
+            var endpoint = '/rest/insertArtist/';
             
             $.post(endpoint, data, callback);
              
