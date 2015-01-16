@@ -38,15 +38,17 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
             artist: artist
         };
         
-        var realCallback = function (response) { 
-            console.log('Query artist to lastfm:' + artist);
-            console.log(response);
+        var successCallback = function (response) { 
+            
+            // Insert into DB
+            
+                //$.post();
             callback(); 
         };
         
         var callbacks = {
-            success: realCallback,
-            error: realCallback
+            success: successCallback,
+            error: function () { console.log('Error'); callback(); }
         };
 
         lastfm.artist.getInfo(query, callbacks);
@@ -67,23 +69,6 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
     function saveSimilar (artist, callback) {
         callback();
     }
-    
-    /*
-    var query = {
-        artist: 'Linkin park'
-    };
-    
-    var callbacks = {
-        success: function (response) { console.log(response); },
-        error: function (response) { console.log('Error: ' + response); }
-    };
-    
-    lastfm.artist.getInfo(query, callbacks);
-    lastfm.artist.getTopTags(query, callbacks);
-    */
-    
-    // Debug main:
-    
     
     // Public interface    
     // Get artist async.
