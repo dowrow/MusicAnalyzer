@@ -40,15 +40,13 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
         
         var successCallback = function (response) { 
             
-            console.log(response);
-            
             // Insert into DB
-            /*var data =  {
-                name: 'PROBANDO2',
-                url: 'PROBANDO2',
-                image: 'PROBANDO2'
+            var data =  {
+                name: response.artist.name,
+                url: response.artist.url,
+                image: response.artist.image[3]
             };
-            */
+            
             var endpoint = '/rest/insertartist/';
             
             $.post(endpoint, data, callback);
