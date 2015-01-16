@@ -42,12 +42,12 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
             
             // Insert into DB
             var data =  {
-                name: 'PROBANDO',
-                url: 'PROBANDO',
-                image: 'PROBANDO'
+                name: 'PROBANDO2',
+                url: 'PROBANDO2',
+                image: 'PROBANDO2'
             };
             
-            var endpoint = '/rest/insertArtist/';
+            var endpoint = '/rest/insertartist/';
             
             $.post(endpoint, data, callback);
              
