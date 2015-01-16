@@ -93,7 +93,7 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
         getStats(artist, function (stats) {
             
             // If ok
-            if (stats !== 0) {
+            if (stats !== '0') {
                 callback(stats);
                 return;
             }
