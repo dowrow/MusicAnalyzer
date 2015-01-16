@@ -7,7 +7,7 @@ define(['md5'], function (md5) {
     
     function LastFM(options){
             /* Set default values for required options. */
-            var apiKey    = options.apiKey    || '';
+            var apiKey    = options.apiKey    || '5554fc23346ee78a88be13fa9a5201c7';
             var apiSecret = options.apiSecret || '';
             var apiUrl    = options.apiUrl    || 'https://ws.audioscrobbler.com/2.0/';
             var cache     = options.cache     || undefined;
