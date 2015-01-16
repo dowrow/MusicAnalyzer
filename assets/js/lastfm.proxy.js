@@ -35,7 +35,7 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
     function saveArtist (artist, callback) {
         
         var query = {
-            artist: encodeURIComponent(artist)
+            artist: artist
         };
         
         var realCallback = function (response) { 
