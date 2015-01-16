@@ -47,6 +47,9 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
                 image: response.artist.image[3]
             };
             
+            console.log('Inserting artist');
+            console.log(data);
+            
             var endpoint = '/rest/insertartist/';
             
             $.post(endpoint, data, callback);
