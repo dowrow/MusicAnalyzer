@@ -41,14 +41,21 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
         var successCallback = function (response) { 
             
             // Insert into DB
+            var data =  {
+                name: 'PROBANDO',
+                url: 'PROBANDO',
+                image: 'PROBANDO'
+            };
             
-                //$.post();
-            callback(); 
+            var endpoint = '/rest/insertartist/';
+            
+            $.post(endpoint, data, callback);
+             
         };
         
         var callbacks = {
             success: successCallback,
-            error: function () { console.log('Error'); callback(); }
+            error: callback
         };
 
         lastfm.artist.getInfo(query, callbacks);
