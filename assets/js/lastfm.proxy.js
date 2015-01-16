@@ -39,7 +39,7 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
         };
         
         var realCallback = function (response) { 
-            console.log('Query artist to lastfm:');
+            console.log('Query artist to lastfm:' + artist);
             console.log(response);
             callback(); 
         };
