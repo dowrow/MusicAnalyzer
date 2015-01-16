@@ -26,7 +26,7 @@
             <br/>
             <div class="jumbotron">
                 <h1>
-                    Analyzing your likes<span id="loading"></span>
+                    Analyzing your likes
                 </h1>
                 <br/> 
                 
