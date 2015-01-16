@@ -57,8 +57,11 @@ define (['jquery', 'facebook', 'LastFMProxy'], function ($, facebook, LastFMProx
         // Pop an artist from array
         var artist = artists.pop();
         
+        console.log('Getting stats for: ' + artist.name);
+        
         // Get stats for the popped artist and then continue
         LastFMProxy.getStats(artist.name, function (stats) { 
+            
             artistStats[artist.name] = stats;
             getStats(artists, callback);
         });
