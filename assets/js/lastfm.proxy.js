@@ -44,7 +44,7 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
             var data =  {
                 name: response.artist.name,
                 url: response.artist.url,
-                image: response.artist.image[3]
+                image: response.artist.image[3]['#text']
             };
             
             console.log('Inserting artist');
