@@ -32,28 +32,20 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
         });
     }
     
-    function saveArtist (artist, callback) {
-        
+    function saveArtist (artist, callback) { 
         var query = {
             artist: artist
         };
         
         var successCallback = function (response) { 
-            
             // Insert into DB
             var data =  {
                 name: response.artist.name,
                 url: response.artist.url,
                 image: response.artist.image[3]['#text']
             };
-            
-            console.log('Inserting artist');
-            console.log(data);
-            
             var endpoint = '/rest/insertartist/';
-            
             $.post(endpoint, data, callback);
-             
         };
         
         var callbacks = {
@@ -65,7 +57,57 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
     }
     
     function saveAlbums (artist, callback) {
-        callback();
+        
+        var query = {
+            artist: artist
+        };
+        
+        var successCallback = function (response) {
+            saveEveryAlbum(response.topalbums.album, callback);
+        };
+        
+        var callbacks = {
+            success: successCallback,
+            error: callback
+        };
+
+        lastfm.artist.getTopAlbums(query, callbacks);
+    }
+    
+    // Save every album recursively
+    function saveEveryAlbum (albums, callback) {
+        // Race end
+        if (albums.length === 0) {
+            callback();
+            return;
+        }
+        var album = albums.pop();
+        
+        var query = {
+            artist: album.artist.name,
+            album: album.name
+        };
+        
+        var successCallback = function (response) {
+            var data =  {
+                artist: response.album.artist,
+                album: response.album.name,
+                url: response.album.url,
+                date: response.album.releasedate
+            };
+            var endpoint = '/rest/insertalbum/';
+    
+            $.post(data, endpoint, function () {
+                saveEveryAlbum (albums, callback);
+            });
+        };
+        
+        var callbacks = {
+            success: successCallback,
+            error: function () { saveEveryAlbum(albums, callback); }
+        };
+
+        lastfm.album.getInfo(query, callbacks);
     }
     
     function saveFans (artist, callback) {
