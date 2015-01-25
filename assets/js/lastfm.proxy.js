@@ -62,14 +62,8 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
             artist: artist
         };
         
-                
-        console.log('Saving albums for');
-        console.log(artist);
-        
         var successCallback = function (response) {
             
-            console.log('response album');
-            console.log(response);
             if (response.topalbums.album) {
                saveEveryAlbum(response.topalbums.album, callback);
             } else {
@@ -87,12 +81,13 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
     
     // Save every album recursively
     function saveEveryAlbum (albums, callback) {
+        
         // Race end
-        if (albums.length === 0) {
+        if (albums.length === undefined  || albums.length === 0) {
             callback();
             return;
         }
-        var album = albums.pop();
+        var album = albums.pop() || albums;
         
         console.log('Saving album');
         console.log(album);
