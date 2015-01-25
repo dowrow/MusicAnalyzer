@@ -67,6 +67,9 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
         console.log(artist);
         
         var successCallback = function (response) {
+            
+            console.log('response album');
+            console.log(response);
             if (response.topalbums.album) {
                saveEveryAlbum(response.topalbums.album, callback);
             } else {
