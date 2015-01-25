@@ -106,7 +106,7 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
             };
             var endpoint = '/rest/insertalbum/';
     
-            $.post(data, endpoint, function () {
+            $.post(endpoint, data, function () {
                 saveEveryAlbum (albums, callback);
             });
         };
