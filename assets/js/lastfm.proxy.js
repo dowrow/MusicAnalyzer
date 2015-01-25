@@ -87,6 +87,9 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
         }
         var album = albums.pop();
         
+        console.log('Inserting');
+        console.log(album);
+        
         var query = {
             artist: album.artist.name,
             album: album.name
