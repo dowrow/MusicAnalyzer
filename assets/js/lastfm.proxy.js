@@ -83,7 +83,7 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
     function saveEveryAlbum (albums, callback) {
         
         // Race end
-        if (albums.length === undefined  || albums.length === 0) {
+        if ( albums.length === 0) {
             callback();
             return;
         }
@@ -107,7 +107,11 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
             var endpoint = '/rest/insertalbum/';
     
             $.post(endpoint, data, function () {
-                saveEveryAlbum (albums, callback);
+                if (albums.length !== undefined) {
+                    saveEveryAlbum (albums, callback);
+                } else {
+                    callback();
+                }
             });
         };
         
