@@ -87,7 +87,12 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
             callback();
             return;
         }
-        var album = albums.pop() || albums;
+        
+        try {
+            var album = albums.pop();
+        } catch (err) {
+            var album = albums;
+        }
         
         console.log('Saving album');
         console.log(album);
