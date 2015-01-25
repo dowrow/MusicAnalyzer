@@ -63,9 +63,11 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
         };
         
         var successCallback = function (response) {
-            console.log('albums');
-            console.log(response);
-            saveEveryAlbum(response.topalbums.album, callback);
+            if (response.topalbums.album) {
+               saveEveryAlbum(response.topalbums.album, callback);
+            } else {
+                callback();
+            }
         };
         
         var callbacks = {
