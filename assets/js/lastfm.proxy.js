@@ -64,8 +64,8 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
         
         var successCallback = function (response) {
             
-            if (response.topalbums.album.slice(0,max-1)) {
-               saveEveryAlbum(response.topalbums.album, callback);
+            if (response.topalbums.album) {
+               saveEveryAlbum(response.topalbums.album.slice(0,max-1), callback);
             } else {
                 callback();
             }
