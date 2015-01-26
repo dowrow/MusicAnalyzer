@@ -177,6 +177,7 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
     
             $.post(endpoint, data, function () {
                 console.log('Fan de ' + artist);
+                console.log(data);
                 if (fans.length !== undefined) {
                     saveEveryFan(artist, fans, callback);
                 } else {
