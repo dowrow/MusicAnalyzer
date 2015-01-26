@@ -170,7 +170,7 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
         var successCallback = function (response) {
             var data =  {
                 artist: artist,
-                age: response.user.name,
+                age: response.user.age,
                 url: response.user.url
             };
             var endpoint = '/rest/insertfan/';
