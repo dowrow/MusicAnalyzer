@@ -65,7 +65,11 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
         var successCallback = function (response) {
             
             if (response.topalbums.album) {
-               saveEveryAlbum(response.topalbums.album.slice(0,max-1), callback);
+                try {
+                    saveEveryAlbum(response.topalbums.album.slice(0,max-1), callback);
+                }catch (err) {
+                    saveEveryAlbum(response.topalbums.album, callback);
+                }
             } else {
                 callback();
             }
@@ -134,7 +138,11 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
         var successCallback = function (response) {
             
             if (response.topfans.user) {
-               saveEveryFan(artist, response.topfans.user.slice(0, max-1), callback);
+               try {
+                    saveEveryFan(artist, response.topfans.user.slice(0, max-1), callback);
+               } catch (err) {
+                    saveEveryFan(artist, response.topfans.user, callback);
+               }
             } else {
                 callback();
             }
