@@ -57,14 +57,14 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
     }
     
     function saveAlbums (artist, callback) {
-        
+        var max = 5;
         var query = {
             artist: artist
         };
         
         var successCallback = function (response) {
             
-            if (response.topalbums.album) {
+            if (response.topalbums.album.slice(0,max-1)) {
                saveEveryAlbum(response.topalbums.album, callback);
             } else {
                 callback();
@@ -126,7 +126,7 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
     }
     
     function saveFans (artist, callback) {
-           
+        var max = 5;
         var query = {
             artist: artist
         };
@@ -134,7 +134,7 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
         var successCallback = function (response) {
             
             if (response.topfans.user) {
-               saveEveryFan(artist, response.topfans.user, callback);
+               saveEveryFan(artist, response.topfans.user.slice(0, max-1), callback);
             } else {
                 callback();
             }
