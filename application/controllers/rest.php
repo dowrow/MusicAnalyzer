@@ -67,16 +67,15 @@ class Rest extends CI_Controller {
        
         // Get parameters
         $artist = $this->input->post('artist', TRUE);
-        $album = $this->input->post('album', TRUE);
+        $age = $this->input->post('age', TRUE);
         $url = $this->input->post('url', TRUE);
-        $date = $this->input->post('date', TRUE);
         
-        if ($artist == FALSE || $album == FALSE || $url == FALSE || $date == FALSE) {
+        if ($artist == FALSE || $age == FALSE || $url == FALSE) {
             echo 'Missing arguments';
             return;
         }
         
-        $this->DatabaseManager->insertAlbum($artist, $album, $url, $date);
+        $this->DatabaseManager->insertFan($artist, $age, $url);
         
         echo 'ok';     
     }

@@ -19,7 +19,6 @@
             <br/>
             <div class="progress">
                 <div id="appProgress" class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
-                    <span class="sr-only">60% Complete</span>
                 </div>
             </div>
             
@@ -29,13 +28,9 @@
                     Analyzing your likes
                 </h1>
                 <br/> 
+                <p id="status">Getting info about</p>
+                <img class="center-block" src="assets/img/loading.gif" alt="Loading..."/>
                 
-                <div>
-                    <p>Seems like you like Cher.</p>
-                    <p>You may know the albums: Cher1, Cher2, Cher3.</p>
-                    <p>I would says the styles of Cher are: pop, pop, pop.</p>
-                    <p>The average fan of Cher is 18 years old.</p>
-                </div>
             </div>
             <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
         

@@ -94,9 +94,6 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
             var album = albums;
         }
         
-        console.log('Saving album');
-        console.log(album);
-        
         var query = {
             artist: album.artist.name,
             album: album.name
@@ -129,7 +126,71 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
     }
     
     function saveFans (artist, callback) {
-        callback();
+           
+        var query = {
+            artist: artist
+        };
+        
+        var successCallback = function (response) {
+            
+            if (response.topfans.user) {
+               saveEveryFan(artist, response.topfans.user, callback);
+            } else {
+                callback();
+            }
+        };
+        
+        var callbacks = {
+            success: successCallback,
+            error: callback
+        };
+
+        lastfm.artist.getTopFans(query, callbacks);
+        
+    }
+    
+    function saveEveryFan (artist, fans, callback) {
+                
+        // Race end
+        if (fans.length === 0) {
+            callback();
+            return;
+        }
+        
+        try {
+            var fan = fans.pop();
+        } catch (err) {
+            var fan = fans;
+        }
+        
+        var query = {
+            user: fan.name
+        };
+        
+        var successCallback = function (response) {
+            var data =  {
+                artist: artist,
+                age: response.user.name,
+                url: response.user.url
+            };
+            var endpoint = '/rest/insertfan/';
+    
+            $.post(endpoint, data, function () {
+                console.log('Fan de ' + artist);
+                if (fans.length !== undefined) {
+                    saveEveryFan(artist, fans, callback);
+                } else {
+                    callback();
+                }
+            });
+        };
+        
+        var callbacks = {
+            success: successCallback,
+            error: function () { saveEveryFan(artist, fans, callback); }
+        };
+
+        lastfm.user.getInfo(query, callbacks);
     }
     
     function saveTags (artist, callback) {
