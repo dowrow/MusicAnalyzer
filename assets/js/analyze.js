@@ -53,7 +53,7 @@ define (['jquery', 'facebook', 'LastFMProxy'], function ($, facebook, LastFMProx
     }
     
     function showStatus (artist) {
-        var initialStatus = $('#initial-status').text();
+        var initialStatus = $('#initial-status').val();
         $('#status').text(initialStatus + ' ' + artist + '...');
     }
     
