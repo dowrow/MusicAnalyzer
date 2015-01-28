@@ -25,11 +25,7 @@ class Analyze extends CI_Controller {
         public function index()
         {
             // Set language
-            if (strpos($this->Facebook->getLocale(), 'es_') !== false) {
-                $this->lang->load('analyze', 'spanish');
-            } else {
-                $this->lang->load('analyze', 'english');
-            }
+            $this->lang->load('analyze', $this->session->userdata('locale'));
             
             // Test session
             //$likes = $this->Facebook->getLikes();

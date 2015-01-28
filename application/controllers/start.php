@@ -20,16 +20,25 @@ class Start extends CI_Controller {
         public function __construct() {
             parent::__construct();
             $this->load->model('Facebook');
+            $this->load->library('session');
+        }
+        
+        private function setLocale () {
+
+            // Set language
+            if (strpos($this->Facebook->getLocale(), 'es_') !== false) {
+                $this->session->set_userdata('locale', 'spanish');
+            } else {
+                $this->session->set_userdata('locale', 'english');
+            }
         }
         
         public function index()
         {
+            setLocale();
+             
             // Set language
-            if (strpos($this->Facebook->getLocale(), 'es_') !== false) {
-                $this->lang->load('start', 'spanish');
-            } else {
-                $this->lang->load('start', 'english');
-            }
+            $this->lang->load('start', $this->session->userdata('locale'));
             $this->load->view('start');
         }
         
