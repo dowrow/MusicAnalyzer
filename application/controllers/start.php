@@ -35,7 +35,7 @@ class Start extends CI_Controller {
         
         public function index()
         {
-            storeLocale();
+            $this->storeLocale();
              
             // Set language
             $this->lang->load('start', $this->session->userdata('locale'));
