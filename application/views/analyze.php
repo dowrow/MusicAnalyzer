@@ -24,11 +24,12 @@
             
             <br/>
             <div class="jumbotron">
-                <h1>
-                    Analyzing your likes
+                <h1 class="text-center">
+                    <?php echo $this->lang->line('analyze_title'); ?>
                 </h1>
                 <br/> 
-                <p id="status">Getting info about</p>
+                <input id="initial-status" type="hidden" value="<?php echo $this->lang->line('analyze_status'); ?>"/>
+                <p class="text-center" id="status"></p>
                 <img class="center-block" src="assets/img/loading.gif" alt="Loading..."/>
                 
             </div>
