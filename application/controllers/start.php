@@ -23,7 +23,7 @@ class Start extends CI_Controller {
             $this->load->library('session');
         }
         
-        private function setLocale () {
+        private function storeLocale () {
 
             // Set language
             if (strpos($this->Facebook->getLocale(), 'es_') !== false) {
@@ -35,7 +35,7 @@ class Start extends CI_Controller {
         
         public function index()
         {
-            setLocale();
+            storeLocale();
              
             // Set language
             $this->lang->load('start', $this->session->userdata('locale'));

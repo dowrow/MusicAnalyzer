@@ -20,6 +20,7 @@ class Analyze extends CI_Controller {
         public function __construct() {
             parent::__construct();
             $this->load->model('Facebook');
+            $this->load->library('session');
         }
         
         public function index()
