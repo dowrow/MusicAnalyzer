@@ -38,6 +38,8 @@ define (['jquery', 'facebook', 'LastFMProxy'], function ($, facebook, LastFMProx
     function updateProgress () {
         analyzedArtistCount++;
         var percent = analyzedArtistCount / artistCount;
+        var progress = 33 * percent + 33;
+        $('#appProgress').css('width', progress + '%');
         console.log('Total: ' + artistCount + ' Analyzed: ' + analyzedArtistCount + ' Percent: ' + percent);
     }
     
