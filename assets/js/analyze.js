@@ -40,7 +40,7 @@ define (['jquery', 'facebook', 'LastFMProxy'], function ($, facebook, LastFMProx
         var percent = analyzedArtistCount / artistCount;
         var progress = 33 * percent + 33;
         $('#appProgress').css('width', progress + '%');
-        console.log('Total: ' + artistCount + ' Analyzed: ' + analyzedArtistCount + ' Percent: ' + percent);
+        console.log('Total: ' + artistCount + ' Analyzed: ' + analyzedArtistCount + ' Percent: ' + percent + ' Progress: ' + progress);
     }
     
     // Get stats one by one recursively and call a callback when finished
@@ -95,6 +95,6 @@ define (['jquery', 'facebook', 'LastFMProxy'], function ($, facebook, LastFMProx
                 console.log(artistStats);
             });        
 
-        }); //         
+        }); // Get user 
     }); // End document ready
 }); // End module
