@@ -1,5 +1,5 @@
 <?php
 
 // ES
-$lang['analyze_title'] = "Analizando tus likes";
+$lang['analyze_title'] = "Analizando tus gustos";
 $lang['analyze_status'] = "Buscando datos sobre";

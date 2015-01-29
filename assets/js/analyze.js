@@ -40,9 +40,8 @@ define (['jquery', 'facebook', 'LastFMProxy'], function ($, facebook, LastFMProx
         // Pop an artist from array
         var artist = artists.pop();
         
-        console.log('Getting stats for: ' + artist.name);
-        showStatus(artist.name);
-        
+        updateStatus(artist.name);
+                
         // Get stats for the popped artist and then continue
         LastFMProxy.getStats(artist.name, function (stats) { 
             
@@ -52,9 +51,10 @@ define (['jquery', 'facebook', 'LastFMProxy'], function ($, facebook, LastFMProx
         });
     }
     
-    function showStatus (artist) {
+    function updateStatus (artist) {
         var initialStatus = $('#initial-status').val();
         $('#status').text(initialStatus + ' ' + artist + '...');
+        $('#appProgress').css('width', '33%');
     }
     
     // DOM callbacks
