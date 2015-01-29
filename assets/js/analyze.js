@@ -4,6 +4,13 @@ define (['jquery', 'facebook', 'LastFMProxy'], function ($, facebook, LastFMProx
     // Stats object for every artist (associative array)
     var artistStats = [];
     
+    // Number of artists liked by the user
+    var artistCount = 0;
+
+    // Number of artist already analyzed
+    var analyzedArtistCount = 0;
+    
+    
     function getArtists(callback) {
         FB.init({
             appId      : '1468034890110746',
@@ -22,11 +29,17 @@ define (['jquery', 'facebook', 'LastFMProxy'], function ($, facebook, LastFMProx
                       // TO DO: Show message
                   } else {
                       callback(response.data);
+                      artistCount = response.data.length || 0;
                   }       
             });
         }, {scope: 'user_likes'});
     }
     
+    function updateProgress () {
+        analyzedArtistCount++;
+        var percent = analyzedArtistCount / artistCount;
+        console.log('Total: ' + artistCount + ' Analyzed: ' + percent + ' Percent: ' + percent);
+    }
     
     // Get stats one by one recursively and call a callback when finished
     function getStats (artists, callback) {
@@ -44,7 +57,7 @@ define (['jquery', 'facebook', 'LastFMProxy'], function ($, facebook, LastFMProx
                 
         // Get stats for the popped artist and then continue
         LastFMProxy.getStats(artist.name, function (stats) { 
-            
+            updateProgress();
             artistStats[artist.name] = stats;
             getStats(artists, callback);
             
