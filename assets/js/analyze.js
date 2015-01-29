@@ -69,7 +69,6 @@ define (['jquery', 'facebook', 'LastFMProxy'], function ($, facebook, LastFMProx
     function updateStatus (artist) {
         var initialStatus = $('#initial-status').val();
         $('#status').text(initialStatus + ' ' + artist + '...');
-        $('#appProgress').css('width', '33%');
     }
     
     // DOM callbacks
