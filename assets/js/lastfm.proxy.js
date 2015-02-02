@@ -184,8 +184,6 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
             var endpoint = '/rest/insertfan/';
     
             $.post(endpoint, data, function () {
-                console.log('Fan de ' + artist);
-                console.log(data);
                 if (fans.length !== undefined) {
                     saveEveryFan(artist, fans, callback);
                 } else {
@@ -256,8 +254,6 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
             var endpoint = '/rest/inserttag/';
     
             $.post(endpoint, data, function () {
-                console.log('Tag de ' + artist);
-                console.log(data);
                 if (tags.length !== undefined) {
                     saveEveryTag(artist, tags, callback);
                 } else {
@@ -275,8 +271,77 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
     }
     
     function saveSimilar (artist, callback) {
-        callback();
+        var max = 3;
+        var query = {
+            artist: artist
+        };
+        
+        var successCallback = function (response) {
+            if (response.similarartists.artist) {
+               try {
+                    saveEverySimilar(artist, response.similarartists.artist.slice(0, max-1), callback);
+               } catch (err) {
+                    saveEverySimilar(artist, response.similarartists.artist, callback);
+               }
+            } else {
+                callback();
+            }
+        };
+        
+        var callbacks = {
+            success: successCallback,
+            error: callback
+        };
+
+        lastfm.artist.getSimilar(query, callbacks);
     }
+    
+    function saveEverySimilar (artist, similars, callback) {
+                
+        // Race condition
+        if (similars.length === 0) {
+            callback();
+            return;
+        }
+        
+        try {
+            var similar = similars.pop();
+        } catch (err) {
+            var similar = similars;
+        }
+        
+        var query = {
+            artist: similar.name
+        };
+        
+        var successCallback = function (response) {
+            var data =  {
+                artist: artist,
+                similar: response.artist.name,               
+                url: response.artist.url,
+                image: response.artist.image[3]['#text']
+            };
+            
+            var endpoint = '/rest/insertsimilar/';
+    
+            $.post(endpoint, data, function () {
+                console.log('Similar a ' + artist);
+                console.log(data);
+                if (similars.length !== undefined) {
+                    saveEverySimilar(artist, similars, callback);
+                } else {
+                    callback();
+                }
+            });
+        };
+        
+        var callbacks = {
+            success: successCallback,
+            error: function () { saveEverySimilar(artist, similars, callback); }
+        };
+
+        lastfm.artist.getInfo(query, callbacks);
+    }    
     
     // Public interface    
     // Get artist async.
