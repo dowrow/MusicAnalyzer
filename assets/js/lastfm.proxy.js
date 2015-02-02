@@ -277,6 +277,9 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
         };
         
         var successCallback = function (response) {
+            
+                console.log('Similar a ' + artist);
+                console.log(response);
             if (response.similarartists.artist) {
                try {
                     saveEverySimilar(artist, response.similarartists.artist.slice(0, max-1), callback);
@@ -325,7 +328,7 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
             var endpoint = '/rest/insertsimilar/';
     
             $.post(endpoint, data, function () {
-                console.log('Similar a ' + artist);
+                console.log('Info similar')
                 console.log(data);
                 if (similars.length !== undefined) {
                     saveEverySimilar(artist, similars, callback);
