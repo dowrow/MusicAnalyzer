@@ -57,7 +57,7 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
     }
     
     function saveAlbums (artist, callback) {
-        var max = 5;
+        var max = 3;
         var query = {
             artist: artist
         };
@@ -86,7 +86,7 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
     // Save every album recursively
     function saveEveryAlbum (albums, callback) {
         
-        // Race end
+        // Race condition
         if ( albums.length === 0) {
             callback();
             return;
@@ -130,7 +130,7 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
     }
     
     function saveFans (artist, callback) {
-        var max = 5;
+        var max = 3;
         var query = {
             artist: artist
         };
@@ -159,7 +159,7 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
     
     function saveEveryFan (artist, fans, callback) {
                 
-        // Race end
+        // Race condition
         if (fans.length === 0) {
             callback();
             return;
@@ -203,7 +203,75 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
     }
     
     function saveTags (artist, callback) {
-        callback();
+        var max = 3;
+        var query = {
+            artist: artist
+        };
+        
+        var successCallback = function (response) {
+            
+            if (response.toptags.tag) {
+               try {
+                    saveEveryTag(artist, response.toptags.tag.slice(0, max-1), callback);
+               } catch (err) {
+                    saveEveryTag(artist, response.toptags.tag, callback);
+               }
+            } else {
+                callback();
+            }
+        };
+        
+        var callbacks = {
+            success: successCallback,
+            error: callback
+        };
+
+        lastfm.artist.getTopTags(query, callbacks);
+    }
+    
+    function saveEveryTag (artist, tags, callback) {
+                
+        // Race condition
+        if (tags.length === 0) {
+            callback();
+            return;
+        }
+        
+        try {
+            var tag = tags.pop();
+        } catch (err) {
+            var tag = tags;
+        }
+        
+        var query = {
+            tag: tag.name
+        };
+        
+        var successCallback = function (response) {
+            var data =  {
+                artist: artist,
+                name: response.tag.name,
+                url: response.tag.url
+            };
+            var endpoint = '/rest/inserttag/';
+    
+            $.post(endpoint, data, function () {
+                console.log('Tag de ' + artist);
+                console.log(data);
+                if (tags.length !== undefined) {
+                    saveEveryTag(artist, tags, callback);
+                } else {
+                    callback();
+                }
+            });
+        };
+        
+        var callbacks = {
+            success: successCallback,
+            error: function () { saveEveryTag(artist, fans, callback); }
+        };
+
+        lastfm.tag.getInfo(query, callbacks);
     }
     
     function saveSimilar (artist, callback) {
