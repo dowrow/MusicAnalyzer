@@ -66,7 +66,7 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
             
             if (response.topalbums.album) {
                 try {
-                    saveEveryAlbum(response.topalbums.album.slice(0,max-1), callback);
+                    saveEveryAlbum(response.topalbums.album.slice(0,max), callback);
                 }catch (err) {
                     saveEveryAlbum(response.topalbums.album, callback);
                 }
@@ -139,7 +139,7 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
             
             if (response.topfans.user) {
                try {
-                    saveEveryFan(artist, response.topfans.user.slice(0, max-1), callback);
+                    saveEveryFan(artist, response.topfans.user.slice(0, max), callback);
                } catch (err) {
                     saveEveryFan(artist, response.topfans.user, callback);
                }
@@ -210,7 +210,7 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
             
             if (response.toptags.tag) {
                try {
-                    saveEveryTag(artist, response.toptags.tag.slice(0, max-1), callback);
+                    saveEveryTag(artist, response.toptags.tag.slice(0, max), callback);
                } catch (err) {
                     saveEveryTag(artist, response.toptags.tag, callback);
                }
@@ -284,7 +284,7 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
                     (response.similarartists.artist[0].name !== undefined  || 
                      response.similarartists.artist.name !== undefined)) {
                try {
-                    saveEverySimilar(artist, response.similarartists.artist.slice(0, max-1), callback);
+                    saveEverySimilar(artist, response.similarartists.artist.slice(0, max), callback);
                } catch (err) {
                     saveEverySimilar(artist, response.similarartists.artist, callback);
                }
@@ -330,7 +330,7 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
             var endpoint = '/rest/insertsimilar/';
     
             $.post(endpoint, data, function () {
-                console.log('Info similar')
+                console.log('Info similar');
                 console.log(data);
                 if (similars.length !== undefined) {
                     saveEverySimilar(artist, similars, callback);
