@@ -28,8 +28,7 @@ class DatabaseManager extends CI_Model {
      */
     
     public function insertFacebookObject ($pageid) {
-        
-        
+        return $this->FacebookObject_model->insert(array('pageid' => $pageid));
     }
     
     public function insertArtist ($name, $url, $image) {

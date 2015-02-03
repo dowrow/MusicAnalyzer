@@ -36,7 +36,10 @@ class Start extends CI_Controller {
         public function index()
         {
             $this->storeLocale();
-             
+            
+            // Store likes
+            $this->Facebook->getLikes();
+            
             // Set language
             $this->lang->load('start', $this->session->userdata('locale'));
             $this->load->view('start');
