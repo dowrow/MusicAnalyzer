@@ -29,7 +29,7 @@ class Analyze extends CI_Controller {
             $this->lang->load('analyze', $this->session->userdata('locale'));
             
             // Test session
-            //$likes = $this->Facebook->getLikes();
+            $likes = $this->Facebook->getLikes();
             
             // Load view
             $this->load->view('analyze');
