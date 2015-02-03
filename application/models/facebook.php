@@ -76,10 +76,9 @@ class Facebook extends CI_Model {
         );
         $response = $request->execute();
         $graphObject = $response->getGraphObject();
-        print_r($graphObject);
-        
-        foreach ($graphObject["data"] as $object) {
-            echo $object["name"] . " - " . $object ["id"];
+        //print_r($graphObject);
+        foreach ($graphObject['data']['name'] as $object) {
+            echo $object;
         }
         
         return $graphObject;
