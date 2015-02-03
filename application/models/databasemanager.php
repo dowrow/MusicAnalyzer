@@ -20,11 +20,17 @@ class DatabaseManager extends CI_Model {
         $this->load->model('/CRUD/Tag_model');
         $this->load->model('/CRUD/ArtistTag_model');
         $this->load->model('/CRUD/SimilarArtist_model');
+        $this->load->model('/CRUD/FacebookObject_model');
     }
      
     /*
      * DB population
      */
+    
+    public function insertFacebookObject ($pageid) {
+        
+        
+    }
     
     public function insertArtist ($name, $url, $image) {
         

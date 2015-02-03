@@ -1,5 +1,4 @@
--- DELETE * FROM albums
-
+DELETE FROM similarartists CASCADE;
 DELETE FROM albums CASCADE;
 DELETE FROM artistfans CASCADE;
 DELETE FROM artisTtags CASCADE;
@@ -7,5 +6,4 @@ DELETE FROM artists CASCADE;
 DELETE FROM facebookobjects CASCADE;
 DELETE FROM fans CASCADE;
 DELETE FROM lastfmartists CASCADE;
-DELETE FROM similarartists CASCADE;
 DELETE FROM tags CASCADE;

@@ -280,7 +280,7 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
             
                 console.log('Similar a ' + artist);
                 console.log(response);
-            if (response.similarartists.artist) {
+            if (response.similarartists.artist && (response.similarartists.artist[0].name || response.similarartists.artist.name)) {
                try {
                     saveEverySimilar(artist, response.similarartists.artist.slice(0, max-1), callback);
                } catch (err) {
