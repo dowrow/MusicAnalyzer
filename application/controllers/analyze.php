@@ -27,7 +27,7 @@ class Analyze extends CI_Controller {
         private function storeUserLikes() {
             
             // Get current user
-            $user = $this->Facebook->getUser();
+            //$user = $this->Facebook->getUser();
             
             // Get all likes
             $pages = $this->Facebook->getLikes();
@@ -39,7 +39,7 @@ class Analyze extends CI_Controller {
             }
             
             // Insert in DB
-            $this->DatabaseManager->insertLikes($user->id, $pageids);
+            //$this->DatabaseManager->insertLikes($user->id, $pageids);
             
         }
         
