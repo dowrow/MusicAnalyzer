@@ -19,9 +19,10 @@ class Analyze extends CI_Controller {
 	 */
         public function __construct() {
             parent::__construct();
+            $this->load->library('session');
             $this->load->model('Facebook');
             $this->load->model('DatabaseManager');
-            $this->load->library('session');
+
         }
         
         private function storeUserLikes() {
@@ -39,7 +40,7 @@ class Analyze extends CI_Controller {
             }
             
             // Insert in DB
-            //$this->DatabaseManager->insertLikes($user->id, $pageids);
+            $this->DatabaseManager->insertLikes($user->id, $pageids);
             
         }
         
