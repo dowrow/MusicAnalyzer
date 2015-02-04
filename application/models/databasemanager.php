@@ -31,6 +31,17 @@ class DatabaseManager extends CI_Model {
         return $this->FacebookObject_model->insert(array('pageid' => $pageid));
     }
     
+    public function insertFacebookObjectBatch ($pageids) {
+        
+        $rows = array();
+        
+        foreach ($pageids as $pageid) {
+            array_push($rows, array('pageid' => $pageid));
+        }
+        
+        return $this->db->insert_batch('facebookobjects', $rows);
+    }
+    
     public function insertArtist ($name, $url, $image) {
         
         // Insert name in Artists

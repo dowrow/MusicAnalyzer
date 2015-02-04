@@ -29,13 +29,15 @@ class Analyze extends CI_Controller {
             // Set language
             $this->lang->load('analyze', $this->session->userdata('locale'));
             
-            // Test session
-            $likes = $this->Facebook->getLikes();
+            // Get all likes
+            $pages = $this->Facebook->getLikes();
             
-            // Insert all
-            foreach ($likes as $like) {
-                $this->DatabaseManager->insertFacebookObject($like->id);
+            // Extract its page ids
+            $pageids = array();
+            foreach ($pages as $page) {
+                array_push($pageids, $page->id);
             }
+            $this->DatabaseManager->insertFacebookObjectBatch($pageids);
             
             // Load view
             $this->load->view('analyze');
