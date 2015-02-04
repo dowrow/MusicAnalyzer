@@ -81,14 +81,12 @@ class Facebook extends CI_Model {
         do {
             $response = $request->execute();
             $graphObject = $response->getGraphObject();
-            $some_likes = $graphObject->getProperty('data');
+            $some_likes = $graphObject->getProperty('data')->asArray();
             $likes = array_merge($likes, $some_likes);
         } while ($request = $response->getRequestForNextPage());
         
-        $likes_array = $likes->asArray();
-        
         //print_r($graphObject);
-        foreach ($likes_array as $like) {
+        foreach ($likes as $like) {
             echo $like->name;
         }
         
