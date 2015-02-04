@@ -15,22 +15,28 @@ class Facebook extends CI_Model {
     
     const APP_ID = '1468034890110746';
     const APP_SECRET = '09e80af7d50f86bc41d5d4895e0a978d';
-
+    
+    // Singleton
+    private $session;
+    
     public function __construct() {
+        
         parent::__construct();
+        
         // Set app keys
         FacebookSession::setDefaultApplication(self::APP_ID, self::APP_SECRET);
+        
+        // Build session once
+        $this->buildSession();
     }
     
-    public function getSession() {
+    private function buildSession() {
         
         // see if  $_SESSION exists
         if (isset($_SESSION) && isset($_SESSION['fb_token'])) {
             
             // create new fb session from saved fb_token
-            $session = new FacebookSession($_SESSION['fb_token']);
-            // validate the fb_token to make sure it's still valid
-            return $session;
+            $this->session = new FacebookSession($_SESSION['fb_token']);
             
         } else {
 
@@ -38,12 +44,15 @@ class Facebook extends CI_Model {
             $helper = new FacebookJavaScriptLoginHelper();
 
             try {            
-                $session = $helper->getSession(); 
-                return $session;
+                $this->session = $helper->getSession();
             } catch(Exception $ex) {
-                return null;
+                $this->session = null;
             }
         }
+    }
+    
+    public function getSession() {
+        return $this->session;
     }
     
     function base64_url_decode($input) {
