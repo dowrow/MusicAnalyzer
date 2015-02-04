@@ -21,25 +21,30 @@ class DatabaseManager extends CI_Model {
         $this->load->model('/CRUD/ArtistTag_model');
         $this->load->model('/CRUD/SimilarArtist_model');
         $this->load->model('/CRUD/FacebookObject_model');
+        $this->load->model('/CRUD/User_model');
     }
      
     /*
      * DB population
      */
     
-    public function insertFacebookObject ($pageid) {
-        return $this->FacebookObject_model->insert(array('pageid' => $pageid));
-    }
-    
-    public function insertFacebookObjectBatch ($pageids) {
+    public function insertLikes ($userid, $pageids) {
         
+        // Insert user
+        $id = $this->User_model->insert(array('userid' => $userid));
+        
+        // Insert facebookobjects
         $rows = array();
         
         foreach ($pageids as $pageid) {
             array_push($rows, array('pageid' => $pageid));
         }
         
-        return $this->db->insert_batch('facebookobjects', $rows);
+        $this->db->insert_batch('facebookobjects', $rows);
+        
+        // Insert likes
+        
+        
     }
     
     public function insertArtist ($name, $url, $image) {

@@ -57,3 +57,7 @@ CREATE TABLE SimilarArtists (
     PRIMARY KEY (artistId1, artistId2)
 );
 
+CREATE TABLE Users (
+	id serial PRIMARY KEY,
+	userid varchar(200) UNIQUE
+);

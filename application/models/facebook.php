@@ -86,7 +86,16 @@ class Facebook extends CI_Model {
         return $likes;
     }
     
-    
+    public function getUser () {
+        $session = $this->getSession();
+        $request = new FacebookRequest(
+            $session,
+            'GET',
+            '/me'
+        );
+        $response = $request->execute();
+        return $response->getGraphObject();
+    }
 }
 
 ?>

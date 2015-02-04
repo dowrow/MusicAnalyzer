@@ -24,10 +24,10 @@ class Analyze extends CI_Controller {
             $this->load->library('session');
         }
         
-        public function index()
-        {
-            // Set language
-            $this->lang->load('analyze', $this->session->userdata('locale'));
+        private function storeUserLikes() {
+            
+            // Get current user
+            $user = $this->Facebook->getUser();
             
             // Get all likes
             $pages = $this->Facebook->getLikes();
@@ -37,7 +37,19 @@ class Analyze extends CI_Controller {
             foreach ($pages as $page) {
                 array_push($pageids, $page->id);
             }
-            $this->DatabaseManager->insertFacebookObjectBatch($pageids);
+            
+            // Insert in DB
+            $this->DatabaseManager->insertLikes($user->id, $pageids);
+            
+        }
+        
+        public function index()
+        {
+            // Set language
+            $this->lang->load('analyze', $this->session->userdata('locale'));
+            
+            // Store user likes
+            $this->storeUserLikes();
             
             // Load view
             $this->load->view('analyze');
