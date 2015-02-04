@@ -67,6 +67,9 @@ class Facebook extends CI_Model {
     }
     
     public function getLikes () {
+        
+        $likes = array();
+        
         $session = $this->getSession();
         
         $request = new FacebookRequest(
@@ -74,9 +77,14 @@ class Facebook extends CI_Model {
             'GET',
             '/me/likes'
         );
-        $response = $request->execute();
-        $graphObject = $response->getGraphObject();
-        $likes = $graphObject->getProperty('data');
+            
+        do {
+            $response = $request->execute();
+            $graphObject = $response->getGraphObject();
+            $some_likes = $graphObject->getProperty('data');
+            $likes = array_merge($likes, $some_likes);
+        } while ($request = $response->getRequestForNextPage());
+        
         $likes_array = $likes->asArray();
         
         //print_r($graphObject);
