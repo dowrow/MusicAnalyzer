@@ -103,7 +103,7 @@ class Facebook extends CI_Model {
             '/me'
         );
         $response = $request->execute();
-        return $response->getGraphObject();
+        return $response->getGraphObject()->asArray();
     }
 }
 
