@@ -74,7 +74,7 @@ class Facebook extends CI_Model {
         }
     }
     
-    public function getLikes () {
+    public function getLikesPageids () {
         
         $likes = array();
         $session = $this->getSession();
@@ -91,11 +91,17 @@ class Facebook extends CI_Model {
             $some_likes = $graphObject->getProperty('data')->asArray();
             $likes = array_merge($likes, $some_likes);
         } while ($request = $response->getRequestForNextPage());
-
-        return $likes;
+        
+        // Extract pageids
+        $pageids = array();
+        foreach ($likes as $page) {
+            array_push($pageids, $page->id);
+        }
+        
+        return $pageids;
     }
     
-    public function getUser () {
+    public function getUserId () {
         $session = $this->getSession();
         $request = new FacebookRequest(
             $session,
@@ -103,7 +109,7 @@ class Facebook extends CI_Model {
             '/me'
         );
         $response = $request->execute();
-        return $response->getGraphObject()->asArray();
+        return $response->getGraphObject()->getProperty('id');
     }
 }
 

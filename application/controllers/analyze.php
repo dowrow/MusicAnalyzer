@@ -27,20 +27,14 @@ class Analyze extends CI_Controller {
         
         private function storeUserLikes() {
             
-            // Get current user
-            $user = $this->Facebook->getUser();
+            // Get current user id
+            $userid = $this->Facebook->getUserid();
             
-            // Get all likes
-            $pages = $this->Facebook->getLikes();
-            
-            // Extract its page ids
-            $pageids = array();
-            foreach ($pages as $page) {
-                array_push($pageids, $page->id);
-            }
-            
+            // Get all likes pageids
+            $pageids = $this->Facebook->getLikesPageids();
+                        
             // Insert in DB
-            $this->DatabaseManager->insertLikes($user->id, $pageids);
+            $this->DatabaseManager->insertLikes($userid, $pageids);
             
         }
         
