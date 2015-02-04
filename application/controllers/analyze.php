@@ -34,7 +34,7 @@ class Analyze extends CI_Controller {
             
             // Insert all
             foreach ($likes as $like) {
-                $this->DatabaseManager->insertFacebookObject($like);
+                $this->DatabaseManager->insertFacebookObject($like->id);
             }
             
             // Load view
