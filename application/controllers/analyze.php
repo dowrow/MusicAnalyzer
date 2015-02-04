@@ -20,6 +20,7 @@ class Analyze extends CI_Controller {
         public function __construct() {
             parent::__construct();
             $this->load->model('Facebook');
+            $this->load->model('DatabaseManager');
             $this->load->library('session');
         }
         
@@ -30,6 +31,11 @@ class Analyze extends CI_Controller {
             
             // Test session
             $likes = $this->Facebook->getLikes();
+            
+            // Insert all
+            foreach ($likes as $like) {
+                $this->DatabaseManager->insertFacebookObject($like);
+            }
             
             // Load view
             $this->load->view('analyze');

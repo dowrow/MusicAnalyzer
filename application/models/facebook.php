@@ -24,7 +24,6 @@ class Facebook extends CI_Model {
     
     public function getSession() {
         
-        
         // see if  $_SESSION exists
         if (isset($_SESSION) && isset($_SESSION['fb_token'])) {
             
@@ -69,7 +68,6 @@ class Facebook extends CI_Model {
     public function getLikes () {
         
         $likes = array();
-        
         $session = $this->getSession();
         
         $request = new FacebookRequest(
@@ -84,13 +82,8 @@ class Facebook extends CI_Model {
             $some_likes = $graphObject->getProperty('data')->asArray();
             $likes = array_merge($likes, $some_likes);
         } while ($request = $response->getRequestForNextPage());
-        
-        //print_r($graphObject);
-        foreach ($likes as $like) {
-            echo $like->name;
-        }
-        
-        return $graphObject;
+
+        return $likes;
     }
     
     
