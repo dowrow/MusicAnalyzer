@@ -46,7 +46,6 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
                 facebookobjectid: facebookobjectid
             };
             var endpoint = '/rest/insertartist/';
-            console.log('Insertando artista con facebookobjectid = ' + facebookobjectid);
             $.post(endpoint, data, callback);
         };
         
