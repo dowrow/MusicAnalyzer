@@ -47,7 +47,7 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
             };
             var endpoint = '/rest/insertartist/';
             console.log('insertando artista');
-            console.log(name, url, image, facebookobjectid);
+            console.log(data);
             $.post(endpoint, data, callback);
         };
         
