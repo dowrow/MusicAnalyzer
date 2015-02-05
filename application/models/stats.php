@@ -73,7 +73,7 @@ class Stats extends CI_Model {
                 $total++;
             }            
         }
-        return ($sum / total);
+        return ($sum / $total);
     }
     
     private function getFirstAlbum ($artist) {
