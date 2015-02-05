@@ -67,7 +67,7 @@ class DatabaseManager extends CI_Model {
         $this->db->where('pageid', $pageid);
         $query = $this->db->get();
         
-        if (isset($query->result())) {
+        if ($query) {
             $facebookObjectId = $query->result();
             
             // Insert name in Artists
