@@ -32,14 +32,14 @@ class Rest extends CI_Controller {
         $name = $this->input->post('name', TRUE);
         $url = $this->input->post('url', TRUE);
         $image = $this->input->post('image', TRUE);
-        $facebookObjectId = $this->input->post('facebookobjectid', TRUE);
+        $pageid = $this->input->post('pageid', TRUE);
         
-        if ($name == FALSE || $url == FALSE || $image == FALSE || $facebookObjectId == FALSE) {
+        if ($name == FALSE || $url == FALSE || $image == FALSE || $pageid == FALSE) {
             echo 'Missing arguments';
             return;
         }
         
-        $this->DatabaseManager->insertArtist($facebookObjectId, $name, $url, $image);
+        $this->DatabaseManager->insertArtist($pageid, $name, $url, $image);
         
         echo 'ok';
     }
