@@ -22,6 +22,7 @@ class DatabaseManager extends CI_Model {
         $this->load->model('/CRUD/SimilarArtist_model');
         $this->load->model('/CRUD/FacebookObject_model');
         $this->load->model('/CRUD/User_model');
+        $this->load->model('/CRUD/Like_model');
     }
      
     /*
@@ -31,20 +32,32 @@ class DatabaseManager extends CI_Model {
     public function insertLikes ($userid, $pageids) {
         
         // Insert user
-        $id = $this->User_model->insert(array('userid' => $userid));
+        $userId = $this->User_model->insert(array('userid' => $userid));
         
         // Insert facebookobjects
         $rows = array();
-        
         foreach ($pageids as $pageid) {
             array_push($rows, array('pageid' => $pageid));
         }
-        
         $this->db->insert_batch('facebookobjects', $rows);
         
+        // Get facebookobjects ids
+        $this->db->select('id');
+        $this->db->from('facebookobjects');
+        $this->db->where_in('pageid', $pageids);
+        $query = $this->db->get();
+        $facebookObjectIds = $query->result();
+        
         // Insert likes
-        
-        
+        $rows = array();
+        foreach ($facebookObjectIds as $facebookObjectId) {
+            array_push($rows, array(
+                
+                'userId' => $userId,
+                'facebookobjectid' => $facebookObjectId
+           ));
+        }
+        $this->db->insert_batch('likes', $rows);
     }
     
     public function insertArtist ($name, $url, $image) {
