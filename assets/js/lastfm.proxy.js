@@ -18,8 +18,8 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
     // DB insertion methods (POST)
     
     // Save methods (using LastFM API + POST)
-    function saveAll (artist, callback) {
-        saveArtist(artist, function() {
+    function saveAll (facebookobjectid, artist, callback) {
+        saveArtist(facebookobjectid, artist, function() {
             saveAlbums(artist, function () {
                saveFans(artist, function () {
                    saveTags(artist, function () {
@@ -32,7 +32,7 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
         });
     }
     
-    function saveArtist (artist, callback) { 
+    function saveArtist (facebookobjectid, artist, callback) { 
         var query = {
             artist: artist
         };
@@ -42,7 +42,8 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
             var data =  {
                 name: response.artist.name,
                 url: response.artist.url,
-                image: response.artist.image[3]['#text']
+                image: response.artist.image[3]['#text'],
+                facebookobjectid: facebookobjectid
             };
             var endpoint = '/rest/insertartist/';
             $.post(endpoint, data, callback);
@@ -350,7 +351,7 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
     
     // Public interface    
     // Get artist async.
-    function getStatsProxy (artist, callback) {
+    function getStatsProxy (facebookObjectId, artist, callback) {
         
         // Try to get stats
         getStats(artist, function (stats) {
@@ -362,7 +363,7 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
             }
             
             // Else retry after saving info
-            saveAll(artist, function () {
+            saveAll(facebookObjectId, artist, function () {
                 getStats(artist, callback);
             });
         });
