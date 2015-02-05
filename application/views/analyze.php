@@ -28,7 +28,14 @@
                     <?php echo $this->lang->line('analyze_title'); ?>
                 </h1>
                 <br/> 
+                
+                <!-- Hidden inputs to store location-dependent text -->
                 <input id="initial-status" type="hidden" value="<?php echo $this->lang->line('analyze_status'); ?>"/>
+                <input id="initial-status-album" type="hidden" value="<?php echo $this->lang->line('analyze_status_album'); ?>"/>
+                <input id="initial-status-fan" type="hidden" value="<?php echo $this->lang->line('analyze_status_fan'); ?>"/>
+                <input id="initial-status-tag" type="hidden" value="<?php echo $this->lang->line('analyze_status_tag'); ?>"/>
+                <input id="initial-status-similar" type="hidden" value="<?php echo $this->lang->line('analyze_status_similar'); ?>"/>
+                
                 <p class="text-center" id="status"></p>
                 <img class="center-block" src="assets/img/loading.gif" alt="Loading..."/>
                 
