@@ -64,3 +64,9 @@ CREATE TABLE Users (
     id serial PRIMARY KEY,
     userid varchar(200) UNIQUE
 );
+
+CREATE TABLE Likes (
+	userId int REFERENCES Users(id),
+	facebookObjectId int REFERENCES FacebookObjects(id),
+	PRIMARY KEY (userId, facebookObjectId)
+);
