@@ -35,12 +35,46 @@ define (['jquery', 'facebook', 'LastFMProxy'], function ($, facebook, LastFMProx
         }, {scope: 'user_likes'});
     }
     
+    
+    // Progress & status
+    
     function updateProgress () {
         analyzedArtistCount++;
         var percent = analyzedArtistCount / artistCount;
         var progress = percent*100;
         $('#appProgress').css('width', progress + '%');
         console.log('Total: ' + artistCount + ' Analyzed: ' + analyzedArtistCount + ' Percent: ' + percent + ' Progress: ' + progress);
+    }
+    
+    
+    function updateStatus (artist) {
+        var initialStatus = $('#initial-status').val();
+        $('#status').text(initialStatus + ' ' + artist + '...');
+    }
+    
+    function artistCallback (artist) {
+        var initialStatus = $('#initial-status').val();
+        $('#status').text(initialStatus + ' ' + artist + '...');
+    }
+    
+    function albumCallback (artists) {
+         var initialStatus = $('#initial-status-album').val();
+        $('#status').text(initialStatus + ' ' + artist + '...');
+    }
+    
+    function fanCallback (artist) {
+        var initialStatus = $('#initial-status-fan').val();
+        $('#status').text(initialStatus + ' ' + artist + '...');
+    }
+    
+    function tagCallback (artist) {
+        var initialStatus = $('#initial-status-tag').val();
+        $('#status').text(initialStatus + ' ' + artist + '...');
+    }
+    
+    function similarCallback (artist) {
+        var initialStatus = $('#initial-status-similar').val();
+        $('#status').text(initialStatus + ' ' + artist + '...');
     }
     
     // Get stats one by one recursively and call a callback when finished
@@ -58,7 +92,7 @@ define (['jquery', 'facebook', 'LastFMProxy'], function ($, facebook, LastFMProx
         updateStatus(artist.name);
         
         // Get stats for the popped artist and then continue
-        LastFMProxy.getStats(artist.id, artist.name, function (stats) { 
+        LastFMProxy.getStats(artist.id, artist.name, artistCallback, albumCallback, fanCallback, tagCallback, similarCallback, function (stats) { 
             updateProgress();
             artistStats[artist.name] = stats;
             getStats(artists, callback);
@@ -66,10 +100,6 @@ define (['jquery', 'facebook', 'LastFMProxy'], function ($, facebook, LastFMProx
         });
     }
     
-    function updateStatus (artist) {
-        var initialStatus = $('#initial-status').val();
-        $('#status').text(initialStatus + ' ' + artist + '...');
-    }
     
     // DOM callbacks
     $(document).ready(function () {
