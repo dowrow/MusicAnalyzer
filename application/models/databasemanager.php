@@ -62,17 +62,24 @@ class DatabaseManager extends CI_Model {
     public function insertArtist ($pageid, $name, $url, $image) {
         
         // Get facebook object id
+        
         $this->db->select('id');
         $this->db->from('facebookobjects');
         $this->db->where('pageid', $pageid);
         $query = $this->db->get();
-        $facebookObjectId = $query->result();
+        if ($query->num_rows() > 0) {
+            $facebookObjectId = $query->result();
+            // Insert name in Artists
+            $id = $this->Artist_model->insert(array(
+                'name' => $name,
+                'facebookobjectid' => $facebookObjectId->id
+            ));
+        } else {
+            $id = $this->Artist_model->insert(array(
+                'name' => $name
+            ));
+        }
         
-        // Insert name in Artists
-        $id = $this->Artist_model->insert(array(
-            'name' => $name,
-            'facebookobjectid' => $facebookObjectId->id
-        ));
         
         // Already inserted?
         if ($id == FALSE){
@@ -182,7 +189,7 @@ class DatabaseManager extends CI_Model {
         $artistId = $artistObj->id;
         
         // Insert artist into Artists and LastFMArtists tables
-        $similarId = self::insertArtist($similar, $url, $image);
+        $similarId = self::insertArtist(null, $similar, $url, $image);
 
         // Insert in SimilarArtists
         $this->SimilarArtist_model->insert(array(

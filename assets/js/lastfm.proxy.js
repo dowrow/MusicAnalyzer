@@ -18,8 +18,8 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
     // DB insertion methods (POST)
     
     // Save methods (using LastFM API + POST)
-    function saveAll (facebookobjectid, artist, callback) {
-        saveArtist(facebookobjectid, artist, function() {
+    function saveAll (pageid, artist, callback) {
+        saveArtist(pageid, artist, function() {
             saveAlbums(artist, function () {
                saveFans(artist, function () {
                    saveTags(artist, function () {
@@ -32,7 +32,7 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
         });
     }
     
-    function saveArtist (facebookobjectid, artist, callback) { 
+    function saveArtist (pageid, artist, callback) { 
         var query = {
             artist: artist
         };
@@ -43,7 +43,7 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
                 name: response.artist.name,
                 url: response.artist.url,
                 image: response.artist.image[3]['#text'],
-                facebookobjectid: facebookobjectid
+                pageid: pageid
             };
             var endpoint = '/rest/insertartist/';
             console.log('insertando artista');
@@ -349,7 +349,7 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
     
     // Public interface    
     // Get artist async.
-    function getStatsProxy (facebookObjectId, artist, callback) {
+    function getStatsProxy (pageid, artist, callback) {
         
         // Try to get stats
         getStats(artist, function (stats) {
@@ -361,7 +361,7 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
             }
             
             // Else retry after saving info
-            saveAll(facebookObjectId, artist, function () {
+            saveAll(pageid, artist, function () {
                 getStats(artist, callback);
             });
         });
