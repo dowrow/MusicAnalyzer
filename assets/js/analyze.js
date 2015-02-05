@@ -57,7 +57,7 @@ define (['jquery', 'facebook', 'LastFMProxy'], function ($, facebook, LastFMProx
         $('#status').text(initialStatus + ' ' + artist + '...');
     }
     
-    function albumCallback (artists) {
+    function albumCallback (artist) {
          var initialStatus = $('#initial-status-album').val();
         $('#status').text(initialStatus + ' ' + artist + '...');
     }
