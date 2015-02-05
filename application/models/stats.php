@@ -66,11 +66,14 @@ class Stats extends CI_Model {
             return -1;
         }
         
+        $total = 0;
         foreach ($query->result() as $row) {
-            $sum += $row->age;
+            if ($row->age > 0 && $row->age < 100) {
+                $sum += $row->age;
+                $total++;
+            }            
         }
-        
-        return ($sum / count($query->result()));
+        return ($sum / total);
     }
     
     private function getFirstAlbum ($artist) {
