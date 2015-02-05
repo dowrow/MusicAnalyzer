@@ -19,16 +19,16 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
     
     // Save methods (using LastFM API + POST)
     function saveAll (pageid, artist, artistCallback, albumCallback, fanCallback, tagCallback, similarCallback, callback) {
+        artistCallback(artist);
         saveArtist(pageid, artist, function() {
-            artistCallback(artist);
+            albumCallback(artist);
             saveAlbums(artist, function () {
-               albumCallback(artist);
+               fanCallback(artist);
                saveFans(artist, function () {
-                   fanCallback(artist);
+                   tagCallback(artist);
                    saveTags(artist, function () {
-                       tagCallback(artist);
+                       similarCallback(artist);
                        saveSimilar(artist, function () {
-                           similarCallback(artist);
                            callback();
                        });
                    });
