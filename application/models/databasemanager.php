@@ -52,7 +52,7 @@ class DatabaseManager extends CI_Model {
         $rows = array();
         foreach ($facebookObjectIds as $facebookObjectId) {
             array_push($rows, array(
-                'userId' => $userId,
+                'userid' => $userId,
                 'facebookobjectid' => $facebookObjectId->id
            ));
         }
