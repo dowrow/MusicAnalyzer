@@ -59,12 +59,19 @@ class DatabaseManager extends CI_Model {
         $this->db->insert_batch('likes', $rows);
     }
     
-    public function insertArtist ($facebookObjectId, $name, $url, $image) {
+    public function insertArtist ($pageid, $name, $url, $image) {
+        
+        // Get facebook object id
+        $this->db->select('id');
+        $this->db->from('facebookobjects');
+        $this->db->where('pageid', $pageid);
+        $query = $this->db->get();
+        $facebookObjectId = $query->result();
         
         // Insert name in Artists
         $id = $this->Artist_model->insert(array(
             'name' => $name,
-            'facebookobjectid' => $facebookObjectId
+            'facebookobjectid' => $facebookObjectId->id
         ));
         
         // Already inserted?
