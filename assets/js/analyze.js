@@ -56,7 +56,10 @@ define (['jquery', 'facebook', 'LastFMProxy'], function ($, facebook, LastFMProx
         var artist = artists.pop();
         
         updateStatus(artist.name);
-                
+        
+        console.log('Objecto artista');
+        console.log(artist);
+        
         // Get stats for the popped artist and then continue
         LastFMProxy.getStats(artists.id, artist.name, function (stats) { 
             updateProgress();
