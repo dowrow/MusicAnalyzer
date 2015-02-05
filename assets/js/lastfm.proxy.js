@@ -46,6 +46,8 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
                 facebookobjectid: facebookobjectid
             };
             var endpoint = '/rest/insertartist/';
+            console.log('insertando artista');
+            console.log(name, url, image, facebookobjectid);
             $.post(endpoint, data, callback);
         };
         
@@ -279,8 +281,6 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
         
         var successCallback = function (response) {
             
-                console.log('Similar a ' + artist);
-                console.log(response);
             if (response.similarartists.artist && 
                     (response.similarartists.artist[0].name !== undefined  || 
                      response.similarartists.artist.name !== undefined)) {
@@ -331,8 +331,6 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
             var endpoint = '/rest/insertsimilar/';
     
             $.post(endpoint, data, function () {
-                console.log('Info similar');
-                console.log(data);
                 if (similars.length !== undefined) {
                     saveEverySimilar(artist, similars, callback);
                 } else {
