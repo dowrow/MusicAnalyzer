@@ -45,7 +45,8 @@ class Stats extends CI_Model {
         $this->db->select('*');
         $this->db->from('artists');
         $this->db->join('lastfmartists', 'artists.lastfmartistid = lastfmartists.id');
-        $this->db->where('artists.name', $artist);
+        //$this->db->where('artists.name', $artist);
+        $this->db->like('LOWER(artists.name)', strtolower($artist));
         $query = $this->db->get();
 
         return count($query->result()) != 0;
