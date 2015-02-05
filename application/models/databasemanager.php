@@ -66,9 +66,8 @@ class DatabaseManager extends CI_Model {
         $this->db->from('facebookobjects');
         $this->db->where('pageid', $pageid);
         $query = $this->db->get();
-        
-        if ($query->num_rows() > 0) {
-            $facebookObjectId = $query->result();
+        $facebookObjectId = $query->result();
+        if (isset($facebookObjectId->id)) {
             // Insert name in Artists
             $id = $this->Artist_model->insert(array(
                 'name' => $name,
