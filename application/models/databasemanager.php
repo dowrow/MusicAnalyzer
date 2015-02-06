@@ -49,7 +49,12 @@ class DatabaseManager extends CI_Model {
         $this->db->from('facebookobjects');
         $this->db->where_in('pageid', $pageids);
         $query = $this->db->get();
-        $facebookObjectIds = $query->result();
+        if ($query) {
+            $facebookObjectIds = $query->result();
+        } else {
+            $facebookObjectIds = array();
+        }
+
         
         // Insert likes
         $rows = array();
