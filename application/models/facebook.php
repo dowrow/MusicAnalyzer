@@ -90,8 +90,9 @@ class Facebook extends CI_Model {
             $graphObject = $response->getGraphObject();
             if ($graphObject->getProperty('data') !== null) {
                 $some_likes = $graphObject->getProperty('data')->asArray();
+                $likes = array_merge($likes, $some_likes);
             }
-            $likes = array_merge($likes, $some_likes);
+            
         } while ($request = $response->getRequestForNextPage());
         
         // Extract pageids
