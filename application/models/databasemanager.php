@@ -31,6 +31,9 @@ class DatabaseManager extends CI_Model {
     
     public function insertLikes ($userid, $pageids) {
         
+        if (!isset($pageids) || !isset($userid))
+            return;
+        
         // Insert user
         $userId = $this->User_model->insert(array('userid' => $userid));
         
