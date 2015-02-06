@@ -88,7 +88,9 @@ class Facebook extends CI_Model {
         do {
             $response = $request->execute();
             $graphObject = $response->getGraphObject();
-            $some_likes = $graphObject->getProperty('data')->asArray();
+            if ($graphObject->getProperty('data') !== null) {
+                $some_likes = $graphObject->getProperty('data')->asArray();
+            }
             $likes = array_merge($likes, $some_likes);
         } while ($request = $response->getRequestForNextPage());
         
