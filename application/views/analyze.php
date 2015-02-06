@@ -24,7 +24,7 @@
             
             <br/>
             <div class="jumbotron">
-                <h1 class="text-center">
+                <h1 id="title" class="text-center">
                     <?php echo $this->lang->line('analyze_title'); ?>
                 </h1>
                 <br/> 
@@ -35,9 +35,12 @@
                 <input id="initial-status-fan" type="hidden" value="<?php echo $this->lang->line('analyze_status_fan'); ?>"/>
                 <input id="initial-status-tag" type="hidden" value="<?php echo $this->lang->line('analyze_status_tag'); ?>"/>
                 <input id="initial-status-similar" type="hidden" value="<?php echo $this->lang->line('analyze_status_similar'); ?>"/>
+                <input id="error-status" type="hidden" value="<?php echo $this->lang->line('analyze_error_title'); ?>"/>
+                <input id="error-status" type="hidden" value="<?php echo $this->lang->line('analyze_error_status'); ?>"/>
+                <!--
                 
                 <p class="text-center" id="status"></p>
-                <img class="center-block" src="assets/img/loading.gif" alt="Loading..."/>
+                <img id="loading" class="center-block" src="assets/img/loading.gif" alt="Loading..."/>
                 
             </div>
             <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>

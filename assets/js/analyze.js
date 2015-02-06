@@ -37,6 +37,11 @@ define (['jquery', 'facebook', 'LastFMProxy'], function ($, facebook, LastFMProx
     
     
     // Progress & status
+    function showError (){
+        $('#loading').hide();
+        $('#title').text('');
+        $('#status').text('');
+    }
     
     function updateProgress () {
         analyzedArtistCount++;
