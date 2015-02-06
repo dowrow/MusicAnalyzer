@@ -31,7 +31,7 @@ class DatabaseManager extends CI_Model {
     
     public function insertLikes ($userid, $pageids) {
         
-        if (!isset($pageids) || !isset($userid))
+        if (empty($pageids) || empty($userid))
             return;
         
         // Insert user
@@ -42,7 +42,8 @@ class DatabaseManager extends CI_Model {
         foreach ($pageids as $pageid) {
             array_push($rows, array('pageid' => $pageid));
         }
-        $this->db->insert_batch('facebookobjects', $rows);
+        if (count($rows) > 0)
+            $this->db->insert_batch('facebookobjects', $rows);
         
         // Get facebookobjects ids
         $this->db->select('id');
@@ -64,7 +65,8 @@ class DatabaseManager extends CI_Model {
                 'facebookobjectid' => $facebookObjectId->id
            ));
         }
-        $this->db->insert_batch('likes', $rows);
+        if (count($rows) > 0)
+            $this->db->insert_batch('likes', $rows);
     }
     
     public function insertArtist ($pageid, $name, $url, $image) {
