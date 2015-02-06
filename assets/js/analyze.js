@@ -45,13 +45,7 @@ define (['jquery', 'facebook', 'LastFMProxy'], function ($, facebook, LastFMProx
         $('#appProgress').css('width', progress + '%');
         console.log('Total: ' + artistCount + ' Analyzed: ' + analyzedArtistCount + ' Percent: ' + percent + ' Progress: ' + progress);
     }
-    
-    
-    function updateStatus (artist) {
-        var initialStatus = $('#initial-status').val();
-        $('#status').text(initialStatus + ' ' + artist + '...');
-    }
-    
+        
     function artistCallback (artist) {
         var initialStatus = $('#initial-status').val();
         $('#status').text(initialStatus + ' ' + artist + '...');
@@ -88,8 +82,6 @@ define (['jquery', 'facebook', 'LastFMProxy'], function ($, facebook, LastFMProx
         
         // Pop an artist from array
         var artist = artists.pop();
-        
-        updateStatus(artist.name);
         
         // Get stats for the popped artist and then continue
         LastFMProxy.getStats(artist.id, artist.name, artistCallback, albumCallback, fanCallback, tagCallback, similarCallback, function (stats) { 
