@@ -37,7 +37,6 @@
                 <input id="initial-status-similar" type="hidden" value="<?php echo $this->lang->line('analyze_status_similar'); ?>"/>
                 <input id="error-status" type="hidden" value="<?php echo $this->lang->line('analyze_error_title'); ?>"/>
                 <input id="error-status" type="hidden" value="<?php echo $this->lang->line('analyze_error_status'); ?>"/>
-                <!--
                 
                 <p class="text-center" id="status"></p>
                 <img id="loading" class="center-block" src="assets/img/loading.gif" alt="Loading..."/>
