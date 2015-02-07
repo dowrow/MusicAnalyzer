@@ -10,7 +10,10 @@ session_start();
 use Facebook\FacebookSession;
 use Facebook\FacebookRequest;
 use Facebook\FacebookJavaScriptLoginHelper;
-    
+
+// Thanks IE
+header('P3P:CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"');
+
 class Facebook extends CI_Model {
     
     const APP_ID = '1468034890110746';
