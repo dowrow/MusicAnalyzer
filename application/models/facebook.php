@@ -32,13 +32,25 @@ class Facebook extends CI_Model {
     
     private function buildSession() {
         
-        // see if  $_SESSION exists
+        // See if  $_SESSION exists
         if (isset($_SESSION) && isset($_SESSION['fb_token'])) {
             
-            // create new fb session from saved fb_token
+            // Create new fb session from saved fb_token
             $this->session = new FacebookSession($_SESSION['fb_token']);
             
-        } else {
+            // Validate the access_token to make sure it's still valid
+            try {
+              if ( !$this->session->validate() ) {
+                $this->session = null;
+              }
+            } catch ( Exception $e ) {
+              // catch any exceptions
+              $this->session = null;
+            }
+            
+        }
+        
+        if ( !isset( $this->session ) || $this->session === null ) {
 
             // Get login helper
             $helper = new FacebookJavaScriptLoginHelper();
