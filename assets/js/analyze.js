@@ -39,8 +39,8 @@ define (['jquery', 'facebook', 'LastFMProxy'], function ($, facebook, LastFMProx
     // Progress & status
     function showError (){
         $('#loading').hide();
-        $('#title').text('');
-        $('#status').text('');
+        $('#title').text($('#error-title').val());
+        $('#status').text($('#error-status').val());
     }
     
     function updateProgress () {

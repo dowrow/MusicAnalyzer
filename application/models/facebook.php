@@ -64,10 +64,6 @@ class Facebook extends CI_Model {
             
             list($encoded_sig, $payload) = explode('.', $_REQUEST['signed_request'], 2); 
 
-            $secret = self::APP_SECRET; // Use your app secret here
-
-            // decode the data
-            $sig = $this->base64_url_decode($encoded_sig);
             $data = json_decode($this->base64_url_decode($payload), true);
             
             return $data['user']['locale'];
