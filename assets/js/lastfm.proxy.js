@@ -18,8 +18,7 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
     // DB insertion methods (POST)
     
     // Save methods (using LastFM API + POST)
-    function saveAll (pageid, artist, artistCallback, albumCallback, fanCallback, tagCallback, similarCallback, callback) {
-        artistCallback(artist);
+    function saveAll (pageid, artist, albumCallback, fanCallback, tagCallback, similarCallback, callback) {
         saveArtist(pageid, artist, function() {
             albumCallback(artist);
             saveAlbums(artist, function () {
@@ -356,6 +355,8 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
     // Get artist async.
     function getStatsProxy (pageid, artist, artistCallback, albumCallback, fanCallback, tagCallback, similarCallback, callback) {
         
+        artistCallback(artist);
+
         // Try to get stats
         getStats(artist, function (stats) {
             
@@ -366,7 +367,7 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
             }
             
             // Else retry after saving info
-            saveAll(pageid, artist, artistCallback, albumCallback, fanCallback, tagCallback, similarCallback, function () {
+            saveAll(pageid, artist, albumCallback, fanCallback, tagCallback, similarCallback, function () {
                 getStats(artist, callback);
             });
         });
