@@ -106,8 +106,7 @@ define (['jquery', 'facebook', 'LastFMProxy'], function ($, facebook, LastFMProx
 
             // If no artist likes show message
             if (artists.length === 0) {
-                // TO DO: show message
-                console.log('No artists');
+                showError();
                 return;
             }
 
