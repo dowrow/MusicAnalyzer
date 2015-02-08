@@ -24,13 +24,9 @@ define (['jquery', 'facebook', 'LastFMProxy'], function ($, facebook, LastFMProx
             FB.api(
                 "/me/music",
                 function (response) {
-                  if (!response.data) {
-                      console.log('Error getting user music');
-                      // TO DO: Show message
-                  } else {
-                      callback(response.data);
                       artistCount = response.data.length || 0;
-                  }       
+                      callback(response.data || []);
+                      
             });
         }, {scope: 'user_likes'});
     }

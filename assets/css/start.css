@@ -1,13 +1,17 @@
 .logo {
     display:inline-block;
-    background-color: black;
-    color:white;
+    background-color: #333;
+    color:#eee;
     text-align: center;
     width: 100px;
     height: 100px;
-    font-size: 100%;
+    font-size: 200%;
     padding: 0;
     line-height: 100px;
     border-radius: 50%;
+}
+
+.logo:first-child {
+    margin-top:-10px;
 }
 
