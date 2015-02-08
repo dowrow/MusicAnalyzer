@@ -106,11 +106,18 @@ define (['jquery', 'facebook', 'LastFMProxy'], function ($, facebook, LastFMProx
         
         // Get user artists
         getArtists(function (artists) {
-
+            
+            var MAX_ARTISTS = 10;
+            
             // If no artist likes show message
             if (artists.length === 0) {
                 showError();
                 return;
+            }
+            
+            if (artists.length > MAX_ARTISTS) {
+                showModal('Too many cooks', 'Try with less cooks');
+                artists = artists.splice(0,MAX_ARTISTS);
             }
 
             // Else get stats one by one
