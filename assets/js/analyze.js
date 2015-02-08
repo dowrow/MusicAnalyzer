@@ -24,7 +24,7 @@ define (['jquery', 'facebook', 'LastFMProxy'], function ($, facebook, LastFMProx
             FB.api(
                 "/me/music",
                 function (response) {
-                      artistCount = response.data.length || 0;
+                      
                       callback(response.data || []);
                       
             });
@@ -119,7 +119,8 @@ define (['jquery', 'facebook', 'LastFMProxy'], function ($, facebook, LastFMProx
                 showModal('Too many cooks', 'Try with less cooks');
                 artists = artists.splice(0,MAX_ARTISTS);
             }
-
+            artistCount = artists.length || 0;
+            
             // Else get stats one by one
             getStats(artists, function () {
                 console.log('Finished getting stats!! :D');
