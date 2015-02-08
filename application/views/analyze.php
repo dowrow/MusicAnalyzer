@@ -42,6 +42,7 @@
             
             <br/>
             <div class="jumbotron">
+                
                 <h1 id="title" class="text-center">
                     <?php echo $this->lang->line('analyze_title'); ?>
                 </h1>

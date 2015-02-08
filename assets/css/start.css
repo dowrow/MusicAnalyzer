@@ -1,0 +1,13 @@
+.logo {
+    display:inline-block;
+    background-color: black;
+    color:white;
+    text-align: center;
+    width: 100px;
+    height: 100px;
+    font-size: 100%;
+    padding: 0;
+    line-height: 100px;
+    border-radius: 50%;
+}
+

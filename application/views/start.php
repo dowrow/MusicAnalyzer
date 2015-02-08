@@ -9,6 +9,9 @@
 
         <!-- Optional theme -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+        
+        <!-- Custom styles -->
+        <link rel="stylesheet" href="assets/css/start.css">
 
     </head>
     
@@ -25,7 +28,14 @@
             
             <br/>
             <div class="jumbotron text-center">
-                <h1><?php echo $this->lang->line('start_title'); ?></h1>
+                <span class="logo">
+                    <span class="glyphicon glyphicon-search"></span>
+                    <span class="glyphicon glyphicon-music"></span>
+                </span>
+                    
+                <h1>
+                    <?php echo $this->lang->line('start_title'); ?>
+                </h1>
                 <p class="lead"><?php echo $this->lang->line('start_description'); ?></p>
                 <p><a id="start" class="btn btn-primary btn-lg" href="javascript:void(0);" role="button"><?php echo $this->lang->line('start_button'); ?></a></p>
             </div>
