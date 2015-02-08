@@ -11,7 +11,8 @@ use Facebook\FacebookSession;
 use Facebook\FacebookRequest;
 use Facebook\FacebookJavaScriptLoginHelper;
 
-// Thanks IE
+// Fix third-party cookie problem for Internet Explorer
+// Thanks Obama
 header('P3P:CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"');
 
 class Facebook extends CI_Model {

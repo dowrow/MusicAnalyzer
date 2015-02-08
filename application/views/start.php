@@ -13,7 +13,7 @@
     </head>
     
     <body>
-        
+    
         <div class="container">
             
             <br/>
@@ -29,7 +29,7 @@
                 <p class="lead"><?php echo $this->lang->line('start_description'); ?></p>
                 <p><a id="start" class="btn btn-primary btn-lg" href="javascript:void(0);" role="button"><?php echo $this->lang->line('start_button'); ?></a></p>
             </div>
-            <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+            <div class="fb-like" data-href="https://apps.facebook.com/music-analyzer" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
         
         </div>
         

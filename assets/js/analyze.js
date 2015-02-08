@@ -37,6 +37,13 @@ define (['jquery', 'facebook', 'LastFMProxy'], function ($, facebook, LastFMProx
     
     
     // Progress & status
+    function showModal (title, text) {
+        $('#modalTitle').text(title);
+        $('#modalText').text(text);
+        $('#myModal').modal('show');
+    }
+    
+    
     function showError (){
         $('#loading').hide();
         $('#title').text($('#error-title').val());

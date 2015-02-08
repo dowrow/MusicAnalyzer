@@ -1,6 +1,6 @@
 
 define (['jquery', 'facebook'], function ($, facebook) {
-    
+
     FB.init({
         appId      : '1468034890110746',
         xfbml      : true,
@@ -24,6 +24,10 @@ define (['jquery', 'facebook'], function ($, facebook) {
     }
 
     // Attach callbacks
-    $('#start').click(checkLoginState);
+    
+    $(document).ready(function () {
+        $('#start').click(checkLoginState);
+    });
+    
     
 });
