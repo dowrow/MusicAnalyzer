@@ -80,9 +80,9 @@
                 </div>
             </div>
             
-            
-            <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
-        -->
+             <!-- Like button -->
+            <div class="fb-like" data-href="https://apps.facebook.com/music-analyzer" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+                
         </div>
         
         <script data-main="assets/js/analyze.js" src="assets/js/require.js"></script>
