@@ -41,7 +41,7 @@
             </div>
             
             <br/>
-            <div class="jumbotron">
+            <div id="process" class="jumbotron">
                 
                 <h1 id="title" class="text-center">
                     <?php echo $this->lang->line('analyze_title'); ?>
