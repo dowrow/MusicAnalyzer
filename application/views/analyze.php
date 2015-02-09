@@ -64,19 +64,23 @@
             
             <div class="hidden" id="results">
                 <div class="jumbotron">
-                    <span class="icon"></span><p></p>
+                    <span class="icon"><span class="glyphicon glyphicon-user"></span></span>
+                    <p></p>
                 </div>
 
                 <div class="jumbotron">
-                     <span class="icon"></span><p></p>
+                     <span class="icon"><span class="glyphicon glyphicon-tags"></span></span>
+                     <p></p>
                 </div>
 
                 <div class="jumbotron">
-                     <span class="icon"></span><p></p>
+                     <span class="icon"><span class="glyphicon glyphicon-hourglass"></span></span>
+                     <p></p>
                 </div>
 
                 <div class="jumbotron">
-                     <span class="icon"></span><p></p>
+                     <span class="icon"><span class="glyphicon glyphicon-heart"></span></span>
+                     <p></p>
                 </div>
             </div>
             
