@@ -100,7 +100,7 @@ define (['jquery', 'facebook', 'LastFMProxy'], function ($, facebook, LastFMProx
     
     function showResults() {
         // TODO: Insert text
-        $('#results').show();
+        $('#results').removeClass('hidden');
     }
     
     // DOM callbacks
