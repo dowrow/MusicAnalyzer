@@ -50,8 +50,6 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
                 pageid: pageid
             };
             var endpoint = '/rest/insertartist/';
-            console.log('insertando artista');
-            console.log(data);
             $.post(endpoint, data, callback);
         };
         

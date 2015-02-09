@@ -74,7 +74,7 @@
                 </div>
 
                 <div class="jumbotron">
-                     <span class="icon"><span class="glyphicon glyphicon-hourglass"></span></span>
+                     <span class="icon"><span class="glyphicon glyphicon-calendar"></span></span>
                      <p></p>
                 </div>
 
