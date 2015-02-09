@@ -39,7 +39,6 @@ define (['jquery', 'facebook', 'LastFMProxy'], function ($, facebook, LastFMProx
         $('#myModal').modal('show');
     }
     
-    
     function showError (){
         $('#loading').hide();
         $('#title').text($('#error-title').val());
@@ -51,7 +50,6 @@ define (['jquery', 'facebook', 'LastFMProxy'], function ($, facebook, LastFMProx
         var percent = analyzedArtistCount / artistCount;
         var progress = percent*100;
         $('#appProgress').css('width', progress + '%');
-        console.log('Total: ' + artistCount + ' Analyzed: ' + analyzedArtistCount + ' Percent: ' + percent + ' Progress: ' + progress);
     }
         
     function artistCallback (artist) {
@@ -100,6 +98,10 @@ define (['jquery', 'facebook', 'LastFMProxy'], function ($, facebook, LastFMProx
         });
     }
     
+    function showResults() {
+        // TODO: Insert text
+        $('#results').show();
+    }
     
     // DOM callbacks
     $(document).ready(function () {
@@ -107,7 +109,7 @@ define (['jquery', 'facebook', 'LastFMProxy'], function ($, facebook, LastFMProx
         // Get user artists
         getArtists(function (artists) {
             
-            var MAX_ARTISTS = 10;
+            var MAX_ARTISTS = 20;
             
             // If no artist likes show message
             if (artists.length === 0) {
@@ -116,15 +118,16 @@ define (['jquery', 'facebook', 'LastFMProxy'], function ($, facebook, LastFMProx
             }
             
             if (artists.length > MAX_ARTISTS) {
-                showModal('Too many cooks', 'Try with less cooks');
+                showModal('Demasiados artistas', 'Parece que te gustan muchos artistas. Sólo analizaremos ' + MAX_ARTISTS + ' de ellos.');
                 artists = artists.splice(0,MAX_ARTISTS);
             }
             artistCount = artists.length || 0;
             
             // Else get stats one by one
             getStats(artists, function () {
-                console.log('Finished getting stats!! :D');
+                console.log('Stats:');
                 console.log(artistStats);
+                showResults();
             });        
 
         }); // Get user 

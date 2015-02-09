@@ -88,36 +88,40 @@ class Facebook extends CI_Model {
     }
     
     public function getLikesPageids () {
-        
-        $likes = array();
-        $session = $this->getSession();
-        
-        $request = new FacebookRequest(
-            $session,
-            'GET',
-            '/me/likes'
-        );
-            
-        do {
-            $response = $request->execute();
-            $graphObject = $response->getGraphObject();
-            if ($graphObject->getProperty('data') !== null) {
-                $some_likes = $graphObject->getProperty('data')->asArray();
-                $likes = array_merge($likes, $some_likes);
+        try {
+            $likes = array();
+            $session = $this->getSession();
+
+            $request = new FacebookRequest(
+                $session,
+                'GET',
+                '/me/likes'
+            );
+
+            do {
+                $response = $request->execute();
+                $graphObject = $response->getGraphObject();
+                if ($graphObject->getProperty('data') !== null) {
+                    $some_likes = $graphObject->getProperty('data')->asArray();
+                    $likes = array_merge($likes, $some_likes);
+                }
+
+            } while ($request = $response->getRequestForNextPage());
+
+            // Extract pageids
+            $pageids = array();
+            foreach ($likes as $page) {
+                array_push($pageids, $page->id);
             }
-            
-        } while ($request = $response->getRequestForNextPage());
-        
-        // Extract pageids
-        $pageids = array();
-        foreach ($likes as $page) {
-            array_push($pageids, $page->id);
+
+            return $pageids;
+        } catch (Exception $e) {
+            return array();
         }
-        
-        return $pageids;
     }
     
     public function getUserId () {
+        try {
         $session = $this->getSession();
         $request = new FacebookRequest(
             $session,
@@ -126,6 +130,11 @@ class Facebook extends CI_Model {
         );
         $response = $request->execute();
         return $response->getGraphObject()->getProperty('id');
+    
+        
+        } catch (Exception $e) {
+            return "";
+        }
     }
 }
 

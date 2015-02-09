@@ -59,14 +59,30 @@
                 
                 <p class="text-center" id="status"></p>
                 <img id="loading" class="center-block" src="assets/img/loading.gif" alt="Loading..."/>
-                
+            </div>
+            <!-- TEMPLATE -->
+            
+            <div class="hidden" id="results">
+                <div class="jumbotron">
+                    <span class="icon"></span><p></p>
+                </div>
+
+                <div class="jumbotron">
+                     <span class="icon"></span><p></p>
+                </div>
+
+                <div class="jumbotron">
+                     <span class="icon"></span><p></p>
+                </div>
+
+                <div class="jumbotron">
+                     <span class="icon"></span><p></p>
+                </div>
             </div>
             
-            <div class="jumbotron">
-            </div>
             
             <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
-        
+        -->
         </div>
         
         <script data-main="assets/js/analyze.js" src="assets/js/require.js"></script>
