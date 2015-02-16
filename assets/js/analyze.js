@@ -114,6 +114,7 @@ define (['jquery', 'facebook', 'LastFMProxy', 'aggregate'], function ($, faceboo
         getArtists(function (artists) {
             
             var MAX_ARTISTS = 20;
+            console.log(artists);
             
             // If no artist likes show message
             if (artists.length === 0) {

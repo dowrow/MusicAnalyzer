@@ -61,3 +61,5 @@ CREATE TABLE Users (
 	id serial PRIMARY KEY,
 	userid varchar(200) UNIQUE
 );
+
+INSERT INTO LastfmArtists (0, "", "");
