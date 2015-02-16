@@ -1,5 +1,5 @@
 
-define (['jquery', 'facebook', 'LastFMProxy'], function ($, facebook, LastFMProxy) {
+define (['jquery', 'facebook', 'LastFMProxy', 'aggregate'], function ($, facebook, LastFMProxy, Aggregate) {
     
     // Stats object for every artist (associative array)
     var artistStats = [];
@@ -100,6 +100,9 @@ define (['jquery', 'facebook', 'LastFMProxy'], function ($, facebook, LastFMProx
     
     function showResults() {
         // TODO: Insert text
+        
+        console.log(Aggregate.sortByFrequency(artistStats));
+        
         $('#process').hide();
         $('#results').removeClass('hidden');
     }
@@ -126,8 +129,6 @@ define (['jquery', 'facebook', 'LastFMProxy'], function ($, facebook, LastFMProx
             
             // Else get stats one by one
             getStats(artists, function () {
-                console.log('Stats:');
-                console.log(artistStats);
                 showResults();
             });        
 
