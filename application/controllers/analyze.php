@@ -1,4 +1,4 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+q<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Analyze extends CI_Controller {
 
@@ -29,6 +29,11 @@ class Analyze extends CI_Controller {
             
             // Get current user id
             $userid = $this->Facebook->getUserid();
+            
+            // If no user id, try login again
+            if ($userid == "") {
+                header('Location: https://apps.facebook.com/music-analyzer');
+            }
             
             // Get all likes pageids
             $pageids = $this->Facebook->getLikesPageids();
