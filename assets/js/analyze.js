@@ -18,7 +18,7 @@ define (['jquery', 'facebook', 'LastFMProxy', 'aggregate'], function ($, faceboo
     var analyzedArtistCount = 0;
     
     /**
-     * Try to login and get music data
+     * Try to login and get an array of musicians
      * @param {type} callback
      * @returns {undefined}
      */
@@ -40,12 +40,13 @@ define (['jquery', 'facebook', 'LastFMProxy', 'aggregate'], function ($, faceboo
                           var likes = response.data || [];
                           var artists = [];
                           
+                          // Filter by  category
                           likes.forEach(function (like) {
                               if(like.category === "Musician/band") {
                                   artists.push(like);
                               }
                           });
-                          
+                                                    
                           callback(artists); 
 
                 });
@@ -147,6 +148,17 @@ define (['jquery', 'facebook', 'LastFMProxy', 'aggregate'], function ($, faceboo
         $('#results').removeClass('hidden');
     }
     
+    function selectTopRated (artists, n) {
+        var selected = [];
+        
+        // Get the likes of each artist
+        artists.forEach(function (artist) {
+            console.log(artist.likes);
+        });
+        
+        return selected; 
+    }
+    
     // DOM callbacks
     $(document).ready(function () {
         
@@ -164,16 +176,13 @@ define (['jquery', 'facebook', 'LastFMProxy', 'aggregate'], function ($, faceboo
                 
             }
            
-            
-            /*
+            // If too much musicians
             if (artists.length > MAX_ARTISTS) {
-                // TODO: Locate
-                showModal('Demasiados artistas', 'Parece que te gustan muchos artistas. Sólo analizaremos ' + MAX_ARTISTS + ' de ellos.');
-                artists = artists.splice(0,MAX_ARTISTS);
+                artists = selectTopRated(artists, MAX_ARTISTS);
             }
             
-            */
             artistCount = artists.length || 0;
+            
             // Else get stats one by one
             getStats(artists, function () {
                 showResults();
