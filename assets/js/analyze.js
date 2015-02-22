@@ -151,9 +151,9 @@ define (['jquery', 'facebook', 'LastFMProxy', 'aggregate'], function ($, faceboo
     function selectTopRated (artists, n) {
         var selected = [];
         
-        // Get the likes of each artist
+        // Sort from more to less likes
         artists.sort(function (a, b) {
-            return a.likes - b.likes;
+            return b.likes - a.likes;
         });
         
         selected = artists.splice(0,n);
