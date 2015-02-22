@@ -151,14 +151,16 @@ define (['jquery', 'facebook', 'LastFMProxy', 'aggregate'], function ($, faceboo
                 });
                 
             }
-            
+           
+            /*
             if (artists.length > MAX_ARTISTS) {
                 // TODO: Locate
                 showModal('Demasiados artistas', 'Parece que te gustan muchos artistas. Sólo analizaremos ' + MAX_ARTISTS + ' de ellos.');
                 artists = artists.splice(0,MAX_ARTISTS);
             }
-            artistCount = artists.length || 0;
             
+            */
+            artistCount = artists.length || 0;
             // Else get stats one by one
             getStats(artists, function () {
                 showResults();

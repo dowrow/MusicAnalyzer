@@ -32,7 +32,7 @@ class Analyze extends CI_Controller {
             
             // If no user id, try login again
             if ($userid == "") {
-                header('Location: https://apps.facebook.com/music-analyzer');
+                header('Location: /');
             }
             
             // Get all likes pageids
