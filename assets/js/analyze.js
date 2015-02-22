@@ -1,4 +1,11 @@
-
+/**
+ *  
+ * @param {type} $
+ * @param {type} facebook
+ * @param {type} LastFMProxy
+ * @param {type} Aggregate
+ * @returns {undefined}
+ */
 define (['jquery', 'facebook', 'LastFMProxy', 'aggregate'], function ($, facebook, LastFMProxy, Aggregate) {
     
     // Stats object for every artist (associative array)
@@ -100,8 +107,14 @@ define (['jquery', 'facebook', 'LastFMProxy', 'aggregate'], function ($, faceboo
     
     function showResults() {
         // TODO: Insert text
+        var tags = [];
+        artistStats.forEach(function (stats) {
+            stats.tags.forEach(function (tag) {
+                tags.push(tag);
+            });
+        });
         
-        console.log(Aggregate.sortByFrequency(artistStats));
+        console.log(Aggregate.sortByFrequency(tags));
         
         $('#process').hide();
         $('#results').removeClass('hidden');
@@ -123,6 +136,7 @@ define (['jquery', 'facebook', 'LastFMProxy', 'aggregate'], function ($, faceboo
             }
             
             if (artists.length > MAX_ARTISTS) {
+                // TODO: Locate
                 showModal('Demasiados artistas', 'Parece que te gustan muchos artistas. Sólo analizaremos ' + MAX_ARTISTS + ' de ellos.');
                 artists = artists.splice(0,MAX_ARTISTS);
             }
@@ -133,6 +147,6 @@ define (['jquery', 'facebook', 'LastFMProxy', 'aggregate'], function ($, faceboo
                 showResults();
             });        
 
-        }); // Get user 
+        }); // Get user artists
     }); // End document ready
 }); // End module

@@ -27,6 +27,7 @@ define (['jquery', 'facebook'], function ($, facebook) {
     
     $(document).ready(function () {
         $('#start').click(checkLoginState);
+        
     });
     
     

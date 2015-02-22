@@ -31,7 +31,6 @@ define([], function () {
      * Public
      */
     return {
-        getFrequencyHashtable: getFrequencyHashtable,
         sortByFrequency: sortByFrequency
     };
 });
