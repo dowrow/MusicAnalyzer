@@ -1,10 +1,10 @@
 /**
- *  
- * @param {type} $
- * @param {type} facebook
- * @param {type} LastFMProxy
- * @param {type} Aggregate
- * @returns {undefined}
+ * Main module for analyze view
+ * @param {type} $ jQuery module
+ * @param {type} facebook Facebook Graph API module
+ * @param {type} LastFMProxy LastFM API Wrapper module
+ * @param {type} Aggregate Custom aggregation methods module
+ * @returns {void}
  */
 define (['jquery', 'facebook', 'LastFMProxy', 'aggregate'], function ($, facebook, LastFMProxy, Aggregate) {
     
@@ -17,7 +17,11 @@ define (['jquery', 'facebook', 'LastFMProxy', 'aggregate'], function ($, faceboo
     // Number of artist already analyzed
     var analyzedArtistCount = 0;
     
-    
+    /**
+     * Try to login and get music data
+     * @param {type} callback
+     * @returns {undefined}
+     */
     function getArtists(callback) {
         FB.init({
             appId      : '1468034890110746',
@@ -38,27 +42,38 @@ define (['jquery', 'facebook', 'LastFMProxy', 'aggregate'], function ($, faceboo
         }, {scope: 'user_likes'});
     }
     
-    
-    // Progress & status
-    function showModal (title, text) {
+    /**
+     * Show the modal window with a given text
+     * @param {type} title Window title to show
+     * @param {type} text Text to show
+     * @param {function} callback 
+     * @returns {undefined}
+     */
+    function showModal (title, text, callback) {
         $('#modalTitle').text(title);
         $('#modalText').text(text);
         $('#myModal').modal('show');
+        if (callback) {
+            callback();
+        }
     }
     
-    function showError (){
-        $('#loading').hide();
-        $('#title').text($('#error-title').val());
-        $('#status').text($('#error-status').val());
-    }
-    
+    /**
+     * Update progress bar as analyzedArtistCound increases
+     * @returns {undefined}
+     */
     function updateProgress () {
         analyzedArtistCount++;
         var percent = analyzedArtistCount / artistCount;
         var progress = percent*100;
         $('#appProgress').css('width', progress + '%');
     }
-        
+    
+    /**
+     * 
+     * @param {type} artist
+     * @returns {undefined}
+     */
     function artistCallback (artist) {
         var initialStatus = $('#initial-status').val();
         $('#status').text(initialStatus + ' ' + artist + '...');
@@ -131,8 +146,10 @@ define (['jquery', 'facebook', 'LastFMProxy', 'aggregate'], function ($, faceboo
             
             // If no artist likes show message
             if (artists.length === 0) {
-                showError();
-                return;
+                showModal($('#error-title').val(), $('#error-status').val(), function () {
+                    
+                });
+                
             }
             
             if (artists.length > MAX_ARTISTS) {
