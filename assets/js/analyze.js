@@ -152,10 +152,11 @@ define (['jquery', 'facebook', 'LastFMProxy', 'aggregate'], function ($, faceboo
         var selected = [];
         
         // Get the likes of each artist
-        artists.forEach(function (artist) {
-            console.log(artist.name + ': ' + artist.likes);
-            selected.push(artist);
+        artists.sort(function (a, b) {
+            return a.likes - b.likes;
         });
+        
+        selected = artists.splice(0,n);
         
         return selected; 
     }
