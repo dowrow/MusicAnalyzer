@@ -168,7 +168,6 @@ define (['jquery', 'facebook', 'LastFMProxy', 'aggregate'], function ($, faceboo
         getArtists(function (artists) {
             
             var MAX_ARTISTS = 10;
-            console.log(artists);
             
             // If no artist likes show message
             if (artists.length === 0) {
@@ -182,6 +181,8 @@ define (['jquery', 'facebook', 'LastFMProxy', 'aggregate'], function ($, faceboo
             if (artists.length > MAX_ARTISTS) {
                 artists = selectTopRated(artists, MAX_ARTISTS);
             }
+            
+            console.log(artists);
             
             artistCount = artists.length || 0;
             
