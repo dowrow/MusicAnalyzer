@@ -35,7 +35,7 @@ define (['jquery', 'facebook', 'LastFMProxy', 'aggregate'], function ($, faceboo
         FB.getLoginStatus(function(response){
             FB.login(function () {
                 FB.api(
-                    "/me/music?fields=likes,id,name",
+                    "/me/music?fields=likes,id,name, category",
                     function (response) {
                           var likes = response.data || [];
                           var artists = [];
