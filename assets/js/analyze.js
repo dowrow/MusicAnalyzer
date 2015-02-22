@@ -35,7 +35,7 @@ define (['jquery', 'facebook', 'LastFMProxy', 'aggregate'], function ($, faceboo
         FB.getLoginStatus(function(response){
             FB.login(function () {
                 FB.api(
-                    "/me/music",
+                    "/me/music?fields=likes,id,name",
                     function (response) {
                           var likes = response.data || [];
                           var artists = [];
@@ -54,7 +54,7 @@ define (['jquery', 'facebook', 'LastFMProxy', 'aggregate'], function ($, faceboo
         });
        
     }
-    
+        
     /**
      * Show the modal window with a given text
      * @param {type} title Window title to show
@@ -153,7 +153,8 @@ define (['jquery', 'facebook', 'LastFMProxy', 'aggregate'], function ($, faceboo
         
         // Get the likes of each artist
         artists.forEach(function (artist) {
-            console.log(artist.likes);
+            console.log(artists.name + ': ' + artist.likes);
+            selected.push(artist);
         });
         
         return selected; 
