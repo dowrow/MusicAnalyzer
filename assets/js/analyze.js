@@ -174,10 +174,8 @@ define (['jquery', 'facebook', 'LastFMProxy', 'aggregate'], function ($, faceboo
             if (artists.length === 0) {
                 showModal($('#error-title').val(), $('#error-status').val(), function () {
                     document.location = '/';
-                });
-                
+                });   
             }
-           
             // If too much musicians
             if (artists.length > MAX_ARTISTS) {
                 artists = selectTopRated(artists, MAX_ARTISTS);
