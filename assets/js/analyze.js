@@ -153,7 +153,7 @@ define (['jquery', 'facebook', 'LastFMProxy', 'aggregate'], function ($, faceboo
         
         // Get the likes of each artist
         artists.forEach(function (artist) {
-            console.log(artists.name + ': ' + artist.likes);
+            console.log(artist.name + ': ' + artist.likes);
             selected.push(artist);
         });
         
