@@ -68,6 +68,7 @@ define (['jquery', 'facebook', 'LastFMProxy', 'aggregate'], function ($, faceboo
         $('#myModal').modal('show');
         if (callback) {
             $('#modalOk').click(callback);
+            $('#modalClose').click(callback);
         }
     }
     
