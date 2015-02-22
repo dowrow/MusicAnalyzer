@@ -172,7 +172,7 @@ define (['jquery', 'facebook', 'LastFMProxy', 'aggregate'], function ($, faceboo
             // If no artist likes show message
             if (artists.length === 0) {
                 showModal($('#error-title').val(), $('#error-status').val(), function () {
-                    
+                    document.location = '/';
                 });
                 
             }
