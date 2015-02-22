@@ -30,16 +30,20 @@ define (['jquery', 'facebook', 'LastFMProxy', 'aggregate'], function ($, faceboo
             cookie     : true,
             version    : 'v2.1'
         });
+        
+        // Try to login after init is complete
+        FB.getLoginStatus(function(response){
+            FB.login(function () {
+                FB.api(
+                    "/me/music",
+                    function (response) {
 
-        FB.login(function () {
-            FB.api(
-                "/me/music",
-                function (response) {
-                      
-                      callback(response.data || []);
-                      
-            });
-        }, {scope: 'user_likes'});
+                          callback(response.data || []);
+
+                });
+            }, {scope: 'user_likes'});
+        });
+       
     }
     
     /**
