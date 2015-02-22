@@ -37,8 +37,16 @@ define (['jquery', 'facebook', 'LastFMProxy', 'aggregate'], function ($, faceboo
                 FB.api(
                     "/me/music",
                     function (response) {
-
-                          callback(response.data || []);
+                          var likes = response.data || [];
+                          var artists = [];
+                          
+                          likes.forEach(function (like) {
+                              if(like.category === "Musician/band") {
+                                  artists.push(like);
+                              }
+                          });
+                          
+                          callback(artists); 
 
                 });
             }, {scope: 'user_likes'});
@@ -145,7 +153,7 @@ define (['jquery', 'facebook', 'LastFMProxy', 'aggregate'], function ($, faceboo
         // Get user artists
         getArtists(function (artists) {
             
-            var MAX_ARTISTS = 20;
+            var MAX_ARTISTS = 10;
             console.log(artists);
             
             // If no artist likes show message
@@ -156,6 +164,7 @@ define (['jquery', 'facebook', 'LastFMProxy', 'aggregate'], function ($, faceboo
                 
             }
            
+            
             /*
             if (artists.length > MAX_ARTISTS) {
                 // TODO: Locate
