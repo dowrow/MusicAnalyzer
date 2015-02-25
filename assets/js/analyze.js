@@ -135,6 +135,10 @@ define (['jquery', 'facebook', 'LastFMProxy', 'aggregate'], function ($, faceboo
     }
     
     function showResults() {
+        
+        console.log('Stats:');
+        console.log(artistStats);
+        
         // TODO: Insert text
         var tags = [];
         artistStats.forEach(function (stats) {
@@ -143,8 +147,6 @@ define (['jquery', 'facebook', 'LastFMProxy', 'aggregate'], function ($, faceboo
             });
         });
         
-        console.log(Aggregate.sortByFrequency(tags));
-        
         $('#process').hide();
         $('#results').removeClass('hidden');
     }
@@ -152,12 +154,18 @@ define (['jquery', 'facebook', 'LastFMProxy', 'aggregate'], function ($, faceboo
     function selectTopRated (artists, n) {
         var selected = [];
         
+        console.log('Artists sin ordenar');
+        console.log(artists);
+        
         // Sort from more to less likes
         artists.sort(function (a, b) {
             return b.likes - a.likes;
         });
         
         selected = artists.splice(0,n);
+        
+        console.log('Ordenados');
+        console.log(selected);
         
         return selected; 
     }
@@ -180,8 +188,6 @@ define (['jquery', 'facebook', 'LastFMProxy', 'aggregate'], function ($, faceboo
             if (artists.length > MAX_ARTISTS) {
                 artists = selectTopRated(artists, MAX_ARTISTS);
             }
-            
-            console.log(artists);
             
             artistCount = artists.length || 0;
             
