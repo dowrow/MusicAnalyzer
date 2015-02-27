@@ -1,3 +1,4 @@
+
 #appProgress {
     -webkit-transition: width 1s ease-in-out;
     -moz-transition: width 1s ease-in-out;
@@ -6,8 +7,12 @@
     width:0%;
 }
 
+#results {
+    
+}
+
 .icon {
-        display:inline-block;
+    display:inline-block;
     color:#333;
     text-align: center;
     width: 100px;
@@ -18,4 +23,22 @@
     border-radius: 50%;
     border-color:#333;
     border: solid #333;
+}
+
+#results .jumbotron .icon {
+    float:left;
+}
+
+#results .jumbotron p {
+    margin-left:150px;
+    margin-top:25px;
+}
+
+.actions {
+    display:block;
+    text-align: right;
+}
+
+.actions a {
+    margin-right:25px;
 }
