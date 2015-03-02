@@ -35,8 +35,8 @@ define (['jquery', 'aggregate'], function ($, aggregate) {
         var part3 = $('#result-epoch-3').val();
         
         var oldestYear = (new Date()).getFullYear();
-        var oldestArtist = "Nirvana";
-        var oldestAlbum = "Nevermind";
+        var oldestArtist = "";
+        var oldestAlbum = "";
         
         // Look for the oldest album
         for (var artist in stats) {
