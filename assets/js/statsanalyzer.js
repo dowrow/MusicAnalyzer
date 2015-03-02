@@ -41,7 +41,7 @@ define (['jquery', 'aggregate'], function ($, aggregate) {
         var part1 = $('#result-similar').val();
         var similar = "Uno, dos, tres";
         
-        $('#similar_result').text("Escuchas la misma música que una persona de 40 años.");     
+        $('#similar_result').text(part1 + similar);     
     }
     
     return {
