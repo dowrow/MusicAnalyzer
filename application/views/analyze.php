@@ -49,13 +49,26 @@
                 <br/> 
                 
                 <!-- Hidden inputs to store location-dependent text -->
+                
+                <!-- Static text -->
                 <input id="initial-status" type="hidden" value="<?php echo $this->lang->line('analyze_status'); ?>"/>
                 <input id="initial-status-album" type="hidden" value="<?php echo $this->lang->line('analyze_status_album'); ?>"/>
                 <input id="initial-status-fan" type="hidden" value="<?php echo $this->lang->line('analyze_status_fan'); ?>"/>
                 <input id="initial-status-tag" type="hidden" value="<?php echo $this->lang->line('analyze_status_tag'); ?>"/>
                 <input id="initial-status-similar" type="hidden" value="<?php echo $this->lang->line('analyze_status_similar'); ?>"/>
+                
+                <!-- Error text -->
                 <input id="error-title" type="hidden" value="<?php echo $this->lang->line('analyze_error_title'); ?>"/>
                 <input id="error-status" type="hidden" value="<?php echo $this->lang->line('analyze_error_status'); ?>"/>
+                
+                <!-- Results text -->
+                <input id="result-age-1" type="hidden" value="<?php echo $this->lang->line('analyze_result_age_1'); ?>"/>
+                <input id="result-age-2" type="hidden" value="<?php echo $this->lang->line('analyze_result_age_2'); ?>"/>
+                <input id="result-epoch" type="hidden" value="<?php echo $this->lang->line('analyze_result_epoch'); ?>"/>
+                <input id="result-style" type="hidden" value="<?php echo $this->lang->line('analyze_result_style'); ?>"/>
+                <input id="result-similar" type="hidden" value="<?php echo $this->lang->line('analyze_result_similar'); ?>"/>
+                
+                <!-- End of hidden inputs -->
                 
                 <p class="text-center" id="status"></p>
                 <img id="loading" class="center-block" src="assets/img/loading.gif" alt="Loading..."/>
