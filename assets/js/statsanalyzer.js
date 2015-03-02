@@ -19,7 +19,6 @@ define (['jquery', 'aggregate'], function ($, aggregate) {
             if (stats.hasOwnProperty(artist)) {
                 console.log("stats de " + artist);
                 console.log(stats[artist]);
-                console.log(JSON.parse(stats[artist]));
                 if (stats[artist].averageFanAge !== -1) {
                     console.log('fan age ' + stats[artist].averageFanAge);
                     age += parseInt(stats[artist].averageFanAge); 
