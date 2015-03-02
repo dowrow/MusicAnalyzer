@@ -13,10 +13,13 @@ define (['jquery', 'aggregate'], function ($, aggregate) {
         var part2 = $('#result-age-2').val();
         var age = 0;
         var count = 0;
-        console.log(stats);
+        
         // Average fan age
         for (var artist in stats) {
             if (stats.hasOwnProperty(artist)) {
+                console.log("stats de " + artist);
+                console.log(stats[artist]);
+
                 if (stats[artist].averageFanAge !== -1) {
                     console.log('fan age ' + stats[artist].averageFanAge);
                     age += parseInt(stats[artist].averageFanAge); 
