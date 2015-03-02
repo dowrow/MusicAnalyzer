@@ -20,7 +20,7 @@ define (['jquery', 'aggregate'], function ($, aggregate) {
         
         var part1 = $('#result-epoch-1').val();
         var part2 = $('#result-epoch-2').val();
-        var part3 = $('#result-epoch-2').val();
+        var part3 = $('#result-epoch-3').val();
         
         var year = 1992;
         var artist = "Nirvana";
