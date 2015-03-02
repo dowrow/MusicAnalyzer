@@ -27,13 +27,6 @@ define (['jquery', 'aggregate'], function ($, aggregate) {
         getAgeText: getAgeText,
         getEpochText: getEpochText,
         getStyleText: getStyleText,
-        getSimilarTex: getSimilarTex
+        getSimilarText: getSimilarText
     };
 });
-
-StatsAnalyzer.build(artistStats);
-
-var ageText = StatsAnalyzer.getAgeText();
-var epochText = StatsAnalyzer.getEpochText();
-var styleText = StatsAnalyzer.getStyleText();
-var similarText = StatsAnalyzer.getSimilarText();
