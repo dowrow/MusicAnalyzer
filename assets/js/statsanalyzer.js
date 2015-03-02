@@ -7,12 +7,26 @@ define (['jquery', 'aggregate'], function ($, aggregate) {
     }
     
     function getAgeText () {
-        $('#age_result').text("Escuchas la misma música que una persona de 40 años.");
+        
+        var part1 = $('#result-age-1').val();
+        var part2 = $('#result-age-2').val();
+        var age = 40;
+        
+        $('#age_result').text(part1 + age + part2);
        
     }
     
     function getEpochText () {
-        $('#epoch_result').text("Escuchas la misma música que una persona de 40 años.");
+        
+        var part1 = $('#result-epoch-1').val();
+        var part2 = $('#result-epoch-2').val();
+        var part3 = $('#result-epoch-2').val();
+        
+        var year = 1992;
+        var artist = "Nirvana";
+        var album = "Nevermind";
+        
+        $('#epoch_result').text(part1 + year + part2 + artist + part3 + album);
        
     }
     

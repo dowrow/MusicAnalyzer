@@ -64,7 +64,9 @@
                 <!-- Results text -->
                 <input id="result-age-1" type="hidden" value="<?php echo $this->lang->line('analyze_result_age_1'); ?>"/>
                 <input id="result-age-2" type="hidden" value="<?php echo $this->lang->line('analyze_result_age_2'); ?>"/>
-                <input id="result-epoch" type="hidden" value="<?php echo $this->lang->line('analyze_result_epoch'); ?>"/>
+                <input id="result-epoch-1" type="hidden" value="<?php echo $this->lang->line('analyze_result_epoch_1'); ?>"/>
+                <input id="result-epoch-2" type="hidden" value="<?php echo $this->lang->line('analyze_result_epoch_1'); ?>"/>
+                <input id="result-epoch-3" type="hidden" value="<?php echo $this->lang->line('analyze_result_epoch_1'); ?>"/>
                 <input id="result-style" type="hidden" value="<?php echo $this->lang->line('analyze_result_style'); ?>"/>
                 <input id="result-similar" type="hidden" value="<?php echo $this->lang->line('analyze_result_similar'); ?>"/>
                 
