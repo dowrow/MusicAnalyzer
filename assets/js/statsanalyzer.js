@@ -17,10 +17,7 @@ define (['jquery', 'aggregate'], function ($, aggregate) {
         // Average fan age
         for (var artist in stats) {
             if (stats.hasOwnProperty(artist)) {
-                console.log("stats de " + artist);
-                console.log(stats[artist]);
                 if (stats[artist] !== 0 && stats[artist].averageFanAge !== -1) {
-                    console.log('fan age ' + stats[artist].averageFanAge);
                     age += parseInt(stats[artist].averageFanAge); 
                     count++;
                 }
@@ -37,11 +34,26 @@ define (['jquery', 'aggregate'], function ($, aggregate) {
         var part2 = $('#result-epoch-2').val();
         var part3 = $('#result-epoch-3').val();
         
-        var year = 1992;
-        var artist = "Nirvana";
-        var album = "Nevermind";
+        var oldestYear = (new Date()).getFullYear();
+        var oldestArtist = "Nirvana";
+        var oldestAlbum = "Nevermind";
         
-        $('#epoch_result').text(part1 + year + part2 + artist + part3 + album);
+        // Look for the oldest album
+        for (var artist in stats) {
+            if (stats.hasOwnProperty(artist)) {
+                if (stats[artist] !== 0 && stats[artist].firstAlbum.length > 0) {
+                    // If very old
+                    var releaseYear = (new Date(stats[artist].firstAlbum.date)).getFullYear();
+                    if (releaseYear < oldestYear) {
+                        oldestYear = releaseYear;
+                        oldestArtist = artist;
+                        oldestAlbum = stats[artist].firstAlbum.name; 
+                    }
+                }
+            }
+        }
+        
+        $('#epoch_result').text(part1 + oldestYear + part2 + oldestArtist + part3 + oldestAlbum);
     }
     
     function getStyleText () {
