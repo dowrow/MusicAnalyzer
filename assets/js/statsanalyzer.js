@@ -3,6 +3,7 @@ define (['jquery', 'aggregate'], function ($, aggregate) {
     var stats = {};
     
     function build (statsParam) {
+        
         stats = statsParam;
     }
     
@@ -13,7 +14,6 @@ define (['jquery', 'aggregate'], function ($, aggregate) {
         var age = 40;
         
         $('#age_result').text(part1 + age + part2);
-       
     }
     
     function getEpochText () {
@@ -27,17 +27,21 @@ define (['jquery', 'aggregate'], function ($, aggregate) {
         var album = "Nevermind";
         
         $('#epoch_result').text(part1 + year + part2 + artist + part3 + album);
-       
     }
     
     function getStyleText () {
-        $('#style_result').text("Escuchas la misma música que una persona de 40 años.");
-       
+        
+        var part1 = $('#result-style').val();
+        var styles = "Estilo, otro, otro";
+        
+        $('#style_result').text(part1 + styles);
     }
     
     function getSimilarText () {
-        $('#similar_result').text("Escuchas la misma música que una persona de 40 años.");
-       
+        var part1 = $('#result-similar').val();
+        var similar = "Uno, dos, tres";
+        
+        $('#similar_result').text("Escuchas la misma música que una persona de 40 años.");     
     }
     
     return {
