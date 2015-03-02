@@ -149,6 +149,13 @@ define (['jquery', 'facebook', 'LastFMProxy', 'aggregate'], function ($, faceboo
         
         $('#process').hide();
         $('#results').removeClass('hidden');
+        $('#results').animate({
+            maxHeight: '1000px',
+            opacity:1
+        },{
+            duration: 1000
+        });
+            
     }
     
     function selectTopRated (artists, n) {
