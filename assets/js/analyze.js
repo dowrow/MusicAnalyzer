@@ -128,7 +128,7 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer'], function ($, fac
         // Get stats for the popped artist and then continue
         LastFMProxy.getStats(artist.id, artist.name, artistCallback, albumCallback, fanCallback, tagCallback, similarCallback, function (stats) { 
             updateProgress();
-            artistStats[artist.name] = stats;
+            artistStats[artist.name] = JSON.parse(stats);
             getStats(artists, callback);
             
         });
