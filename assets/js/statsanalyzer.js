@@ -1,6 +1,6 @@
 define (['jquery', 'aggregate'], function ($, aggregate) {
     
-    var stats = {};
+    var stats = [];
     
     function build (statsParam) {
         
@@ -11,7 +11,19 @@ define (['jquery', 'aggregate'], function ($, aggregate) {
         
         var part1 = $('#result-age-1').val();
         var part2 = $('#result-age-2').val();
-        var age = 40;
+        var age = 0;
+        var count = 0;
+        
+        // Average fan age
+        for (var artist in stats) {
+            if (stats.hasOwnProperty(artist)) {
+                if (stats[artist].age !== "-1") {
+                    age += stats[artist].age; 
+                    count++;
+                }
+            }
+        }
+        age = Math.round(age / count);
         
         $('#age_result').text(part1 + age + part2);
     }
