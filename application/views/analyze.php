@@ -63,9 +63,9 @@
             <!-- TEMPLATE -->
             
             <div class="hidden" id="results">
-                <div class="jumbotron">
+                 <div class="jumbotron">
                     <span class="icon"><span class="glyphicon glyphicon-user"></span></span>
-                    <p>Escuchas la misma música que una persona de 40 años.</p>
+                    <p id="age_result">Escuchas la misma música que una persona de 40 años.</p>
                     <span class="actions">
                          <a href="#">¿Cómo funciona?</a>
                          <button class="btn btn-primary btn-lg">Compartir</button>
@@ -74,7 +74,7 @@
 
                 <div class="jumbotron">
                      <span class="icon"><span class="glyphicon glyphicon-tags"></span></span>
-                     <p>Tus estilos favoritos son: Country, Rock, Indie</p>
+                     <p id="style_result">Tus estilos favoritos son: Country, Rock, Indie</p>
                      <span class="actions">
                          <a href="#">¿Cómo funciona?</a>
                          <button class="btn btn-primary btn-lg">Compartir</button>
@@ -83,7 +83,7 @@
 
                 <div class="jumbotron">
                      <span class="icon"><span class="glyphicon glyphicon-calendar"></span></span>
-                     <p>Te gustaría haber nacido en 1992 cuando Nirvana sacó su album «Bleach».</p>
+                     <p id="epoch_result">Te gustaría haber nacido en 1992 cuando Nirvana sacó su album «Bleach».</p>
                      <span class="actions">
                          <a href="#">¿Cómo funciona?</a>
                          <button class="btn btn-primary btn-lg">Compartir</button>
@@ -92,7 +92,7 @@
 
                 <div class="jumbotron">
                      <span class="icon"><span class="glyphicon glyphicon-heart"></span></span>
-                     <p>Seguro que estos artistas te encantarán: Justin Bieber, Za!, Madonna.</p>
+                     <p id="similar_result">Seguro que estos artistas te encantarán: Justin Bieber, Za!, Madonna.</p>
                      <span class="actions">
                          <a href="#">¿Cómo funciona?</a>
                          <button class="btn btn-primary btn-lg">Compartir</button>

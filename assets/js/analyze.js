@@ -6,7 +6,7 @@
  * @param {type} Aggregate Custom aggregation methods module
  * @returns {void}
  */
-define (['jquery', 'facebook', 'LastFMProxy', 'aggregate'], function ($, facebook, LastFMProxy, Aggregate) {
+define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer'], function ($, facebook, LastFMProxy, StatsAnalyzer) {
     
     // Stats object for every artist (associative array)
     var artistStats = [];
@@ -136,10 +136,13 @@ define (['jquery', 'facebook', 'LastFMProxy', 'aggregate'], function ($, faceboo
     
     function showResults() {
         
-        console.log('Stats:');
-        console.log(artistStats);
+        StatsAnalyzer.build(artistStats);
+
+        var ageText = StatsAnalyzer.getAgeText();
+        var epochText = StatsAnalyzer.getEpochText();
+        var styleText = StatsAnalyzer.getStyleText();
+        var similarText = StatsAnalyzer.getSimilarText();
         
-        // TODO: Insert text
         var tags = [];
         artistStats.forEach(function (stats) {
             stats.tags.forEach(function (tag) {
