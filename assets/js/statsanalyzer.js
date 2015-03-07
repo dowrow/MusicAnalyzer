@@ -69,15 +69,17 @@ define (['jquery', 'aggregate'], function ($, Aggregate) {
             if (stats.hasOwnProperty(artist)) {
                 if (stats[artist] !== 0 && stats[artist].tags.length > 0) {
                     for (var tag in stats[artist].tags) {
-                        tags.push(tag);
+                        tags.push(tag.name);
                     }
                 }
             }
         }
         console.log('tags:');
         console.log(tags);
-        Aggregate.sortByFrequency(tags);
-        
+        var sortedTags = Aggregate.sortByFrequency(tags);
+        console.log('sorted:');
+        console.log(sortedTags);
+        styles = sortedTags.splice(0,3).join(", ");
         return part1 + styles;
     }
     
