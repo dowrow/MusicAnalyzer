@@ -143,6 +143,11 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer'], function ($, fac
         var styleText = StatsAnalyzer.getStyleText();
         var similarText = StatsAnalyzer.getSimilarText();
         
+        $('#age_result').text(ageText);
+        $('#epoch_result').text(epochText);
+        $('#style_result').text(styleText);
+        $('#similar_result').text(similarText);
+       
         var tags = [];
         artistStats.forEach(function (stats) {
             stats.tags.forEach(function (tag) {

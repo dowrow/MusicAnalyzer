@@ -25,7 +25,7 @@ define (['jquery', 'aggregate'], function ($, aggregate) {
         }
         age = Math.round(age / count);
         
-        $('#age_result').text(part1 + age + part2);
+        return part1 + age + part2;
     }
     
     function getEpochText () {
@@ -53,7 +53,7 @@ define (['jquery', 'aggregate'], function ($, aggregate) {
             }
         }
         
-        $('#epoch_result').text(part1 + oldestYear + part2 + oldestArtist + part3 + oldestAlbum);
+        return part1 + oldestYear + part2 + oldestArtist + part3 + oldestAlbum;
     }
     
     function getStyleText () {
@@ -61,14 +61,14 @@ define (['jquery', 'aggregate'], function ($, aggregate) {
         var part1 = $('#result-style').val();
         var styles = "Estilo, otro, otro";
         
-        $('#style_result').text(part1 + styles);
+        return part1 + styles;
     }
     
     function getSimilarText () {
         var part1 = $('#result-similar').val();
         var similar = "Uno, dos, tres";
         
-        $('#similar_result').text(part1 + similar);     
+        return part1 + similar;
     }
     
     return {
