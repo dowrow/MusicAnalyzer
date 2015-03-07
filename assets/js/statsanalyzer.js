@@ -69,7 +69,7 @@ define (['jquery', 'aggregate'], function ($, Aggregate) {
             if (stats.hasOwnProperty(artist)) {
                 if (stats[artist] !== 0 && stats[artist].tags.length > 0) {
                     for (var tag in stats[artist].tags) {
-                        tags.add(tag);
+                        tags.push(tag);
                     }
                 }
             }
