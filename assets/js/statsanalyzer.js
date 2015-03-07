@@ -38,6 +38,8 @@ define (['jquery', 'aggregate'], function ($, aggregate) {
         var oldestArtist = "";
         var oldestAlbum = "";
         
+        console.log(stats);
+        
         // Look for the oldest album
         for (var artist in stats) {
             if (stats.hasOwnProperty(artist)) {

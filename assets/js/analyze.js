@@ -167,22 +167,11 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer'], function ($, fac
     }
     
     function selectTopRated (artists, n) {
-        var selected = [];
-        
-        console.log('Artists sin ordenar');
-        console.log(artists);
-        
         // Sort from more to less likes
         artists.sort(function (a, b) {
             return b.likes - a.likes;
         });
-        
-        selected = artists.splice(0,n);
-        
-        console.log('Ordenados');
-        console.log(selected);
-        
-        return selected; 
+        return artists.splice(0,n);
     }
     
     // DOM callbacks
