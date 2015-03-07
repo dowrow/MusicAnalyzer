@@ -45,11 +45,11 @@ define (['jquery', 'aggregate'], function ($, aggregate) {
             if (stats.hasOwnProperty(artist)) {
                 if (stats[artist] !== 0 && stats[artist].firstAlbum.length > 0) {
                     // If very old
-                    var releaseYear = (new Date(stats[artist].firstAlbum.date)).getFullYear();
+                    var releaseYear = (new Date(stats[artist].firstAlbum[0].date)).getFullYear();
                     if (releaseYear < oldestYear) {
                         oldestYear = releaseYear;
                         oldestArtist = artist;
-                        oldestAlbum = stats[artist].firstAlbum.name; 
+                        oldestAlbum = stats[artist].firstAlbum[0].name; 
                     }
                 }
             }
