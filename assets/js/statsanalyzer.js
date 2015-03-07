@@ -1,4 +1,4 @@
-define (['jquery', 'aggregate'], function ($, aggregate) {
+define (['jquery', 'aggregate'], function ($, Aggregate) {
     
     var stats = [];
     
@@ -62,6 +62,21 @@ define (['jquery', 'aggregate'], function ($, aggregate) {
         
         var part1 = $('#result-style').val();
         var styles = "Estilo, otro, otro";
+        
+        // Get all the tags
+        var tags = [];
+        for (var artist in stats) {
+            if (stats.hasOwnProperty(artist)) {
+                if (stats[artist] !== 0 && stats[artist].tags.length > 0) {
+                    for (var tag in stats[artist].tags) {
+                        tags.add(tag);
+                    }
+                }
+            }
+        }
+        console.log('tags:');
+        console.log(tags);
+        Aggregate.sortByFrequency(tags);
         
         return part1 + styles;
     }
