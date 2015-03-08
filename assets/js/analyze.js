@@ -136,24 +136,26 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer'], function ($, fac
     
     function showResults() {
         
+        // Analyze the stats
         StatsAnalyzer.build(artistStats);
-
+        
+        // Get the results text
         var ageText = StatsAnalyzer.getAgeText();
         var epochText = StatsAnalyzer.getEpochText();
         var styleText = StatsAnalyzer.getStyleText();
         var similarText = StatsAnalyzer.getSimilarText();
         
+        // Print the resutls
         $('#age_result').text(ageText);
         $('#epoch_result').text(epochText);
         $('#style_result').text(styleText);
         $('#similar_result').text(similarText);
-       
-        var tags = [];
-        artistStats.forEach(function (stats) {
-            stats.tags.forEach(function (tag) {
-                tags.push(tag);
-            });
-        });
+        
+        // Add sharing event handlers shareResult('prueba');
+        $('#share_age').click(function () { shareResult(ageText); });
+        $('#share_epoch').click(function () { shareResult(epochText); });
+        $('#share_style').click(function () { shareResult(styleText); });
+        $('#share_similar').click(function () { shareResult(similarText); });
         
         $('#process').hide();
         $('#results').removeClass('hidden');
@@ -201,8 +203,6 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer'], function ($, fac
     
     // DOM callbacks
     $(document).ready(function () {
-        
-        shareResult('prueba');
         
         // Get user artists
         getArtists(function (artists) {

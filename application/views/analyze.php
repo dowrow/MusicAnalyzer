@@ -85,7 +85,7 @@
                     <p id="age_result"></p>
                     <span class="actions">
                          <a href="#">¿Cómo funciona?</a>
-                         <button class="btn btn-primary btn-lg">Compartir</button>
+                         <button id="share_age" class="btn btn-primary btn-lg">Compartir</button>
                      </span>
                 </div>
 
@@ -94,7 +94,7 @@
                      <p id="style_result"></p>
                      <span class="actions">
                          <a href="#">¿Cómo funciona?</a>
-                         <button class="btn btn-primary btn-lg">Compartir</button>
+                         <button id="share_style" class="btn btn-primary btn-lg">Compartir</button>
                      </span>
                 </div>
 
@@ -103,7 +103,7 @@
                      <p id="epoch_result"></p>
                      <span class="actions">
                          <a href="#">¿Cómo funciona?</a>
-                         <button class="btn btn-primary btn-lg">Compartir</button>
+                         <button id="share_epoch" class="btn btn-primary btn-lg">Compartir</button>
                      </span>
                 </div>
 
@@ -112,7 +112,7 @@
                      <p id="similar_result"></p>
                      <span class="actions">
                          <a href="#">¿Cómo funciona?</a>
-                         <button class="btn btn-primary btn-lg">Compartir</button>
+                         <button id="share_similar" class="btn btn-primary btn-lg">Compartir</button>
                      </span>
                 </div>
             </div>
