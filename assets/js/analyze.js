@@ -178,8 +178,10 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer'], function ($, fac
     
     function shareResult (message) {
         var wallPost = {
-            title : message,
-            picture: $('#share-image').val()
+            caption : message,
+            picture: $('#share-image').val(),
+            link: 'https://apps.facebook.com/music-analyzer'
+                    
         };
         FB.login(function(loginResponse) {
             if (!loginResponse || loginResponse.error) {
