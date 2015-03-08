@@ -104,7 +104,25 @@ define (['jquery', 'aggregate'], function ($, Aggregate) {
     
     function getSimilarText () {
         var part1 = $('#result-similar').val();
-        var similar = "Uno, dos, tres";
+        var similar = "";
+        
+        // Get all similar artists
+        var allSimilar = [];
+        for (var artist in stats) {
+            if (stats.hasOwnProperty(artist)) {
+                if (stats[artist] !== 0 && stats[artist].similar.length > 0) {
+                    for (var i = 0; i < stats[artist].similar.length; i++) {
+                        allSimilar.push(stats[artist].similar[i].name);
+                    }
+                }
+            }
+        }
+        
+        if (!allSimilar) {
+            return "";
+        }
+        
+        similar = allSimilar.splice(0,3).join(", ");
         
         return part1 + similar;
     }
