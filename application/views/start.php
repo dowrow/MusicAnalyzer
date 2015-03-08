@@ -22,7 +22,6 @@
             <br/>
             <div class="progress">
                 <div id="appProgress" class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
-                    <span class="sr-only">60% Complete</span>
                 </div>
             </div>
             
@@ -38,6 +37,7 @@
                 </h1>
                 <p class="lead"><?php echo $this->lang->line('start_description'); ?></p>
                 <p><a id="start" class="btn btn-primary btn-lg" href="javascript:void(0);" role="button"><?php echo $this->lang->line('start_button'); ?></a></p>
+                <img id="loading" class="hidden center-block" src="assets/img/loading.gif" alt="Loading..."/>
             </div>
             
             <!-- Like button -->

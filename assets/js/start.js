@@ -26,6 +26,7 @@ define (['jquery', 'facebook'], function ($, facebook) {
     function onStartClick () {
         checkLoginState();
         $('#start').animate({opacity:0},{duration: 500});
+        $('#loading').removeClass('hidden');
     }
 
     // Attach callbacks
