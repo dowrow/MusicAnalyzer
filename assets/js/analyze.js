@@ -178,7 +178,7 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer'], function ($, fac
     
     function shareResult (message) {
         var wallPost = {
-            caption : message,
+            name : message,
             picture: $('#share-image').val(),
             link: 'https://apps.facebook.com/music-analyzer'
                     
