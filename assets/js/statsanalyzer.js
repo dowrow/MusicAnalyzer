@@ -74,12 +74,31 @@ define (['jquery', 'aggregate'], function ($, Aggregate) {
                 }
             }
         }
-        console.log('tags:');
-        console.log(tags);
+        
+        // If no tags
+        if (!tags.length) {
+            return $('#result-no-style').val();
+        }
+        
         var sortedTags = Aggregate.sortByFrequency(tags);
-        console.log('sorted:');
-        console.log(sortedTags);
-        styles = sortedTags.splice(0,3).join(", ");
+        
+        // If all tags have the same freq choose the longest
+        if (sortedTags[0][1] === 1) {
+            
+            var longestTags = tags.sort(function (a,b) {
+                return b.length - a.length;
+            });
+            longestTags.splice(0,3).join(", ");
+            
+        } else { // Otherwise take the most frequent
+            
+            var frequentTags = [];
+            for (var i = 0; i < longestTags.length; i++) {
+                frequentTags.push(longestTags[i][0]);
+            }
+            styles = frequentTags.splice(0,3).join(", ");
+        }
+        
         return part1 + styles;
     }
     

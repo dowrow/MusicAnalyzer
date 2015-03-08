@@ -68,6 +68,7 @@
                 <input id="result-epoch-2" type="hidden" value="<?php echo $this->lang->line('analyze_result_epoch_2'); ?>"/>
                 <input id="result-epoch-3" type="hidden" value="<?php echo $this->lang->line('analyze_result_epoch_3'); ?>"/>
                 <input id="result-style" type="hidden" value="<?php echo $this->lang->line('analyze_result_style'); ?>"/>
+                <input id="result-no-style" type="hidden" value="<?php echo $this->lang->line('analyze_result_no_style'); ?>"/>
                 <input id="result-similar" type="hidden" value="<?php echo $this->lang->line('analyze_result_similar'); ?>"/>
                 
                 <!-- End of hidden inputs -->
