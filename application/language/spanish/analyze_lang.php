@@ -2,7 +2,7 @@
 
 // ES
 $lang['analyze_title'] = "Analizando tus gustos";
-$lang['analyze_description'] = "Descubre lo que tu m&uacutesica dice de ti.";
+$lang['analyze_description'] = "Descubre lo que tu música dice de ti.";
 $lang['analyze_share_image'] = "https://music-analyzer.herokuapp.com/assets/img/share_image_es.jpg";
 
 $lang['analyze_status'] = "Buscando datos sobre";
@@ -21,5 +21,5 @@ $lang['analyze_result_no_style'] = "No pudimos determinar qué estilos te gustan
 $lang['analyze_result_epoch_1'] = "Te gustaría haber nacido en ";
 $lang['analyze_result_epoch_2'] = " cuando ";
 $lang['analyze_result_epoch_3'] = " sacó su album ";
-$lang['analyze_result_similar'] = "Seguro que también te gusta: ";
+$lang['analyze_result_similar'] = "Seguro que también te gustan: ";
 
