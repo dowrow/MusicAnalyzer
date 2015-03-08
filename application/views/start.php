@@ -46,7 +46,6 @@
                 <p class="lead"><?php echo $this->lang->line('start_description'); ?></p>
                 <p><a id="start" class="btn btn-primary btn-lg" href="javascript:void(0);" role="button"><?php echo $this->lang->line('start_button'); ?></a></p>
                 <img id="loading" class="hidden center-block" src="assets/img/loading.gif" alt="Loading..."/>
-                <img src="assets/img/share_image_en.jpg" alt="share"></img>
             </div>
             
             <!-- Like button -->
