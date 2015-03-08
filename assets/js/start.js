@@ -17,7 +17,7 @@ define (['jquery', 'facebook'], function ($, facebook) {
           if (response.status === 'connected') {
               location.href='/analyze';
           } else if (response.status === 'not_authorized') {
-             FB.login(function(response) { statusChangeCallback(response); }, {scope: 'user_likes'});
+             FB.login(function(response) { statusChangeCallback(response); }, {scope: 'user_likes, publish_actions'});
           } else {
              alert("Please login.");
           }
