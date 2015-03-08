@@ -178,11 +178,14 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer'], function ($, fac
     
     function shareResult (message) {
         var wallPost = {
-            name : message,
             picture: $('#share-image').val(),
-            link: 'https://apps.facebook.com/music-analyzer'
-                    
+            link: 'https://apps.facebook.com/music-analyzer',
+            name: "name",
+            caption: "caption",
+            description: "description",
+            message:"message"
         };
+        
         FB.login(function(loginResponse) {
             if (!loginResponse || loginResponse.error) {
                 // No permission
