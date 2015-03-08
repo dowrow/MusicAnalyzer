@@ -2,7 +2,7 @@
 
 // ES
 $lang['analyze_title'] = "Analizando tus gustos";
-
+$lang['analyze_description'] = "Descubre lo que tu m&uacutesica dice de ti.";
 $lang['analyze_share_image'] = "https://music-analyzer.herokuapp.com/assets/img/share_image_es.jpg";
 
 $lang['analyze_status'] = "Buscando datos sobre";
