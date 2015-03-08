@@ -182,6 +182,7 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer'], function ($, fac
         FB.api('/me/feed', 'post', wallPost , function(response) {
           if (!response || response.error) {
             console.log('Hubo un error');
+            console.log(response);
           } else {
             console.log('Posteado correctamente');
           }
