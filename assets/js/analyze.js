@@ -183,7 +183,7 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer'], function ($, fac
             link: 'https://apps.facebook.com/music-analyzer',
             name: message,
             caption: "music-analyzer.herokuapp.com",
-            description: $('#description').val()
+            description: $('<div>').text($('#description').val()).text()
         };
         
         FB.ui(wallPost);
