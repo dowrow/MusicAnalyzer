@@ -22,11 +22,15 @@ define (['jquery', 'facebook'], function ($, facebook) {
              alert("Please login.");
           }
     }
+    
+    function onStartClick () {
+        checkLoginState();
+        $('#start').animate({opacity:0},{duration: 500});
+    }
 
     // Attach callbacks
-    
     $(document).ready(function () {
-        $('#start').click(checkLoginState);
+        $('#start').click(onStartClick);
         
     });
     
