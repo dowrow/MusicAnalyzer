@@ -178,7 +178,7 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer'], function ($, fac
     
     function shareResult (message) {
         var wallPost = {
-            message : message,
+            title : message,
             picture: $('#share-image').val()
         };
         FB.login(function(loginResponse) {
@@ -196,8 +196,6 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer'], function ($, fac
                 });
             }
         }, {scope: 'publish_actions'});
-        
-        
         
     }
     
