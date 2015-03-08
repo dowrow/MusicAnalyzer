@@ -61,7 +61,7 @@ define (['jquery', 'aggregate'], function ($, Aggregate) {
     function getStyleText () {
         
         var part1 = $('#result-style').val();
-        var styles = "Estilo, otro, otro";
+        var styles = "";
         
         // Get all the tags
         var tags = [];
@@ -88,7 +88,7 @@ define (['jquery', 'aggregate'], function ($, Aggregate) {
             var longestTags = tags.sort(function (a,b) {
                 return b.length - a.length;
             });
-            longestTags.splice(0,3).join(", ");
+            styles = longestTags.splice(0,3).join(", ");
             
         } else { // Otherwise take the most frequent
             

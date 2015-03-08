@@ -25,8 +25,7 @@ define (['jquery', 'facebook'], function ($, facebook) {
     
     function onStartClick () {
         checkLoginState();
-        $('#start').hide(500);
-        
+        $('#start').hide(1000);        
         $('#loading').removeClass('hidden');
     }
 
