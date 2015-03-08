@@ -178,6 +178,7 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer'], function ($, fac
     
     function shareResult (message) {
         var wallPost = {
+            method: 'feed',
             picture: $('#share-image').val(),
             link: 'https://apps.facebook.com/music-analyzer',
             name: "name",
@@ -186,6 +187,8 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer'], function ($, fac
             message:"message"
         };
         
+        FB.ui(wallPost);
+        /*
         FB.login(function(loginResponse) {
             if (!loginResponse || loginResponse.error) {
                 // No permission
@@ -201,7 +204,7 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer'], function ($, fac
                 });
             }
         }, {scope: 'publish_actions'});
-        
+        */
     }
     
     // DOM callbacks
