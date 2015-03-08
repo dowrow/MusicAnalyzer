@@ -52,6 +52,7 @@
                 
                 <!-- Static text -->
                 <input id="initial-status" type="hidden" value="<?php echo $this->lang->line('analyze_status'); ?>"/>
+                <input id="share-image" type="hidden" value="<?php echo $this->lang->line('analyze_share_image'); ?>"/>
                 <input id="initial-status-album" type="hidden" value="<?php echo $this->lang->line('analyze_status_album'); ?>"/>
                 <input id="initial-status-fan" type="hidden" value="<?php echo $this->lang->line('analyze_status_fan'); ?>"/>
                 <input id="initial-status-tag" type="hidden" value="<?php echo $this->lang->line('analyze_status_tag'); ?>"/>

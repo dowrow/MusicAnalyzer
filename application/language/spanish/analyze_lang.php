@@ -3,6 +3,8 @@
 // ES
 $lang['analyze_title'] = "Analizando tus gustos";
 
+$lang['analyze_share_image'] = "https://music-analyzer.herokuapp.com/assets/img/share_image_es.jpg";
+
 $lang['analyze_status'] = "Buscando datos sobre";
 $lang['analyze_status_album'] = "Buscando álbumes de";
 $lang['analyze_status_fan'] = "Buscando fans de";

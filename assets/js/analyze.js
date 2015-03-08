@@ -174,8 +174,24 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer'], function ($, fac
         return artists.splice(0,n);
     }
     
+    function shareResult (message) {
+        var wallPost = {
+            message : message,
+            picture: $('#share-image').val()
+        };
+        FB.api('/me/feed', 'post', wallPost , function(response) {
+          if (!response || response.error) {
+            console.log('Hubo un error');
+          } else {
+            console.log('Posteado correctamente');
+          }
+        });
+    }
+    
     // DOM callbacks
     $(document).ready(function () {
+        
+        shareResult('prueba');
         
         // Get user artists
         getArtists(function (artists) {
