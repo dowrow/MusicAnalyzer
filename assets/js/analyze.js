@@ -179,14 +179,24 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer'], function ($, fac
             message : message,
             picture: $('#share-image').val()
         };
-        FB.api('/me/feed', 'post', wallPost , function(response) {
-          if (!response || response.error) {
-            console.log('Hubo un error');
-            console.log(response);
-          } else {
-            console.log('Posteado correctamente');
-          }
-        });
+        FB.login(function(loginResponse) {
+            if (!loginResponse || loginResponse.error) {
+                // No permission
+                console.log('Login error');
+            } else {
+                FB.api('/me/feed', 'post', wallPost , function(response) {
+                    if (!response || response.error) {
+                        console.log('Hubo un error');
+                        console.log(response);
+                    } else {
+                        console.log('Posteado correctamente');
+                    }
+                });
+            }
+        }, {scope: 'publish_actions'});
+        
+        
+        
     }
     
     // DOM callbacks
