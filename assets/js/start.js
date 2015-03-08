@@ -25,14 +25,21 @@ define (['jquery', 'facebook'], function ($, facebook) {
     
     function onStartClick () {
         checkLoginState();
-        $('#start').hide(1000);        
-        $('#loading').removeClass('hidden');
+        $('#start').animate({
+            opacity:0
+        },{
+            duration: 1000,
+            complete: function () { 
+                $('#start').hide();
+                $('#loading').removeClass('hidden'); 
+            } 
+        });
+        
     }
 
     // Attach callbacks
     $(document).ready(function () {
         $('#start').click(onStartClick);
-        
     });
     
     
