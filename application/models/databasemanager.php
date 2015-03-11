@@ -89,7 +89,12 @@ class DatabaseManager extends CI_Model {
                     'name' => $name,
                     'facebookobjectid' => $facebookObject->id
                 ));
-            } 
+            } else {
+                // Insert name in Artists
+                $id = $this->Artist_model->insert(array(
+                    'name' => $name
+                ));
+            }
         }
         
         // Already inserted?
