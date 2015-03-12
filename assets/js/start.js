@@ -6,7 +6,7 @@ define (['jquery', 'facebook'], function ($, facebook) {
         xfbml      : true,
         status     : true,
         cookie     : true,
-        version    : 'v2.1'
+        version    : 'v2.2'
     });
 
     function checkLoginState() {
