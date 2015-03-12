@@ -186,25 +186,7 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer'], function ($, fac
             caption: "music-analyzer.herokuapp.com",
             description: $('#description').val()
         };
-        
         FB.ui(wallPost);
-        /*
-        FB.login(function(loginResponse) {
-            if (!loginResponse || loginResponse.error) {
-                // No permission
-                console.log('Login error');
-            } else {
-                FB.api('/me/feed', 'post', wallPost , function(response) {
-                    if (!response || response.error) {
-                        console.log('Hubo un error');
-                        console.log(response);
-                    } else {
-                        console.log('Posteado correctamente');
-                    }
-                });
-            }
-        }, {scope: 'publish_actions'});
-        */
     }
     
     // DOM callbacks
@@ -221,7 +203,7 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer'], function ($, fac
                     document.location = '/';
                 });   
             }
-            // If too much musicians
+            // If too much musicians  select the top 10 sorting by likes count
             if (artists.length > MAX_ARTISTS) {
                 artists = selectTopRated(artists, MAX_ARTISTS);
             }
