@@ -16,13 +16,19 @@ class Stats extends CI_Model {
     }
     
     /*
-     * Returns JSON string with stats or 0 if error
+     * Returns JSON string with stats
+     * 0 if not in fb
      */
     public function getStats ($artist) {
         
-        // Test if exists in DB
+        // 0 -> Error code for "NOT IN DB"
         if (!$this->isInDB($artist)) {
             return 0;
+        }
+        
+        // 1 -> Error code for "DOESN'T HAVE LASTFM INFO"
+        if (!$this->hasLastFM($artist)) {
+            return 1;
         }
         
         $averageFanAge = $this->getAverageFanAge($artist);
@@ -40,15 +46,20 @@ class Stats extends CI_Model {
         return $stats;
     }
     
-    private function isInDB ($artist) {
-        
+    private function hasLastFM ($artist) {
         $this->db->select('*');
         $this->db->from('artists');
         $this->db->join('lastfmartists', 'artists.lastfmartistid = lastfmartists.id');
-        //$this->db->where('artists.name', $artist);
         $this->db->like('LOWER(artists.name)', strtolower($artist));
         $query = $this->db->get();
-
+        return count($query->result()) != 0;
+    }
+    
+    private function isInDB ($artist) {
+        $this->db->select('*');
+        $this->db->from('artists');
+        $this->db->like('LOWER(artists.name)', strtolower($artist));
+        $query = $this->db->get();
         return count($query->result()) != 0;
     }
     

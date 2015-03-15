@@ -17,7 +17,7 @@ define (['jquery', 'aggregate'], function ($, Aggregate) {
         // Average fan age
         for (var artist in stats) {
             if (stats.hasOwnProperty(artist)) {
-                if (stats[artist] !== 0 && stats[artist].averageFanAge !== -1) {
+                if (stats[artist] !== 0 && stats[artist] !== 1 && stats[artist].averageFanAge !== -1) {
                     age += parseInt(stats[artist].averageFanAge); 
                     count++;
                 }
@@ -43,7 +43,7 @@ define (['jquery', 'aggregate'], function ($, Aggregate) {
         // Look for the oldest album
         for (var artist in stats) {
             if (stats.hasOwnProperty(artist)) {
-                if (stats[artist] !== 0 && stats[artist].firstAlbum.length > 0) {
+                if (stats[artist] !== 0  && stats[artist] !== 1 && stats[artist].firstAlbum.length > 0) {
                     // If very old
                     var releaseYear = (new Date(stats[artist].firstAlbum[0].date)).getFullYear();
                     if (releaseYear < oldestYear) {
@@ -67,7 +67,7 @@ define (['jquery', 'aggregate'], function ($, Aggregate) {
         var tags = [];
         for (var artist in stats) {
             if (stats.hasOwnProperty(artist)) {
-                if (stats[artist] !== 0 && stats[artist].tags.length > 0) {
+                if (stats[artist] !== 0  && stats[artist] !== 1 && stats[artist].tags.length > 0) {
                     for (var i = 0; i < stats[artist].tags.length; i++) {
                         tags.push(stats[artist].tags[i].name);
                     }
@@ -110,7 +110,7 @@ define (['jquery', 'aggregate'], function ($, Aggregate) {
         var allSimilar = [];
         for (var artist in stats) {
             if (stats.hasOwnProperty(artist)) {
-                if (stats[artist] !== 0 && stats[artist].similar.length > 0) {
+                if (stats[artist] !== 0  && stats[artist] !== 1 && stats[artist].similar.length > 0) {
                     for (var i = 0; i < stats[artist].similar.length; i++) {
                         allSimilar.push(stats[artist].similar[i].name);
                     }

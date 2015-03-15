@@ -362,12 +362,14 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
             if (stats !== '0') {
                 callback(stats);
                 return;
+            } 
+            if (stats !== '1') {
+                // Else retry after saving info
+                saveAll(pageid, artist, albumCallback, fanCallback, tagCallback, similarCallback, function () {
+                    getStats(artist, callback);
+                });    
             }
             
-            // Else retry after saving info
-            saveAll(pageid, artist, albumCallback, fanCallback, tagCallback, similarCallback, function () {
-                getStats(artist, callback);
-            });
         });
         
     }
