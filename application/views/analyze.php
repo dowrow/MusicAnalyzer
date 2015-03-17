@@ -66,13 +66,18 @@
                 <!-- Results text -->
                 <input id="result-age-1" type="hidden" value="<?php echo $this->lang->line('analyze_result_age_1'); ?>"/>
                 <input id="result-age-2" type="hidden" value="<?php echo $this->lang->line('analyze_result_age_2'); ?>"/>
+                <input id="result-no-age" type="hidden" value="<?php echo $this->lang->line('analyze_result_no_age'); ?>"/>
+                
                 <input id="result-epoch-1" type="hidden" value="<?php echo $this->lang->line('analyze_result_epoch_1'); ?>"/>
                 <input id="result-epoch-2" type="hidden" value="<?php echo $this->lang->line('analyze_result_epoch_2'); ?>"/>
                 <input id="result-epoch-3" type="hidden" value="<?php echo $this->lang->line('analyze_result_epoch_3'); ?>"/>
+                <input id="result-no-epoch" type="hidden" value="<?php echo $this->lang->line('analyze_result_no_epoch'); ?>"/>
+                
                 <input id="result-style" type="hidden" value="<?php echo $this->lang->line('analyze_result_style'); ?>"/>
                 <input id="result-no-style" type="hidden" value="<?php echo $this->lang->line('analyze_result_no_style'); ?>"/>
-                <input id="result-similar" type="hidden" value="<?php echo $this->lang->line('analyze_result_similar'); ?>"/>
                 
+                <input id="result-similar" type="hidden" value="<?php echo $this->lang->line('analyze_result_similar'); ?>"/>
+                <input id="result-no-similar" type="hidden" value="<?php echo $this->lang->line('analyze_result_no_similar'); ?>"/>
                 <!-- End of hidden inputs -->
                 
                 <p class="text-center" id="status"></p>

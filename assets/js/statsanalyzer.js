@@ -23,9 +23,15 @@ define (['jquery', 'aggregate'], function ($, Aggregate) {
                 }
             }
         }
-        age = Math.round(age / count);
         
-        return part1 + age + part2;
+        if (count > 0) {
+            age = Math.round(age / count);
+            return part1 + age + part2;
+        } else {
+            return $('#result-no-age').val();
+        }
+        
+        
     }
     
     function getEpochText () {
@@ -37,8 +43,6 @@ define (['jquery', 'aggregate'], function ($, Aggregate) {
         var oldestYear = (new Date()).getFullYear();
         var oldestArtist = "";
         var oldestAlbum = "";
-        
-        console.log(stats);
         
         // Look for the oldest album
         for (var artist in stats) {
@@ -55,7 +59,12 @@ define (['jquery', 'aggregate'], function ($, Aggregate) {
             }
         }
         
-        return part1 + oldestYear + part2 + oldestArtist + part3 + oldestAlbum;
+        if (oldestArtist !== "") {
+            return part1 + oldestYear + part2 + oldestArtist + part3 + oldestAlbum;
+        } else {
+            return $('#result-no-epoch').val();
+        }
+        
     }
     
     function getStyleText () {
@@ -118,11 +127,12 @@ define (['jquery', 'aggregate'], function ($, Aggregate) {
             }
         }
         
-        if (!allSimilar) {
-            return "";
+        if (!allSimilar.length) {
+            return $('#result-no-similar').val();
         }
         
         similar = allSimilar.splice(0,3).join(", ");
+        
         
         return part1 + similar;
     }

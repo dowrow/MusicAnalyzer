@@ -16,10 +16,16 @@ $lang['analyze_error_status'] = "No encontramos música entre tus likes.";
 
 $lang['analyze_result_age_1'] = "Escuchas la misma música que una persona de ";
 $lang['analyze_result_age_2'] = " años.";
+$lang['analyze_result_no_age'] = "No pudimos calcular tu edad musical.";
+
 $lang['analyze_result_style'] = "Tus estilos favoritos son: ";
-$lang['analyze_result_no_style'] = "No pudimos determinar qué estilos te gustan.";
+$lang['analyze_result_no_style'] = "Eres tan hipster que no pudimos determinar qué géneros te gustan.";
+
 $lang['analyze_result_epoch_1'] = "Te gustaría haber nacido en ";
 $lang['analyze_result_epoch_2'] = " cuando ";
 $lang['analyze_result_epoch_3'] = " sacó su album ";
-$lang['analyze_result_similar'] = "Seguro que también te gustan: ";
+$lang['analyze_result_no_epoch'] = "La música que te gusta es atemporal.";
 
+
+$lang['analyze_result_similar'] = "Seguro que también te gustan: ";
+$lang['analuze_result_no_similar'] = "No encontramos ningún artista similar a los que te gustan.";
