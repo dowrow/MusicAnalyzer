@@ -18,8 +18,8 @@ $lang['analyze_result_age_1'] = "You listen to the same music as an ";
 $lang['analyze_result_age_2'] = " years old person.";
 $lang['analyze_result_no_age'] = "We weren't able to calculate your musical age.";
 
-$lang['analyze_result_style'] = "Your favorite styles are: ";
-$lang['analyze_result_no_style'] = "We weren't able to determine what your favourite genres are.";
+$lang['analyze_result_style'] = "Your favorite genres are: ";
+$lang['analyze_result_no_style'] = "You are such a hipster we weren't able to determine what your favourite genres are.";
 
 $lang['analyze_result_epoch_1'] = "You wish you were born on ";
 $lang['analyze_result_epoch_2'] = " when ";

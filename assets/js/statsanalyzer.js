@@ -127,7 +127,7 @@ define (['jquery', 'aggregate'], function ($, Aggregate) {
             }
         }
         
-        if (!allSimilar.length) {
+        if (allSimilar.length === 0) {
             return $('#result-no-similar').val();
         }
         
