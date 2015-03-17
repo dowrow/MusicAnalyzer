@@ -27,4 +27,4 @@ $lang['analyze_result_epoch_3'] = " released the album ";
 $lang['analyze_result_no_epoch'] = "The music you like is atemporal.";
 
 $lang['analyze_result_similar'] = "You will surely like this too: ";
-$lang['analuze_result_no_similar'] = "We weren't able to find any artist similar to the ones you like.";
+$lang['analyze_result_no_similar'] = "We weren't able to find any artist similar to the ones you like.";
