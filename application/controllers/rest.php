@@ -35,7 +35,7 @@ class Rest extends CI_Controller {
         $image = $this->input->post('image', TRUE);
         $pageid = $this->input->post('pageid', TRUE);
         
-        if ($name == FALSE || $url == FALSE || $image == FALSE || $pageid == FALSE) {
+        if ($name === FALSE || $url === FALSE || $image === FALSE || $pageid === FALSE) {
             echo 'Missing arguments';
             return;
         }
@@ -54,7 +54,7 @@ class Rest extends CI_Controller {
         $url = $this->input->post('url', TRUE);
         $date = $this->input->post('date', TRUE);
         
-        if ($artist == FALSE || $album == FALSE || $url == FALSE || $date == FALSE) {
+        if ($artist === FALSE || $album === FALSE || $url === FALSE || $date === FALSE) {
             echo 'Missing arguments';
             return;
         }
@@ -72,7 +72,7 @@ class Rest extends CI_Controller {
         $age = $this->input->post('age', TRUE);
         $url = $this->input->post('url', TRUE);
         
-        if ($artist == FALSE || $age == FALSE || $url == FALSE) {
+        if ($artist === FALSE || $age === FALSE || $url === FALSE) {
             echo 'Missing arguments';
             return;
         }
@@ -90,7 +90,7 @@ class Rest extends CI_Controller {
         $name = $this->input->post('name', TRUE);
         $url = $this->input->post('url', TRUE);
         
-        if ($artist == FALSE || $name == FALSE || $url == FALSE) {
+        if ($artist === FALSE || $name === FALSE || $url === FALSE) {
             echo 'Missing arguments';
             return;
         }
@@ -110,7 +110,7 @@ class Rest extends CI_Controller {
         $url = $this->input->post('url', TRUE);
         $image =  $this->input->post('image', TRUE);
         
-        if ($artist == FALSE || $similar == FALSE || $url == FALSE || $image == FALSE) {
+        if ($artist === FALSE || $similar === FALSE || $url === FALSE || $image === FALSE) {
             echo 'Missing arguments';
             return;
         }
