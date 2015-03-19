@@ -19,7 +19,7 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
     
     // Save methods (using LastFM API + POST)
     function saveAll (pageid, artist, albumCallback, fanCallback, tagCallback, similarCallback, callback) {
-        saveArtist(pageid, artist, function() {
+            saveArtist(pageid, artist, function() {
             albumCallback(artist);
             saveAlbums(artist, function () {
                fanCallback(artist);
@@ -55,7 +55,16 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
         
         var callbacks = {
             success: successCallback,
-            error: callback
+            error: function () {
+                var data =  {
+                        name: artist,
+                        url: "",
+                        image: "",
+                        pageid: pageid
+                    };
+                var endpoint = '/rest/insertartist/';
+                $.post(endpoint, data, callback);
+            }
         };
 
         lastfm.artist.getInfo(query, callbacks);
