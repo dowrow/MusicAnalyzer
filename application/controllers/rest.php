@@ -34,7 +34,7 @@ class Rest extends CI_Controller {
         $url = $this->input->post('url', TRUE);
         $image = $this->input->post('image', TRUE);
         $pageid = $this->input->post('pageid', TRUE);
-        
+                
         if ($name === FALSE || $url === FALSE || $image === FALSE || $pageid === FALSE) {
             echo 'Missing arguments';
             return;

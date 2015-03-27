@@ -278,7 +278,7 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
         
         var callbacks = {
             success: successCallback,
-            error: function () { saveEveryTag(artist, fans, callback); }
+            error: function () { saveEveryTag(artist, tags, callback); }
         };
 
         lastfm.tag.getInfo(query, callbacks);
@@ -373,9 +373,6 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
                 return;
             } 
             if (stats !== '1') {
-                
-                console.log('debug stats: ');
-                console.log(stats);
                 
                 // Else retry after saving info
                 saveAll(pageid, artist, albumCallback, fanCallback, tagCallback, similarCallback, function () {
