@@ -28,7 +28,7 @@
                             <p id="modalText"></p>
                         </div>
                         <div class="modal-footer">
-                            <button id="modalOk" button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+                            <button id="modalOk" type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
                         </div>
                     </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->
