@@ -94,6 +94,11 @@
             
             <!-- Results template -->
             <div class="hidden" id="results">
+                
+                <h1 class="text-center">
+                    <?php echo $this->lang->line('analyze_results_title'); ?>
+                </h1>
+                
                  <div class="jumbotron">
                     <span class="icon"><span class="glyphicon glyphicon-user"></span></span>
                     <p id="age_result"></p>
