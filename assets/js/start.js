@@ -15,7 +15,11 @@ define (['jquery', 'facebook', 'analyze'], function ($, facebook, Analyze) {
     
     function statusChangeCallback(response) {
           if (response.status === 'connected') {
-              location.href='/analyze';
+              $.get('/analyze', function (res) {
+                    console.log('res');
+                    console.log(res);
+                    Analyze.startAnalyzing();
+                });
           } else if (response.status === 'not_authorized') {
              FB.login(function(response) { statusChangeCallback(response); }, {scope: 'user_likes'});
           } else {
@@ -31,11 +35,10 @@ define (['jquery', 'facebook', 'analyze'], function ($, facebook, Analyze) {
             duration: 1000,
             complete: function () { 
                 $('#start').hide();
-                $('#loading').removeClass('hidden'); 
+                $('#loading').removeClass('hidden');
             } 
         });
         
-        Analyze.startAnalyzing();
     }
 
     // Attach callbacks
