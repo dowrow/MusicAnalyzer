@@ -179,7 +179,7 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer'], function ($, fac
         $('#process').hide();
         $('#results').removeClass('hidden');
         $('#results').animate({
-            maxHeight: '1000px',
+            maxHeight: '1000000px',
             opacity:1
         },{
             duration: 1000
