@@ -23,13 +23,6 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer'], function ($, fac
      * @returns {undefined}
      */
     function getArtists(callback) {
-        FB.init({
-            appId      : '1468034890110746',
-            xfbml      : true,
-            status     : true,
-            cookie     : true,
-            version    : 'v2.1'
-        });
         
         // Try to login after init is complete
         FB.getLoginStatus(function(response){
