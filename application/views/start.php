@@ -27,6 +27,7 @@
     
         <div class="container">
             
+            <br/>
             <div class="progress">
                 <div id="appProgress" class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
                 </div>
@@ -92,6 +93,7 @@
                 <h1 class="text-center">
                     <?php echo $this->lang->line('analyze_results_title'); ?>
                 </h1>
+                <br/>
                 
                  <div class="jumbotron">
                     <span class="icon"><span class="glyphicon glyphicon-user"></span></span>
