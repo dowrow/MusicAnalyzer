@@ -1,5 +1,5 @@
 
-define (['jquery', 'facebook'], function ($, facebook) {
+define (['jquery', 'facebook', 'analyze'], function ($, facebook, Analyze) {
 
     FB.init({
         appId      : '1468034890110746',
@@ -35,12 +35,12 @@ define (['jquery', 'facebook'], function ($, facebook) {
             } 
         });
         
+        Analyze.startAnalyzing();
     }
 
     // Attach callbacks
     $(document).ready(function () {
         $('#start').click(onStartClick);
     });
-    
     
 });

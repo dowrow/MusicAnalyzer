@@ -59,6 +59,7 @@ require.config({
         LastFMProxy: 'lastfm.proxy',
         facebook: '//connect.facebook.net/en_US/all',
         aggregate: 'aggregate',
-        StatsAnalyzer: 'statsanalyzer'
+        StatsAnalyzer: 'statsanalyzer',
+        Analyze: 'analyze'
     }
 });

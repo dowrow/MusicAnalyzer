@@ -84,7 +84,7 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer'], function ($, fac
     }
     
     /**
-     * 
+     * Callback for showing status
      * @param {type} artist
      * @returns {undefined}
      */
@@ -92,28 +92,49 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer'], function ($, fac
         var initialStatus = $('#initial-status').val();
         $('#status').text(initialStatus + ' ' + artist + '...');
     }
-    
+    /**
+     * Callback for showing status
+     * @param {type} artist
+     * @returns {undefined}
+     */
     function albumCallback (artist) {
          var initialStatus = $('#initial-status-album').val();
         $('#status').text(initialStatus + ' ' + artist + '...');
     }
-    
+    /**
+     * Callback for showing status
+     * @param {type} artist
+     * @returns {undefined}
+     */
     function fanCallback (artist) {
         var initialStatus = $('#initial-status-fan').val();
         $('#status').text(initialStatus + ' ' + artist + '...');
     }
-    
+    /**
+     * Callback for showing status
+     * @param {type} artist
+     * @returns {undefined}
+     */
     function tagCallback (artist) {
         var initialStatus = $('#initial-status-tag').val();
         $('#status').text(initialStatus + ' ' + artist + '...');
     }
-    
+    /**
+     * Callback for showing status
+     * @param {type} artist
+     * @returns {undefined}
+     */
     function similarCallback (artist) {
         var initialStatus = $('#initial-status-similar').val();
         $('#status').text(initialStatus + ' ' + artist + '...');
     }
     
-    // Get stats one by one recursively and call a callback when finished
+    /**
+     * Get stats one by one recursively and call a callback when finished
+     * @param {array} artists
+     * @param {function} callback
+     * @returns {void}
+     */
     function getStats (artists, callback) {
         
         // Race end: empty array
@@ -135,6 +156,10 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer'], function ($, fac
         });
     }
     
+    /**
+     * Fill and show the results template
+     * @returns {void}
+     */
     function showResults() {
         
         // Analyze the stats
@@ -169,6 +194,12 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer'], function ($, fac
             
     }
     
+    /**
+     * Select the n artits with the most likes
+     * @param {type} artists
+     * @param {type} n
+     * @returns {@exp;artists@call;splice}
+     */
     function selectTopRated (artists, n) {
         // Sort from more to less likes
         artists.sort(function (a, b) {
@@ -177,6 +208,11 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer'], function ($, fac
         return artists.splice(0,n);
     }
     
+    /**
+     * Share a result to the Facebook timeline
+     * @param {type} message
+     * @returns {undefined}
+     */
     function shareResult (message) {
         var wallPost = {
             method: 'feed',
@@ -189,9 +225,12 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer'], function ($, fac
         FB.ui(wallPost);
     }
     
-    // DOM callbacks
-    $(document).ready(function () {
-        
+    /**
+     * Start the analysis
+     * @returns {undefined}
+     */
+    function startAnalyzing () {
+                
         // Get user artists
         getArtists(function (artists) {
             
@@ -215,6 +254,14 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer'], function ($, fac
                 showResults();
             });        
 
-        }); // Get user artists
-    }); // End document ready
+        });
+    }
+    
+    /**
+     * PUBLIC INTERFACE
+     */
+    return {
+        startAnalyzing: startAnalyzing
+    };
+    
 }); // End module
