@@ -27,13 +27,11 @@
     
         <div class="container">
             
-            <br/>
             <div class="progress">
                 <div id="appProgress" class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
                 </div>
             </div>
             
-            <br/>
             <div id="process" class="jumbotron text-center">
                 
                 <!-- App logo -->
@@ -52,8 +50,6 @@
                 <img id="loading" class="hidden center-block" src="assets/img/loading.gif" alt="Loading..."/>
                 
                 <!-- Analyze -->
-                
-                <br/> 
                 
                 <!-- Hidden inputs to store location-dependent text -->
                 
@@ -89,8 +85,6 @@
                 <!-- End of hidden inputs -->
                 
             </div>
-            
-            <br/>
             
             <!-- Results template -->
             <div class="hidden" id="results">
@@ -137,6 +131,7 @@
             </div>
                         
             <!-- Like button -->
+            <br/>
             <div class="fb-like" data-href="https://apps.facebook.com/music-analyzer" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
         
         </div>
