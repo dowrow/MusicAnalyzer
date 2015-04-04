@@ -34,32 +34,31 @@
             </div>
             
             <br/>
-            <div class="jumbotron text-center">
+            <div id="process" class="jumbotron text-center">
+                
+                <!-- App logo -->
                 <span class="logo">
                     <span class="glyphicon glyphicon-search"></span>
                     <span class="glyphicon glyphicon-music"></span>
                 </span>
-                    
-                <h1>
+                
+                <!-- Title -->
+                <h1 id="title" class="text-center">
                     <?php echo $this->lang->line('start_title'); ?>
                 </h1>
-                <p class="lead"><?php echo $this->lang->line('start_description'); ?></p>
+                
+                <p class="lead text-center" id="status"><?php echo $this->lang->line('start_description'); ?></p>
                 <p><a id="start" class="btn btn-primary btn-lg" href="javascript:void(0);" role="button"><?php echo $this->lang->line('start_button'); ?></a></p>
                 <img id="loading" class="hidden center-block" src="assets/img/loading.gif" alt="Loading..."/>
-            </div>
-            
-            <br/>
-            
-            <div id="process" class="jumbotron">
                 
-                <h1 id="title" class="text-center">
-                    <?php echo $this->lang->line('analyze_title'); ?>
-                </h1>
+                <!-- Analyze -->
+                
                 <br/> 
                 
                 <!-- Hidden inputs to store location-dependent text -->
                 
                 <!-- Static text -->
+                <input id="analyze-title" type="hidden" value="<?php echo $this->lang->line('analyze_title'); ?>"/>
                 <input id="initial-status" type="hidden" value="<?php echo $this->lang->line('analyze_status'); ?>"/>
                 <input id="description" type="hidden" value="<?php echo $this->lang->line('analyze_description'); ?>"/>
                 <input id="share-image" type="hidden" value="<?php echo $this->lang->line('analyze_share_image'); ?>"/>
@@ -89,11 +88,11 @@
                 <input id="result-no-similar" type="hidden" value="<?php echo $this->lang->line('analyze_result_no_similar'); ?>"/>
                 <!-- End of hidden inputs -->
                 
-                <p class="text-center" id="status"></p>
-                <img id="loading" class="center-block" src="assets/img/loading.gif" alt="Loading..."/>
             </div>
-            <!-- TEMPLATE -->
             
+            <br/>
+            
+            <!-- Results template -->
             <div class="hidden" id="results">
                  <div class="jumbotron">
                     <span class="icon"><span class="glyphicon glyphicon-user"></span></span>
