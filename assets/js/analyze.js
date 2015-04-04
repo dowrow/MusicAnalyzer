@@ -223,7 +223,10 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer'], function ($, fac
      * @returns {undefined}
      */
     function startAnalyzing () {
-                
+        
+        // Set title
+        $('#title').text($('#analyze-title').val());
+        
         // Get user artists
         getArtists(function (artists) {
             

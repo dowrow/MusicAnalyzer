@@ -37,7 +37,7 @@
             <div id="process" class="jumbotron text-center">
                 
                 <!-- App logo -->
-                <span class="logo">
+                <span id="logo" class="logo">
                     <span class="glyphicon glyphicon-search"></span>
                     <span class="glyphicon glyphicon-music"></span>
                 </span>

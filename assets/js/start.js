@@ -27,6 +27,20 @@ define (['jquery', 'facebook', 'analyze'], function ($, facebook, Analyze) {
     
     function onStartClick () {
         checkLoginState();
+        
+        // Hide logo
+        $('#logo').animate({
+            opacity:0,
+            height:0,
+            width:0
+        },{
+            duration: 1000,
+            complete: function () { 
+                $('#logo').hide();
+            } 
+        });
+        
+        // Hide button
         $('#start').animate({
             opacity:0
         },{
