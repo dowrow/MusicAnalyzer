@@ -23,7 +23,7 @@ $lang['analyze_error_status'] = "We were unable to find music among your likes."
 
 $lang['analyze_results_title'] = "Your results";
 
-$lang['analyze_result_age_1'] = "You listen to the same music as an ";
+$lang['analyze_result_age_1'] = "You listen to the same music as a ";
 $lang['analyze_result_age_2'] = "-year-old person.";
 $lang['analyze_result_no_age'] = "We weren't able to calculate your musical age.";
 

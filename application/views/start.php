@@ -99,8 +99,8 @@
                     <span class="icon"><span class="glyphicon glyphicon-user"></span></span>
                     <p id="age_result"></p>
                     <span class="actions">
-                         <a href="#">¿Cómo funciona?</a>
-                         <button id="share_age" class="btn btn-primary btn-lg">Compartir</button>
+                         <a href="#"><?php echo $this->lang->line('how_button'); ?></a>
+                         <button id="share_age" class="btn btn-primary btn-lg"><?php echo $this->lang->line('share_button'); ?></button>
                      </span>
                 </div>
 
@@ -108,8 +108,8 @@
                      <span class="icon"><span class="glyphicon glyphicon-tags"></span></span>
                      <p id="style_result"></p>
                      <span class="actions">
-                         <a href="#">¿Cómo funciona?</a>
-                         <button id="share_style" class="btn btn-primary btn-lg">Compartir</button>
+                         <a href="#"><?php echo $this->lang->line('how_button'); ?></a>
+                         <button id="share_style" class="btn btn-primary btn-lg"><?php echo $this->lang->line('share_button'); ?></button>
                      </span>
                 </div>
 
@@ -117,8 +117,8 @@
                      <span class="icon"><span class="glyphicon glyphicon-calendar"></span></span>
                      <p id="epoch_result"></p>
                      <span class="actions">
-                         <a href="#">¿Cómo funciona?</a>
-                         <button id="share_epoch" class="btn btn-primary btn-lg">Compartir</button>
+                         <a href="#"><?php echo $this->lang->line('how_button'); ?></a>
+                         <button id="share_epoch" class="btn btn-primary btn-lg"><?php echo $this->lang->line('share_button'); ?></button>
                      </span>
                 </div>
 
@@ -126,8 +126,8 @@
                      <span class="icon"><span class="glyphicon glyphicon-heart"></span></span>
                      <p id="similar_result"></p>
                      <span class="actions">
-                         <a href="#">¿Cómo funciona?</a>
-                         <button id="share_similar" class="btn btn-primary btn-lg">Compartir</button>
+                         <a href="#"><?php echo $this->lang->line('how_button'); ?></a>
+                         <button id="share_similar" class="btn btn-primary btn-lg"><?php echo $this->lang->line('share_button'); ?></button>
                      </span>
                 </div>
             </div>
