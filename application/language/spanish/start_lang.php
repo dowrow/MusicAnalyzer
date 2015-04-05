@@ -1,6 +1,5 @@
 <?php
 
-
 $lang['start_title'] = "Análisis Musical";
 $lang['start_description'] = "Descubre lo que tu música dice de ti.";
 $lang['start_button'] = "Empezar";
@@ -34,6 +33,13 @@ $lang['analyze_result_epoch_2'] = " cuando ";
 $lang['analyze_result_epoch_3'] = " sacó su album ";
 $lang['analyze_result_no_epoch'] = "La música que te gusta es atemporal.";
 
-
 $lang['analyze_result_similar'] = "Seguro que también te gustan: ";
 $lang['analyze_result_no_similar'] = "No encontramos ningún artista similar a los que te gustan.";
+
+$lang['share_button'] = "Compartir";
+$lang['how_button'] = "¿Cómo funciona?";
+
+$lang['how_age'] = "Buscamos los fans de cada artista que te gusta y promediamos sus edades.";
+$lang['how_style'] = "Buscamos los géneros de cada artista que te gusta y los agregamos.";
+$lang['how_epoch'] = "Buscamos el album más antiguo de los artistas que te gustan.";
+$lang['how_similar'] = "Utilizamos las recomendaciones de Last.fm.";
