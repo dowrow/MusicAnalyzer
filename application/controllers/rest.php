@@ -1,19 +1,28 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+/**
+ * Public interface for REST services
+ */
 class Rest extends CI_Controller {
-
+    
     public function __construct() {
         parent::__construct();
         $this->load->model('Stats');
         $this->load->model('DatabaseManager');
     }
     
-    // Default
+    /**
+     * By default show status text
+     */
     public function index() {
         echo 'REST API OK';
     }
     
-    // Get stats for given artist
+    
+    /**
+     * Get the stats of an artist
+     * @return type
+     */
     public function stats() {
         
         // Get parameter
@@ -26,7 +35,9 @@ class Rest extends CI_Controller {
         echo json_encode($this->Stats->getStats($parameter));
     }
     
-    // Insert an artist
+    /**
+     * Insert an artist 
+     */    
     public function insertArtist () {
         
         // Get parameters
@@ -45,7 +56,9 @@ class Rest extends CI_Controller {
         echo 'ok';
     }
     
-    // Insert an album
+    /**
+     * Insert an album
+     */
     public function insertAlbum () {
         
         // Get parameters
@@ -64,7 +77,9 @@ class Rest extends CI_Controller {
         echo 'ok';    
     }
     
-    // Insert a fan
+    /**
+     *  Insert a fan
+     */
     public function insertFan () {
        
         // Get parameters
@@ -82,7 +97,9 @@ class Rest extends CI_Controller {
         echo 'ok';     
     }
     
-    // Insert a tag
+    /**
+     * Insert a tag
+     */
     public function insertTag () {
         
         // Get parameters
@@ -101,7 +118,9 @@ class Rest extends CI_Controller {
         
     }
     
-    // Insert a similar artist
+    /**
+     * Insert a similar artist
+     */
     public function insertSimilar () {
         
         // Get parameters
@@ -120,5 +139,7 @@ class Rest extends CI_Controller {
         echo 'ok';     
     }
 
-    
+    public function friendStats () {
+        
+    }
 }

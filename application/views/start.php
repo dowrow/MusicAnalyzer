@@ -130,6 +130,8 @@
                          <button id="share_similar" class="btn btn-primary btn-lg"><?php echo $this->lang->line('share_button'); ?></button>
                      </span>
                 </div>
+                
+                <button id="invite">Invite Friends</button>
             </div>
                         
             <!-- Like button -->
