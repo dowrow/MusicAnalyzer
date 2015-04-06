@@ -67,7 +67,7 @@ define (['jquery', 'facebook', 'analyze'], function ($, facebook, Analyze) {
                     ['City', '2010 Population'],
                     ['New York City, NY', 8175000],
                     ['Los Angeles, CA', 3792000],
-                    ['Chicago, IL', 2695000],
+                    ['Chicago, IL', 2695000]
                   ]);
 
                   var options = {
