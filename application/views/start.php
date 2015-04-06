@@ -136,7 +136,7 @@
                 </h1>
                 
                 <div class="jumbotron">
-                    <button class="btn-lg text-right" id="invite">Invite Friends</button>
+                    <button class="btn btn-primary btn-lg text-right" id="invite">Invite Friends</button>
                 </div>
             </div>            
             <!-- Like button -->
