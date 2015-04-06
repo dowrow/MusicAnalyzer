@@ -137,7 +137,7 @@
                 
                 <div class="jumbotron">
                     
-                    <div id="likesChart"><div>
+                    <div id="likesChart"></div>
                     
                     <span class="actions">
                         <button class="btn btn-primary btn-lg text-right" id="invite">Invite Friends</button>
