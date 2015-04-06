@@ -136,6 +136,9 @@
                 </h1>
                 
                 <div class="jumbotron">
+                    
+                    <div id="likesChart"><div>
+                    
                     <span class="actions">
                         <button class="btn btn-primary btn-lg text-right" id="invite">Invite Friends</button>
                     </span>
@@ -151,7 +154,10 @@
 
         <!-- FB root -->
         <div id="fb-root"></div>
-        
+      
+        <!-- Google Charts -->
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+      
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 

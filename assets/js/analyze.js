@@ -11,6 +11,9 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer'], function ($, fac
     // Stats object for every artist (associative array)
     var artistStats = [];
     
+    // Stats for every friend who already used the app
+    var friendStats = [];
+    
     // Number of artists liked by the user
     var artistCount = 0;
 
