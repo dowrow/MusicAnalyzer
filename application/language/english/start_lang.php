@@ -22,6 +22,7 @@ $lang['analyze_error_title'] = "Looks like there's a problem";
 $lang['analyze_error_status'] = "We were unable to find music among your likes.";
 
 $lang['analyze_results_title'] = "Your results";
+$lang['analyze_friend_results_title'] = "Your friends results";
 
 $lang['analyze_result_age_1'] = "You listen to the same music as a ";
 $lang['analyze_result_age_2'] = "-year-old person.";

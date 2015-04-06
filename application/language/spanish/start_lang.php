@@ -20,6 +20,7 @@ $lang['analyze_error_title'] = "Parece que hubo un problema";
 $lang['analyze_error_status'] = "No encontramos música entre tus likes.";
 
 $lang['analyze_results_title'] = "Tus resultados";
+$lang['analyze_friend_results_title'] = "Resultados de amigos";
 
 $lang['analyze_result_age_1'] = "Escuchas la misma música que una persona de ";
 $lang['analyze_result_age_2'] = " años.";

@@ -131,7 +131,11 @@
                      </span>
                 </div>
                 
-                <button id="invite">Invite Friends</button>
+                <h1 class="text-center">
+                    <?php echo $this->lang->line('analyze_friend_results_title'); ?>
+                </h1>
+                
+                <button class="btn-lg" id="invite">Invite Friends</button>
             </div>
                         
             <!-- Like button -->
