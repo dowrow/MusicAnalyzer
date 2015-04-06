@@ -56,15 +56,14 @@ define (['jquery', 'facebook', 'analyze'], function ($, facebook, Analyze) {
         // Use FB.ui to send the Request(s)
         FB.ui({method: 'apprequests',
             title: 'Deberías probar esta app',
-            message: '\
-Check out this Awesome App!'
+            message: '\Check out this Awesome App!'
         }, function (){});
    }
     
     // Attach callbacks
     $(document).ready(function () {
         $('#start').click(onStartClick);
-        $('#invite').click();
+        $('#invite').click(inviteFriends);
     });
     
 });
