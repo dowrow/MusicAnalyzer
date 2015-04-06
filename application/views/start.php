@@ -135,9 +135,10 @@
                     <?php echo $this->lang->line('analyze_friend_results_title'); ?>
                 </h1>
                 
-                <button class="btn-lg text-right" id="invite">Invite Friends</button>
-            </div>
-                        
+                <div class="jumbotron">
+                    <button class="btn-lg text-right" id="invite">Invite Friends</button>
+                </div>
+            </div>            
             <!-- Like button -->
             <br/>
             <div class="fb-like" data-href="https://apps.facebook.com/music-analyzer" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
