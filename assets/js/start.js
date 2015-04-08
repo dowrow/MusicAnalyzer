@@ -97,7 +97,7 @@ define (['jquery', 'facebook', 'analyze'], function ($, facebook, Analyze) {
     $(document).ready(function () {
         $('#start').click(onStartClick);
         $('#invite').click(inviteFriends);
-        loadLikesChart();
+        //loadLikesChart();
     });
     
 });
