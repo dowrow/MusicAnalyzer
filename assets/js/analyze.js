@@ -187,8 +187,42 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer'], function ($, fac
         },{
             duration: 1000
         });
+        
+        loadLikesChart();
             
     }
+       function loadLikesChart () {
+            google.load('visualization', '1', {packages: ['corechart', 'bar']});
+            google.setOnLoadCallback(function () {
+                  var data = google.visualization.arrayToDataTable([
+                    ['City', '2010 Population'],
+                    ['New York City, NY', 8175000],
+                    ['Los Angeles, CA', 3792000],
+                    ['Chicago, IL', 2695000]
+                  ]);
+
+                  var options = {
+                    title: 'Population of Largest U.S. Cities',
+                    chartArea: {width: '50%'},
+                    hAxis: {
+                      title: 'Total Population',
+                      minValue: 0
+                    },
+                    vAxis: {
+                      title: 'City'
+                    },
+                      animation: {
+                          easing: 'out',
+                          delay: 1000,
+                          startup: true
+                     }
+                  };
+
+                  var chart = new google.visualization.BarChart(document.getElementById('likesChart'));
+                  chart.draw(data, options);
+                } 
+            );
+     }
     
     /**
      * Select the n artits with the most likes
