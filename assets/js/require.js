@@ -60,6 +60,7 @@ require.config({
         facebook: '//connect.facebook.net/en_US/all',
         aggregate: 'aggregate',
         StatsAnalyzer: 'statsanalyzer',
-        Analyze: 'analyze'
+        Analyze: 'analyze',
+        google: 'https://www.google.com/jsapi'
     }
 });
