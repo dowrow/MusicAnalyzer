@@ -193,7 +193,7 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer'], function ($, fac
     }
        function loadLikesChart () {
             google.load('visualization', '1', {packages: ['corechart', 'bar']});
-            google.setOnLoadCallback(function () {
+            /*google.setOnLoadCallback(function () {
                   var data = google.visualization.arrayToDataTable([
                     ['City', '2010 Population'],
                     ['New York City, NY', 8175000],
@@ -221,7 +221,7 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer'], function ($, fac
                   var chart = new google.visualization.BarChart(document.getElementById('likesChart'));
                   chart.draw(data, options);
                 } 
-            );
+            );*/
      }
     
     /**
