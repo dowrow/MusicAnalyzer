@@ -201,15 +201,15 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer'], function ($, fac
                     backgroundColor: '#eee'
                 },
                 title: {
-                    text: 'Musical likes'
+                    text: 'Likes musicales'
                 },
                 xAxis: {
-                    categories: ['Apples', 'Bananas', 'Oranges']
+                    categories: ['Javier Polo Picasso', 'Gerardo Castaño Recuero', 'Isabel Valdesquer']
                 },
                 yAxis: {
                 },
                 series: [{
-                    name: '# likes',
+                    name: 'Número de likes',
                     data: [10, 15, 63]
                 }]
             });
