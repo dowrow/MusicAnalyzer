@@ -198,7 +198,8 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer'], function ($, fac
         $('#likesChart').highcharts({
                 chart: {
                     type: 'bar',
-                    backgroundColor: '#eee'
+                    backgroundColor: '#eee',
+                    color: '#337ab7'
                 },
                 title: {
                     text: 'Likes musicales'
