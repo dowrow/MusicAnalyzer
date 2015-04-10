@@ -195,7 +195,7 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer', 'google'], functi
     
     function loadLikesChart () {
         $(function () { 
-        $('#container').highcharts({
+        $('#likesChart').highcharts({
                 chart: {
                     type: 'bar'
                 },
