@@ -199,7 +199,7 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer'], function ($, fac
                 chart: {
                     type: 'bar',
                     backgroundColor: '#eee',
-                    color: '#337ab7'
+                   
                 },
                 title: {
                     text: 'Likes musicales'
@@ -211,7 +211,8 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer'], function ($, fac
                 },
                 series: [{
                     name: 'Número de likes',
-                    data: [10, 15, 63]
+                    data: [10, 15, 63],
+                     color: '#337ab7'
                 }]
             });
         });
