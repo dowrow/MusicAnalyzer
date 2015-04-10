@@ -200,22 +200,19 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer'], function ($, fac
                     type: 'bar'
                 },
                 title: {
-                    text: 'Fruit Consumption'
+                    text: 'Musical likes'
                 },
                 xAxis: {
                     categories: ['Apples', 'Bananas', 'Oranges']
                 },
                 yAxis: {
                     title: {
-                        text: 'Fruit eaten'
+                        text: '# likes'
                     }
                 },
                 series: [{
                     name: 'Jane',
                     data: [1, 0, 4]
-                }, {
-                    name: 'John',
-                    data: [5, 7, 3]
                 }]
             });
         });
