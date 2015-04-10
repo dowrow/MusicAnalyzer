@@ -191,38 +191,35 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer', 'google'], functi
         loadLikesChart();
             
     }
-       function loadLikesChart () {
-            google.load('visualization', '1', {packages: ['corechart', 'bar']});
-            /*google.setOnLoadCallback(function () {
-                  var data = google.visualization.arrayToDataTable([
-                    ['City', '2010 Population'],
-                    ['New York City, NY', 8175000],
-                    ['Los Angeles, CA', 3792000],
-                    ['Chicago, IL', 2695000]
-                  ]);
-
-                  var options = {
-                    title: 'Population of Largest U.S. Cities',
-                    chartArea: {width: '50%'},
-                    hAxis: {
-                      title: 'Total Population',
-                      minValue: 0
-                    },
-                    vAxis: {
-                      title: 'City'
-                    },
-                      animation: {
-                          easing: 'out',
-                          delay: 1000,
-                          startup: true
-                     }
-                  };
-
-                  var chart = new google.visualization.BarChart(document.getElementById('likesChart'));
-                  chart.draw(data, options);
-                } 
-            );*/
-     }
+     
+    
+    function loadLikesChart () {
+        $(function () { 
+        $('#container').highcharts({
+                chart: {
+                    type: 'bar'
+                },
+                title: {
+                    text: 'Fruit Consumption'
+                },
+                xAxis: {
+                    categories: ['Apples', 'Bananas', 'Oranges']
+                },
+                yAxis: {
+                    title: {
+                        text: 'Fruit eaten'
+                    }
+                },
+                series: [{
+                    name: 'Jane',
+                    data: [1, 0, 4]
+                }, {
+                    name: 'John',
+                    data: [5, 7, 3]
+                }]
+            });
+        });
+    }
     
     /**
      * Select the n artits with the most likes
