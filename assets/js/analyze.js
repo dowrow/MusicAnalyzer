@@ -206,12 +206,9 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer'], function ($, fac
                     categories: ['Apples', 'Bananas', 'Oranges']
                 },
                 yAxis: {
-                    title: {
-                        text: '# likes'
-                    }
                 },
                 series: [{
-                    name: 'Jane',
+                    name: '# likes',
                     data: [1, 0, 4]
                 }]
             });
