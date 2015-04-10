@@ -57,3 +57,8 @@
 .actions a {
     margin-right:25px;
 }
+
+#likesChart {
+    width: 500px;
+    height: 500px;
+}
