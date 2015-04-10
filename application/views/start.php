@@ -89,10 +89,10 @@
             
             <!-- Results template -->
             <div class="hidden" id="results">
-                
                 <h1 class="text-center">
-                    <?php echo $this->lang->line('analyze_results_title'); ?>
+                    <?php echo $this->lang->line('analyze_friend_results_title'); ?>
                 </h1>
+                
                 <br/>
                 <div class="jumbotron">
                     
@@ -102,6 +102,10 @@
                         <button class="btn btn-primary btn-lg text-right" id="invite">Invite Friends</button>
                     </span>
                 </div>
+                <h1 class="text-center">
+                    <?php echo $this->lang->line('analyze_results_title'); ?>
+                </h1>
+                <br/>
                  <div class="jumbotron">
                     <span class="icon"><span class="glyphicon glyphicon-user"></span></span>
                     <p id="age_result"></p>
@@ -138,10 +142,8 @@
                      </span>
                 </div>
                 
-                <!--<h1 class="text-center">
-                    <?php echo $this->lang->line('analyze_friend_results_title'); ?>
-                </h1>
-                -->
+                
+               
                 
             </div>            
             <!-- Like button -->
