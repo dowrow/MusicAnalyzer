@@ -221,8 +221,7 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer'], function ($, fac
             $('#likesChart').highcharts({
                     chart: {
                         type: 'bar',
-                        backgroundColor: '#eee',
-
+                        backgroundColor: '#eee'
                     },
                     title: {
                         text: 'Likes musicales'
@@ -235,7 +234,7 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer'], function ($, fac
                     series: [{
                         name: 'Número de likes',
                         data: [10, 15, 63],
-                         color: '#337ab7'
+                        color: '#337ab7'
                     }]
             });
         });
