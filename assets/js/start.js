@@ -21,7 +21,7 @@ define (['jquery', 'facebook', 'analyze'], function ($, facebook, Analyze) {
           } else if (response.status === 'not_authorized') {
              FB.login(function(response) { statusChangeCallback(response); }, {scope: 'user_likes'});
           } else {
-             alert("Please login.");
+             swal("Please login.");
           }
     }
     
@@ -64,7 +64,6 @@ define (['jquery', 'facebook', 'analyze'], function ($, facebook, Analyze) {
     $(document).ready(function () {
         $('#start').click(onStartClick);
         $('#invite').click(inviteFriends);
-        //loadLikesChart();
     });
     
 });

@@ -55,16 +55,25 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer'], function ($, fac
      * Show the modal window with a given text
      * @param {type} title Window title to show
      * @param {type} text Text to show
-     * @param {function} callback 
+     * @param {function} callback
+     * @param {boolean} success 
      * @returns {undefined}
      */
-    function showModal (title, text, callback) {
-        $('#modalTitle').text(title);
-        $('#modalText').text(text);
-        $('#myModal').modal('show');
-        if (callback) {
-            $('#modalOk').click(callback);
-            $('#modalClose').click(callback);
+    function showModal (title, text, callback, success) {
+
+        success = success || false;
+        
+        if (success) {
+            swal({
+                title: title,
+                text: text,
+                type: 'success'
+            }, callback);
+        } else {
+            swal({
+                title: title,
+                text: text
+            }, callback);
         }
     }
     
@@ -143,7 +152,6 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer'], function ($, fac
         var artist = artists.pop();
         
         // Get stats for the popped artist and then continue
-        console.log("id del artista:" + artist.id);
         LastFMProxy.getStats(artist.id, artist.name, artistCallback, albumCallback, fanCallback, tagCallback, similarCallback, function (stats) { 
             updateProgress();
             artistStats[artist.name] = JSON.parse(stats);
@@ -179,6 +187,21 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer'], function ($, fac
         $('#share_style').click(function () { shareResult(styleText); });
         $('#share_similar').click(function () { shareResult(similarText); });
         
+        // Ad "How does it work?" links
+        $('#howAge').click(function () { 
+            showModal($('#how-button').val()), $('#how-age').val(); 
+        });
+        $('#howStyle').click(function () { 
+            showModal($('#how-button').val()), $('#how-style').val(); 
+        });
+        $('#howEpoch').click(function () { 
+            showModal($('#how-button').val()), $('#how-epoch').val(); 
+        });
+        $('#howAge').click(function () { 
+            showModal($('#how-button').val()), $('#how-age').val(); 
+        });
+        
+        
         $('#process').hide();
         $('#results').removeClass('hidden');
         $('#results').animate({
@@ -195,25 +218,25 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer'], function ($, fac
     
     function loadLikesChart () {
         $(function () { 
-        $('#likesChart').highcharts({
-                chart: {
-                    type: 'bar',
-                    backgroundColor: '#eee',
-                   
-                },
-                title: {
-                    text: 'Likes musicales'
-                },
-                xAxis: {
-                    categories: ['Javier Polo Picasso', 'Gerardo Castaño Recuero', 'Isabel Valdesquer']
-                },
-                yAxis: {
-                },
-                series: [{
-                    name: 'Número de likes',
-                    data: [10, 15, 63],
-                     color: '#337ab7'
-                }]
+            $('#likesChart').highcharts({
+                    chart: {
+                        type: 'bar',
+                        backgroundColor: '#eee',
+
+                    },
+                    title: {
+                        text: 'Likes musicales'
+                    },
+                    xAxis: {
+                        categories: ['Javier Polo Picasso', 'Gerardo Castaño Recuero', 'Isabel Valdesquer']
+                    },
+                    yAxis: {
+                    },
+                    series: [{
+                        name: 'Número de likes',
+                        data: [10, 15, 63],
+                         color: '#337ab7'
+                    }]
             });
         });
     }

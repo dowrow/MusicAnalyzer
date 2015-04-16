@@ -18,6 +18,9 @@
         <!-- Optional theme -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
         
+        <!-- Modal windows -->
+        <link rel="stylesheet" href="assets/css/sweet-alert.css">
+        
         <!-- Custom styles -->
         <link rel="stylesheet" href="assets/css/start.css">
 
@@ -83,6 +86,13 @@
                 
                 <input id="result-similar" type="hidden" value="<?php echo $this->lang->line('analyze_result_similar'); ?>"/>
                 <input id="result-no-similar" type="hidden" value="<?php echo $this->lang->line('analyze_result_no_similar'); ?>"/>
+                
+                <input id="how-button" type="hidden" value="<?php echo $this->lang->line('how_button'); ?>"/>
+                <input id="how-age" type="hidden" value="<?php echo $this->lang->line('how_age'); ?>"/>
+                <input id="how-style" type="hidden" value="<?php echo $this->lang->line('how_style'); ?>"/>
+                <input id="how-epoch" type="hidden" value="<?php echo $this->lang->line('how_epoch'); ?>"/>
+                <input id="how-similar" type="hidden" value="<?php echo $this->lang->line('how_similar'); ?>"/>
+                                
                 <!-- End of hidden inputs -->
                 
             </div>
@@ -110,7 +120,7 @@
                     <span class="icon"><span class="glyphicon glyphicon-user"></span></span>
                     <p id="age_result"></p>
                     <span class="actions">
-                         <a href="#"><?php echo $this->lang->line('how_button'); ?></a>
+                         <a id="howAge" href="#"><?php echo $this->lang->line('how_button'); ?></a>
                          <button id="share_age" class="btn btn-primary btn-lg"><?php echo $this->lang->line('share_button'); ?></button>
                      </span>
                 </div>
@@ -119,7 +129,7 @@
                      <span class="icon"><span class="glyphicon glyphicon-tags"></span></span>
                      <p id="style_result"></p>
                      <span class="actions">
-                         <a href="#"><?php echo $this->lang->line('how_button'); ?></a>
+                         <a id="howStyle"href="#"><?php echo $this->lang->line('how_button'); ?></a>
                          <button id="share_style" class="btn btn-primary btn-lg"><?php echo $this->lang->line('share_button'); ?></button>
                      </span>
                 </div>
@@ -128,7 +138,7 @@
                      <span class="icon"><span class="glyphicon glyphicon-calendar"></span></span>
                      <p id="epoch_result"></p>
                      <span class="actions">
-                         <a href="#"><?php echo $this->lang->line('how_button'); ?></a>
+                         <a id="howEpoch" href="#"><?php echo $this->lang->line('how_button'); ?></a>
                          <button id="share_epoch" class="btn btn-primary btn-lg"><?php echo $this->lang->line('share_button'); ?></button>
                      </span>
                 </div>
@@ -137,14 +147,11 @@
                      <span class="icon"><span class="glyphicon glyphicon-heart"></span></span>
                      <p id="similar_result"></p>
                      <span class="actions">
-                         <a href="#"><?php echo $this->lang->line('how_button'); ?></a>
+                         <a id="howSimilar" href="#"><?php echo $this->lang->line('how_button'); ?></a>
                          <button id="share_similar" class="btn btn-primary btn-lg"><?php echo $this->lang->line('share_button'); ?></button>
                      </span>
                 </div>
-                
-                
-               
-                
+                                
             </div>            
             <!-- Like button -->
             <br/>
@@ -152,8 +159,6 @@
         
         </div>
         
-        <script data-main="assets/js/start.js" src="assets/js/require.js"></script>
-
         <!-- FB root -->
         <div id="fb-root"></div>
       
@@ -168,6 +173,14 @@
        
         <!-- Charts -->
         <script src="https://code.highcharts.com/highcharts.js"></script>
+        
+        <!-- Modal windows (augments window object) -->
+        <script src="assets/js/sweet-alert.min.js"></script>
+        
+        <!-- Main -->
+        <script data-main="assets/js/start.js" src="assets/js/require.js"></script>
+        
+        
     </body>
     
 </html>

@@ -45,14 +45,9 @@ class Analyze extends CI_Controller {
         
         public function index()
         {
-            // Set language
-            //$this->lang->load('analyze', $this->session->userdata('locale'));
-            
             // Store user likes
             $this->storeUserLikes();
             
-            // Load view
-            //$this->load->view('analyze');
         }
         
         
