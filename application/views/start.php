@@ -158,6 +158,9 @@
         <!-- FB root -->
         <div id="fb-root"></div>
       
+        <!-- Main -->
+        <script data-main="assets/js/start.js" src="assets/js/require.js"></script>
+        
         <!-- Google Charts -->
         <script type="text/javascript" src="https://www.google.com/jsapi"></script>
       
@@ -172,9 +175,6 @@
         
         <!-- Modal windows (augments window object) -->
         <script src="assets/js/sweet-alert.min.js"></script>
-        
-        <!-- Main -->
-        <script data-main="assets/js/start.js" src="assets/js/require.js"></script>
         
         
     </body>
