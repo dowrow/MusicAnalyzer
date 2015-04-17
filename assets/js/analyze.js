@@ -6,7 +6,7 @@
  * @param {type} Aggregate Custom aggregation methods module
  * @returns {void}
  */
-define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer'], function ($, facebook, LastFMProxy, StatsAnalyzer) {
+define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer', 'SweetAlert'], function ($, facebook, LastFMProxy, StatsAnalyzer, SweetAlert) {
     
     // Stats object for every artist (associative array)
     var artistStats = [];

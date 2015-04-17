@@ -172,11 +172,7 @@
        
         <!-- Charts -->
         <script src="https://code.highcharts.com/highcharts.js"></script>
-        
-        <!-- Modal windows (augments window object) -->
-        <script src="assets/js/sweet-alert.min.js"></script>
-        
-        
+                
     </body>
     
 </html>
