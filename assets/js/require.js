@@ -61,6 +61,6 @@ require.config({
         aggregate: 'aggregate',
         StatsAnalyzer: 'statsanalyzer',
         Analyze: 'analyze',
-        SweetAlert: 'sweet-alert'
+        SweetAlert: 'sweet-alert.min'
     }
 });
