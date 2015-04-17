@@ -31,7 +31,7 @@ $lang['analyze_result_no_age'] = "We weren't able to calculate your musical age.
 $lang['analyze_result_style'] = "Your favorite genres are: ";
 $lang['analyze_result_no_style'] = "You are such a hipster we weren't able to determine what your favourite genres are.";
 
-$lang['analyze_result_epoch_1'] = "You wish you were born on ";
+$lang['analyze_result_epoch_1'] = "You wish you were to the concert of ";
 $lang['analyze_result_epoch_2'] = " when ";
 $lang['analyze_result_epoch_3'] = " released the album ";
 $lang['analyze_result_no_epoch'] = "The music you like is atemporal.";

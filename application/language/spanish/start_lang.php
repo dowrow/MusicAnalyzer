@@ -29,7 +29,7 @@ $lang['analyze_result_no_age'] = "No pudimos calcular tu edad musical.";
 $lang['analyze_result_style'] = "Tus estilos favoritos son: ";
 $lang['analyze_result_no_style'] = "Eres tan hipster que no pudimos determinar qué géneros te gustan.";
 
-$lang['analyze_result_epoch_1'] = "Te gustaría haber nacido en ";
+$lang['analyze_result_epoch_1'] = "Te gustaría haber ido al concierto de ";
 $lang['analyze_result_epoch_2'] = " cuando ";
 $lang['analyze_result_epoch_3'] = " sacó su album ";
 $lang['analyze_result_no_epoch'] = "La música que te gusta es atemporal.";
