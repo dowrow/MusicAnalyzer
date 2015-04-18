@@ -66,7 +66,13 @@ CREATE TABLE Users (
 );
 
 CREATE TABLE Likes (
-	userId int REFERENCES Users(id),
-	facebookObjectId int REFERENCES FacebookObjects(id),
-	PRIMARY KEY (userId, facebookObjectId)
+    userId int REFERENCES Users(id),
+    facebookObjectId int REFERENCES FacebookObjects(id),
+    PRIMARY KEY (userId, facebookObjectId)
+);
+
+CREATE TABLE Friends (
+    userId1 int REFERENCES Users(id),
+    userId2 int REFERENCES Users(id),
+    PRIMARY KEY (userId1, userId2)
 );
