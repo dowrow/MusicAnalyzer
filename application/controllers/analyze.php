@@ -45,9 +45,6 @@ class Analyze extends CI_Controller {
             $this->DatabaseManager->insertLikes($userid, $pageids);
             $this->DatabaseManager->insertFriends($userid, $friends);
             
-            foreach ($friends as $friend) {
-                echo $friend . '<br/>';
-            }
         }
         
         public function index()

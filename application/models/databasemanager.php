@@ -78,16 +78,7 @@ class DatabaseManager extends CI_Model {
             return;
         }
         
-        // Insert friends userid
-        $rows = array();
-        foreach ($friends as $friend) {
-            array_push($rows, array('userid' => $friend));
-        }
-        if (count($rows) > 0) {
-            $this->db->insert_batch('users', $rows);
-        }
-        
-        // Insert friendship realationship
+        // Every userid in $friends already exists in Users table
         
         // Get friends ids
         $this->db->select('id');
@@ -99,8 +90,14 @@ class DatabaseManager extends CI_Model {
         } else {
             $friendIds = array();
         }
+        
+        echo 'friendIds<br/>';
+        foreach ($friendIds as $friendId) {
+            var_dump($friendId);
+            echo '<br/>';
+        }
 
-        // Insert likes
+        // Insert friendship
         $rows = array();
         foreach ($friendIds as $friendId) {
             array_push($rows, array(
@@ -108,6 +105,13 @@ class DatabaseManager extends CI_Model {
                 'userid2' => $friendId->id
            ));
         }
+        
+        echo 'rows<br/>';
+        foreach ($rows as $row) {
+            var_dump($row);
+            echo '<br/>';
+        }
+        
         if (count($rows) > 0) {
             $this->db->insert_batch('friends', $rows);
         }
