@@ -64,13 +64,13 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer', 'SweetAlert'], fu
         success = success || false;
         
         if (success) {
-            swal({
+            SweetAlert.swal({
                 title: title,
                 text: text,
                 type: 'success'
             }, callback);
         } else {
-            swal({
+            SweetAlert.swal({
                 title: title,
                 text: text
             }, callback);
