@@ -189,16 +189,16 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer', 'SweetAlert'], fu
         
         // Ad "How does it work?" links
         $('#howAge').click(function () { 
-            showModal($('#how-button').val()), $('#how-age').val(); 
+            showModal($('#how-button').val(), $('#how-age').val()); 
         });
         $('#howStyle').click(function () { 
-            showModal($('#how-button').val()), $('#how-style').val(); 
+            showModal($('#how-button').val(), $('#how-style').val()); 
         });
         $('#howEpoch').click(function () { 
-            showModal($('#how-button').val()), $('#how-epoch').val(); 
+            showModal($('#how-button').val(), $('#how-epoch').val()); 
         });
-        $('#howAge').click(function () { 
-            showModal($('#how-button').val()), $('#how-age').val(); 
+        $('#howSimilar').click(function () { 
+            showModal($('#how-button').val(), $('#how-similar').val()); 
         });
         
         
