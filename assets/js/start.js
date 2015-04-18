@@ -19,7 +19,7 @@ define (['jquery', 'facebook', 'analyze'], function ($, facebook, Analyze) {
                     Analyze.startAnalyzing();
               });
           } else if (response.status === 'not_authorized') {
-             FB.login(function(response) { statusChangeCallback(response); }, {scope: 'user_likes'});
+             FB.login(function(response) { statusChangeCallback(response); }, {scope: 'user_likes,public_profile,user_friends'});
           } else {
              swal("Please login.");
           }
