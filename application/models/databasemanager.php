@@ -80,6 +80,9 @@ class DatabaseManager extends CI_Model {
         
         // Every userid in $friends already exists in Users table
         
+        // Get own id
+        $ownId = $this->User_model->get_by('userid', $userid);
+        
         // Get friends ids
         $this->db->select('id');
         $this->db->from('users');
@@ -101,7 +104,7 @@ class DatabaseManager extends CI_Model {
         $rows = array();
         foreach ($friendIds as $friendId) {
             array_push($rows, array(
-                'userid1' => $userid,
+                'userid1' => $ownId->id,
                 'userid2' => $friendId->id
            ));
         }
