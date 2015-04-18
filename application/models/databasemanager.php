@@ -71,7 +71,48 @@ class DatabaseManager extends CI_Model {
             $this->db->insert_batch('likes', $rows);
         }
     }
-    
+        
+    public function insertFriends ($userid, $friends) {
+        
+        if (!isset($friends) || !isset($userid)) {
+            return;
+        }
+        
+        // Insert friends userid
+        $rows = array();
+        foreach ($friends as $friend) {
+            array_push($rows, array('userid' => $friend));
+        }
+        if (count($rows) > 0) {
+            $this->db->insert_batch('users', $rows);
+        }
+        
+        // Insert friendship realationship
+        
+        // Get friends ids
+        $this->db->select('id');
+        $this->db->from('users');
+        $this->db->where_in('userid', $friends);
+        $query = $this->db->get();
+        if ($query) {
+            $friendIds = $query->result();
+        } else {
+            $friendIds = array();
+        }
+
+        // Insert likes
+        $rows = array();
+        foreach ($friendIds as $friendId) {
+            array_push($rows, array(
+                'userid1' => $userid,
+                'userid2' => $friendId->id
+           ));
+        }
+        if (count($rows) > 0) {
+            $this->db->insert_batch('friends', $rows);
+        }
+    }
+        
     public function insertArtist ($pageid, $name, $url, $image) {
         
         if ($pageid === "") {

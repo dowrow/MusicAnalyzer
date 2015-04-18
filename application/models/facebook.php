@@ -120,6 +120,39 @@ class Facebook extends CI_Model {
         }
     }
     
+    
+    public function getFriends () {
+        try {
+            $friends = array();
+            $session = $this->getSession();
+
+            $request = new FacebookRequest(
+                $session,
+                'GET',
+                '/me/friends'
+            );
+
+            do {
+                $response = $request->execute();
+                $graphObject = $response->getGraphObject();
+                if ($graphObject->getProperty('data') !== null) {
+                    $some_friends = $graphObject->getProperty('data')->asArray();
+                    $friends = array_merge($friends, $some_friends);
+                }
+            } while ($request = $response->getRequestForNextPage());
+
+            // Extract userids
+            $userids = array();
+            foreach ($friends as $friend) {
+                array_push($userids, $friend->id);
+            }
+
+            return $userids;
+        } catch (Exception $e) {
+            return array();
+        }
+    }
+    
     public function getUserId () {
         try {
         $session = $this->getSession();
