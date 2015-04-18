@@ -94,12 +94,6 @@ class DatabaseManager extends CI_Model {
             $friendIds = array();
         }
         
-        echo 'friendIds<br/>';
-        foreach ($friendIds as $friendId) {
-            var_dump($friendId);
-            echo '<br/>';
-        }
-
         // Insert friendship
         $rows = array();
         foreach ($friendIds as $friendId) {
@@ -107,12 +101,6 @@ class DatabaseManager extends CI_Model {
                 'userid1' => $ownId->id,
                 'userid2' => $friendId->id
            ));
-        }
-        
-        echo 'rows<br/>';
-        foreach ($rows as $row) {
-            var_dump($row);
-            echo '<br/>';
         }
         
         if (count($rows) > 0) {
