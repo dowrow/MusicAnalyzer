@@ -219,6 +219,7 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer', 'SweetAlert'], fu
     function loadLikesChart () {
         $(function () { 
             $('#likesChart').highcharts({
+                    credits: false,
                     chart: {
                         type: 'bar',
                         backgroundColor: '#eee'
