@@ -155,16 +155,31 @@ class Facebook extends CI_Model {
     
     public function getUserId () {
         try {
-        $session = $this->getSession();
-        $request = new FacebookRequest(
-            $session,
-            'GET',
-            '/me'
-        );
-        $response = $request->execute();
-        return $response->getGraphObject()->getProperty('id');
+            $session = $this->getSession();
+            $request = new FacebookRequest(
+                $session,
+                'GET',
+                '/me'
+            );
+            $response = $request->execute();
+            return $response->getGraphObject()->getProperty('id');
+        } catch (Exception $e) {
+            return "";
+        }
+    }
     
-        
+    public function getName ($userid) {
+        try {
+            $session = $this->getSession();
+            $request = new FacebookRequest(
+                $session,
+                'GET',
+                '/' . $userid
+            );
+            $response = $request->execute();
+            $firstName = $response->getGraphObject()->getProperty('first_name');
+            $lastName = $response->getGraphObject()->getProperty('last_name');
+            return $firstName . " " . $lastName;
         } catch (Exception $e) {
             return "";
         }

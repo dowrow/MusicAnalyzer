@@ -29,6 +29,10 @@ class DatabaseManager extends CI_Model {
      * DB population
      */
     
+    public function getFriendLikes ($userid) {
+        // todo
+    }
+    
     public function insertLikes ($userid, $pageids) {
         
         if (!isset($pageids) || !isset($userid)) {

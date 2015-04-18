@@ -211,12 +211,17 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer', 'SweetAlert'], fu
             duration: 1000
         });
         
-        loadLikesChart();
-            
+        $.get('rest/friendlikes', drawLikesChart);
     }
      
     
-    function loadLikesChart () {
+    function drawLikesChart (friendLikes) {
+        
+        console.log(friendLikes);
+        
+        var names = ['A', 'B', 'C'];
+        var values = [1, 2, 3];
+        
         $(function () { 
             $('#likesChart').highcharts({
                     credits: false,
@@ -228,13 +233,13 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer', 'SweetAlert'], fu
                         text: 'Likes musicales'
                     },
                     xAxis: {
-                        categories: ['Javier Polo Picasso', 'Gerardo Castaño Recuero', 'Isabel Valdesquer']
+                        categories: names
                     },
                     yAxis: {
                     },
                     series: [{
                         name: 'Número de likes',
-                        data: [10, 15, 63],
+                        data: values,
                         color: '#337ab7'
                     }]
             });

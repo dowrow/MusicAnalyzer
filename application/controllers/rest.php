@@ -9,6 +9,7 @@ class Rest extends CI_Controller {
         parent::__construct();
         $this->load->model('Stats');
         $this->load->model('DatabaseManager');
+        $this->load->model('Facebook');        
     }
     
     /**
@@ -18,6 +19,10 @@ class Rest extends CI_Controller {
         echo 'REST API OK';
     }
     
+    public function friendLikes () {
+        $userId = $this->Facebook->getUserId();
+        $this->DatabaseManager->getFriendLikes($userId);
+    }
     
     /**
      * Get the stats of an artist
