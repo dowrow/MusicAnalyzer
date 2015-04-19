@@ -211,11 +211,11 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer', 'SweetAlert'], fu
             duration: 1000
         });
         
-        $.get('rest/friendlikes', drawLikesChart);
+        $.get('rest/friendlikes', drawChart);
     }
      
     
-    function drawLikesChart (friendLikes) {
+    function drawChart (friendLikes) {
         
         console.log(friendLikes);
         
@@ -223,7 +223,7 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer', 'SweetAlert'], fu
         var values = [1, 2, 3];
         
         $(function () { 
-            $('#likesChart').highcharts({
+            $('#chart').highcharts({
                     credits: false,
                     chart: {
                         type: 'bar',
