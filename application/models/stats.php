@@ -56,12 +56,12 @@ class Stats extends CI_Model {
                         AF.artistid = A.id AND
                         AF.fanid = F.id;
          */
-        $this->db->select('AVG(fans.age)');
+        $this->db->select_avg('age');
         $this->db->from('users');
-        $this->db->join('likes', 'users.id = likes.userid', 'inner');
-        $this->db->join('facebookobjects', 'likes.facebookobjectid = facebookobjects.id', 'inner');
-        $this->db->join('artists', 'facebookobjects.id = artists.facebookobjectid', 'inner');
-        $this->db->join('fans', 'artists.id = fans.artistid', 'inner');
+        $this->db->join('likes', 'users.id = likes.userid');
+        $this->db->join('facebookobjects', 'likes.facebookobjectid = facebookobjects.id');
+        $this->db->join('artists', 'facebookobjects.id = artists.facebookobjectid');
+        $this->db->join('fans', 'artists.id = fans.artistid');
         $this->db->where('users.userid', $userid);
         $query = $this->db->get();
         return $query->result();
