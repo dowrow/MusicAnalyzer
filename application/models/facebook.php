@@ -54,6 +54,9 @@ class Facebook extends CI_Model {
             }
             
         }*/
+        if ( !isset ($this->session) || $this->session === null) {
+            $this->session = FacebookSession::newAppSession();
+        }
         
         if ( !isset( $this->session ) || $this->session === null ) {
 
