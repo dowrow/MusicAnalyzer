@@ -10,6 +10,7 @@ session_start();
 use Facebook\FacebookSession;
 use Facebook\FacebookRequest;
 use Facebook\FacebookJavaScriptLoginHelper;
+use Facebook\RedirectLoginHelper;
 
 // Fix third-party cookie problem for Internet Explorer
 // Thanks Obama
