@@ -230,6 +230,9 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer', 'SweetAlert'], fu
         
         $(function () { 
             $('#chart').highcharts({
+                    title:{
+                        text:''
+                    },
                     credits: false,
                     chart: {
                         type: 'bar',
