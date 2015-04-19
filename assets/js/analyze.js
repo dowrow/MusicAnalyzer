@@ -224,7 +224,7 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer', 'SweetAlert'], fu
         friendStats.forEach(function (stats) {
             if (stats.value[0].age !== null) {
                 names.push(stats.name);
-                values.push(stats.value[0].age);
+                values.push(parseFloat(stats.value[0].age));
             }
         });
         
