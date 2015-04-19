@@ -221,12 +221,19 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer', 'SweetAlert'], fu
         var names = [];
         var values = [];
         
+        // Ad friend values
         friendStats.forEach(function (stats) {
             if (stats.value[0].age !== null) {
                 names.push(stats.name);
                 values.push(parseFloat(stats.value[0].age));
             }
         });
+        
+        // Add own values
+        var myName = "Tú"; // TO DO
+        
+        names.push(myName);
+        values.push(StatsAnalyzer.getMusicalAge());
         
         $(function () { 
             $('#chart').highcharts({
@@ -244,7 +251,7 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer', 'SweetAlert'], fu
                     yAxis: {
                     },
                     series: [{
-                        name: 'Número de likes',
+                        name: 'Edad musical',
                         data: values,
                         color: '#337ab7'
                     }]

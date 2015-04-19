@@ -34,6 +34,28 @@ define (['jquery', 'aggregate'], function ($, Aggregate) {
         
     }
     
+    function getMusicalAge () {
+        var age = 0;
+        var count = 0;
+        
+        // Average fan age
+        for (var artist in stats) {
+            if (stats.hasOwnProperty(artist)) {
+                if (stats[artist] !== 0 && stats[artist] !== 1 && stats[artist].averageFanAge !== -1) {
+                    age += parseInt(stats[artist].averageFanAge); 
+                    count++;
+                }
+            }
+        }
+        
+        if (count > 0) {
+            age = Math.round(age / count);
+            return age;
+        } else {
+            return 0;
+        }
+    }
+    
     function getEpochText () {
         
         var part1 = $('#result-epoch-1').val();
