@@ -62,7 +62,7 @@ class Facebook extends CI_Model {
             try {            
                 $this->session = $helper->getSession();
             } catch(Exception $ex) {
-                //var_dump($ex);
+                var_dump($ex);
                 $this->session = null;
             }
         }
