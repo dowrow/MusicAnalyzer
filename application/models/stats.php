@@ -61,7 +61,8 @@ class Stats extends CI_Model {
         $this->db->join('likes', 'users.id = likes.userid');
         $this->db->join('facebookobjects', 'likes.facebookobjectid = facebookobjects.id');
         $this->db->join('artists', 'facebookobjects.id = artists.facebookobjectid');
-        $this->db->join('fans', 'artists.id = fans.artistid');
+        $this->db->join('artistfans', 'artists.id = artistfans.artistid');
+        $this->db->join('fans', 'artistfans.fanid = fans.id');
         $this->db->where('users.userid', $userid);
         $query = $this->db->get();
         return $query->result();
