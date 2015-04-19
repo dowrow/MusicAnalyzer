@@ -153,7 +153,7 @@ class Facebook extends CI_Model {
         }
     }
     
-    public function getUserId () {
+    public function getUserid () {
         try {
             $session = $this->getSession();
             $request = new FacebookRequest(
