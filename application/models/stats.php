@@ -65,7 +65,12 @@ class Stats extends CI_Model {
         $this->db->join('fans', 'artistfans.fanid = fans.id');
         $this->db->where('users.userid', $userid);
         $query = $this->db->get();
-        return $query->result();
+        if ($query) {
+            return $query->result();
+        } else {
+            return 0;
+        }
+        
     }
         
     /*
