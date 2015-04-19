@@ -9,7 +9,7 @@ class Rest extends CI_Controller {
         parent::__construct();
         $this->load->model('Stats');
         $this->load->model('DatabaseManager');
-        $this->load->model('Facebook');        
+       // $this->load->model('Facebook');        
     }
     
     /**
