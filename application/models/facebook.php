@@ -10,7 +10,6 @@ session_start();
 use Facebook\FacebookSession;
 use Facebook\FacebookRequest;
 use Facebook\FacebookJavaScriptLoginHelper;
-use Facebook\RedirectLoginHelper;
 
 // Fix third-party cookie problem for Internet Explorer
 // Thanks Obama
@@ -38,7 +37,7 @@ class Facebook extends CI_Model {
     private function buildSession() {
         
         // See if  $_SESSION exists
-        /*if (isset($_SESSION) && isset($_SESSION['fb_token'])) {
+        if (isset($_SESSION) && isset($_SESSION['fb_token'])) {
             
             // Create new fb session from saved fb_token
             $this->session = new FacebookSession($_SESSION['fb_token']);
@@ -53,7 +52,7 @@ class Facebook extends CI_Model {
               $this->session = null;
             }
             
-        }*/
+        }
         
         if ( !isset( $this->session ) || $this->session === null ) {
 
@@ -69,15 +68,11 @@ class Facebook extends CI_Model {
             }
         }
         
-        if ( !isset ($this->session) || $this->session === null) {
-            $this->session = FacebookSession::newAppSession();
-        }
         
     }
     
     public function getSession() {
-        //return $this->session;
-        return FacebookSession::newAppSession();
+        return $this->session;
     }
     
     function base64_url_decode($input) {

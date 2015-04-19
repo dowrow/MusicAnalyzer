@@ -8,7 +8,6 @@ class Rest extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->library('session');
-        $this->load->model('Facebook');
         $this->load->model('Stats');
         $this->load->model('DatabaseManager');       
     }
@@ -20,9 +19,7 @@ class Rest extends CI_Controller {
         echo 'REST API OK';
     }
     
-    public function friendStats () {
-        echo $this->Facebook->getUserid();
-    }
+
     
     /**
      * Get the stats of an artist
