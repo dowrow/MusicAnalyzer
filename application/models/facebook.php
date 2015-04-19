@@ -93,11 +93,14 @@ class Facebook extends CI_Model {
         try {
             $likes = array();
             $session = $this->getSession();
+             $access_token = $session->getToken();
+            $appsecret_proof = hash_hmac('sha256', $access_token, self::APP_SECRET);
 
             $request = new FacebookRequest(
                 $session,
                 'GET',
-                '/me/likes'
+                '/me/likes',
+                 array("appsecret_proof" =>  $appsecret_proof)
             );
 
             do {
@@ -127,11 +130,14 @@ class Facebook extends CI_Model {
         try {
             $friends = array();
             $session = $this->getSession();
+            $access_token = $session->getToken();
+            $appsecret_proof = hash_hmac('sha256', $access_token, self::APP_SECRET);
 
             $request = new FacebookRequest(
                 $session,
                 'GET',
-                '/me/friends'
+                '/me/friends',
+                 array("appsecret_proof" =>  $appsecret_proof)
             );
 
             do {
@@ -158,10 +164,13 @@ class Facebook extends CI_Model {
     public function getUserid () {
         try {
             $session = $this->getSession();
+            $access_token = $session->getToken();
+            $appsecret_proof = hash_hmac('sha256', $access_token, self::APP_SECRET);
             $request = new FacebookRequest(
                 $session,
                 'GET',
-                '/me'
+                '/me',
+                 array("appsecret_proof" =>  $appsecret_proof)
             );
             $response = $request->execute();
             return $response->getGraphObject()->getProperty('id');
@@ -173,10 +182,13 @@ class Facebook extends CI_Model {
     public function getName ($userid) {
         try {
             $session = $this->getSession();
+            $access_token = $session->getToken();
+            $appsecret_proof = hash_hmac('sha256', $access_token, self::APP_SECRET);
             $request = new FacebookRequest(
                 $session,
                 'GET',
-                '/' . $userid
+                '/' . $userid,
+                 array("appsecret_proof" =>  $appsecret_proof)
             );
             $response = $request->execute();
             $firstName = $response->getGraphObject()->getProperty('first_name');
