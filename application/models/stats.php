@@ -29,7 +29,7 @@ class Stats extends CI_Model {
         // For each friend get its full name and get musical age
         foreach ($friends as $friend) {
             array_push($friendStats, array(
-                'name' => $this->Facebook->getName($friend->id),
+                'name' => $this->Facebook->getName($friend),
                 'value' => 0
            ));
         }

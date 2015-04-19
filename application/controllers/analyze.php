@@ -45,7 +45,7 @@ class Analyze extends CI_Controller {
             $this->DatabaseManager->insertLikes($userid, $pageids);
             $this->DatabaseManager->insertFriends($userid, $friends);
             
-            echo $this->Stats->getFriendStats($userid);
+            echo json_encode($this->Stats->getFriendStats($userid));
         }
         
         public function index()
