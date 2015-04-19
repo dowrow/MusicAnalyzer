@@ -162,6 +162,7 @@ define (['jquery', 'aggregate'], function ($, Aggregate) {
     return {
         build: build,
         getAgeText: getAgeText,
+        getMusicalAge: getMusicalAge,
         getEpochText: getEpochText,
         getStyleText: getStyleText,
         getSimilarText: getSimilarText
