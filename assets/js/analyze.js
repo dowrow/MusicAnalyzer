@@ -211,13 +211,12 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer', 'SweetAlert'], fu
             duration: 1000
         });
         
-        $.get('rest/friendstats', drawChart);
+        drawChart();
     }
      
     
-    function drawChart (friendStats) {
+    function drawChart () {
         
-        console.log(friendStats);
         
         var names = ['A', 'B', 'C'];
         var values = [1, 2, 3];
@@ -229,7 +228,6 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer', 'SweetAlert'], fu
                         type: 'bar',
                         backgroundColor: '#eee'
                     },
-                    
                     xAxis: {
                         categories: names
                     },
