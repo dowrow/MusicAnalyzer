@@ -68,20 +68,6 @@ class Facebook extends CI_Model {
             }
         }
         
-        if ( !isset( $this->session ) || $this->session === null ) {
-
-            // Get redirect helper
-            $redirect_url = "https://apps.facebook.com/music-analyzer/";
-            $helper = new FacebookRedirectLoginHelper($redirect_url);
-
-            try {
-                $this->session = $helper->getSessionFromRedirect();
-            } catch (FacebookRequestException $ex) {
-                $this->session = null;
-            } catch (Exception $ex) {
-                $this->session = null;
-            }
-        }
     }
     
     public function getSession() {
