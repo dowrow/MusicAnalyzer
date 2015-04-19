@@ -218,8 +218,15 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer', 'SweetAlert'], fu
     function drawChart () {
         
         
-        var names = ['A', 'B', 'C'];
-        var values = [1, 2, 3];
+        var names = [];
+        var values = [];
+        
+        friendStats.forEach(function (stats) {
+            if (stats.value[0].age !== null) {
+                names.push(stats.name);
+                values.push(stats.value[0].age);
+            }
+        });
         
         $(function () { 
             $('#chart').highcharts({

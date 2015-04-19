@@ -33,7 +33,7 @@ class Stats extends CI_Model {
                 'value' => $this->getMusicalAge($friend)
            ));
         }
-        
+                
         return $friendStats;
     }
     
