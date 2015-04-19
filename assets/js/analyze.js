@@ -31,7 +31,7 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer', 'SweetAlert'], fu
         FB.getLoginStatus(function(response){
             FB.login(function () {
                 FB.api(
-                    "/me/music?fields=likes,id,name, category",
+                    "/me/music?fields=likes,id,name,category",
                     function (response) {
                           var likes = response.data || [];
                           var artists = [];
@@ -229,9 +229,7 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer', 'SweetAlert'], fu
                         type: 'bar',
                         backgroundColor: '#eee'
                     },
-                    title: {
-                        text: 'Likes musicales'
-                    },
+                    
                     xAxis: {
                         categories: names
                     },

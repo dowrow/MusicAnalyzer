@@ -30,7 +30,7 @@ class Stats extends CI_Model {
         foreach ($friends as $friend) {
             array_push($friendStats, array(
                 'name' => $this->Facebook->getName($friend),
-                'value' => 0
+                'value' => $this->getMusicalAge($friend)
            ));
         }
         
