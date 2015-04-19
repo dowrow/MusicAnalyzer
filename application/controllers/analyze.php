@@ -22,7 +22,7 @@ class Analyze extends CI_Controller {
             $this->load->library('session');
             $this->load->model('Facebook');
             $this->load->model('DatabaseManager');
-
+            $this->load->model('Stats');
         }
         
         private function storeUserInfo() {
@@ -45,14 +45,13 @@ class Analyze extends CI_Controller {
             $this->DatabaseManager->insertLikes($userid, $pageids);
             $this->DatabaseManager->insertFriends($userid, $friends);
             
-            echo $userid;
+            echo $this->Stats->getFriendStats($userid);
         }
         
         public function index()
         {
             // Store user likes
             $this->storeUserInfo();
-            
         }
         
         

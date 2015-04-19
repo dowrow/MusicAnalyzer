@@ -16,9 +16,8 @@ define (['jquery', 'facebook', 'analyze'], function ($, facebook, Analyze) {
     function statusChangeCallback(response) {
           if (response.status === 'connected') {
               $.get('/analyze', function (res) {
-                    console.log('/analyze/ response:');
-                    console.log(res);
-                    Analyze.startAnalyzing();
+                    var friendStats = JSON.parse(res);
+                    Analyze.startAnalyzing(friendStats);
               });
           } else if (response.status === 'not_authorized') {
              FB.login(function(response) { statusChangeCallback(response); }, {scope: 'user_likes,public_profile,user_friends'});

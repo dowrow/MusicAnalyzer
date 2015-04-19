@@ -279,9 +279,13 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer', 'SweetAlert'], fu
     
     /**
      * Start the analysis
+     * @param  {obj} In-app friends stats
      * @returns {undefined}
      */
-    function startAnalyzing () {
+    function startAnalyzing (friendStatsObj) {
+        
+        // Save friendStats
+        friendStats = friendStatsObj;
         
         // Set title
         $('#title').text($('#analyze-title').val());
