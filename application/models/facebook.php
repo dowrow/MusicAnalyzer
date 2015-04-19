@@ -54,9 +54,6 @@ class Facebook extends CI_Model {
             }
             
         }*/
-        if ( !isset ($this->session) || $this->session === null) {
-            $this->session = FacebookSession::newAppSession();
-        }
         
         if ( !isset( $this->session ) || $this->session === null ) {
 
@@ -72,10 +69,15 @@ class Facebook extends CI_Model {
             }
         }
         
+        if ( !isset ($this->session) || $this->session === null) {
+            $this->session = FacebookSession::newAppSession();
+        }
+        
     }
     
     public function getSession() {
-        return $this->session;
+        //return $this->session;
+        return FacebookSession::newAppSession();
     }
     
     function base64_url_decode($input) {
