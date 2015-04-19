@@ -21,7 +21,7 @@ class Rest extends CI_Controller {
     }
     
     public function friendStats () {
-        echo $this->Facebook->getUserId();
+        echo $this->Facebook->getUserid();
     }
     
     /**

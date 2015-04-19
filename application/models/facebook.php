@@ -38,7 +38,7 @@ class Facebook extends CI_Model {
     private function buildSession() {
         
         // See if  $_SESSION exists
-        if (isset($_SESSION) && isset($_SESSION['fb_token'])) {
+        /*if (isset($_SESSION) && isset($_SESSION['fb_token'])) {
             
             // Create new fb session from saved fb_token
             $this->session = new FacebookSession($_SESSION['fb_token']);
@@ -53,7 +53,7 @@ class Facebook extends CI_Model {
               $this->session = null;
             }
             
-        }
+        }*/
         
         if ( !isset( $this->session ) || $this->session === null ) {
 
@@ -64,6 +64,7 @@ class Facebook extends CI_Model {
             try {            
                 $this->session = $helper->getSession();
             } catch(Exception $ex) {
+                echo $ex;
                 $this->session = null;
             }
         }
