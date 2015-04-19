@@ -211,13 +211,13 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer', 'SweetAlert'], fu
             duration: 1000
         });
         
-        $.get('rest/friendlikes', drawChart);
+        $.get('rest/friendstats', drawChart);
     }
      
     
-    function drawChart (friendLikes) {
+    function drawChart (friendStats) {
         
-        console.log(friendLikes);
+        console.log(friendStats);
         
         var names = ['A', 'B', 'C'];
         var values = [1, 2, 3];
