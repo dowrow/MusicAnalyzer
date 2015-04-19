@@ -36,6 +36,36 @@ class Stats extends CI_Model {
         
         return $friendStats;
     }
+    
+    
+    public function getMusicalAge ($userid) {
+        /*
+         * SELECT AVG(age) 
+                FROM
+                        Users AS U,
+                        Likes AS L,
+                        FacebookObjects as FO,
+                        Artists AS A,
+                        ArtistFans AS AF,
+                        Fans AS F
+                WHERE
+                        U.userid = '10152333894445777' AND
+                        L.userid = U.id AND
+                        L.facebookobjectid = FO.id AND
+                        A.facebookobjectid = FO.id AND
+                        AF.artistid = A.id AND
+                        AF.fanid = F.id;
+         */
+        $this->db->select('avg(fans.age)');
+        $this->db->from('users');
+        $this->db->join('likes', 'users.id = likes.userid', 'inner');
+        $this->db->join('facebookobjects', 'likes.id = facebookobjects.id', 'inner');
+        $this->db->join('artists', 'facebookobjects.id = artists.facebookobjectid', 'inner');
+        $this->db->join('fans', 'artists.id = fans.artistid', 'inner');
+        $this->db->where('users.userid', $userid);
+        $query = $this->db->get();
+        return $query->result();
+    }
         
     /*
      * Returns JSON string with stats
