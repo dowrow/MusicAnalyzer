@@ -108,7 +108,7 @@
                     <div id="chart"></div>
                     
                     <span class="actions">
-                        <button class="btn btn-primary btn-lg text-right" id="invite">Invite Friends</button>
+                        <button class="btn btn-primary btn-lg text-right" id="invite">Invitar a amigos</button>
                     </span>
                 </div>
 
