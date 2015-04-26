@@ -36,18 +36,13 @@ class DatabaseManager extends CI_Model {
         }
         
         // Insert user
-        $userId = $this->User_model->insert(array('userid' => $userid));
+        $userId = $this->User_model->insert(array('userid' => $userid), TRUE);
         
         // Insert facebookobjects
-        $rows = array();
         foreach ($pageids as $pageid) {
-            array_push($rows, array('pageid' => $pageid));
+            $this->db->insert('facebookobjects', array('pageid' => $pageid));
         }
-        
-        if (count($rows) > 0) {
-            $this->db->insert_batch('facebookobjects', $rows);
-        }
-        
+                
         // Get facebookobjects ids
         $this->db->select('id');
         $this->db->from('facebookobjects');
