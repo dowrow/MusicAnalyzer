@@ -115,21 +115,33 @@ class DatabaseManager extends CI_Model {
                 'name' => $name
             ));
         } else {
+            
             // Get facebook object id
             $facebookObject = $this->FacebookObject_model->get_by('pageid', $pageid);
 
             if (is_object($facebookObject)) {
-
-                // Insert name in Artists
-                $id = $this->Artist_model->insert(array(
+                
+                
+                /*$id = $this->Artist_model->insert(array(
                     'name' => $name,
                     'facebookobjectid' => $facebookObject->id
-                ));
-            } else {
+                ));*/
                 // Insert name in Artists
                 $id = $this->Artist_model->insert(array(
                     'name' => $name
                 ));
+                
+                // Update its facebookobjectid attribute
+                $artist = $this->Artist_model->get_by('name', $name);
+                $this->Artist_model->update($artist->id, array( 'facebookobjectid' => $facebookObject->id ));
+                
+            } else {
+            
+                // Insert name in Artists
+                $id = $this->Artist_model->insert(array(
+                    'name' => $name
+                ));
+                
             }
         }
         
