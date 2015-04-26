@@ -28,13 +28,18 @@ class Rest extends CI_Controller {
     public function stats() {
         
         // Get parameter
-        $parameter = $this->input->get('artist', TRUE);
-        if ($parameter == FALSE) {
-            echo 'Error. Missig ?artist=URL_ENCODED_ARTIST';
+        $artist = $this->input->get('artist', TRUE);
+        $pageid = $this->input->get('pageid', TRUE);
+        if ($artist == FALSE ) {
+            echo 'Error. Missing ?artist=URL_ENCODED_ARTIST';
             return;
         }
         
-        echo json_encode($this->Stats->getStats($parameter));
+        // Add reference to facebookobject 
+        $this->DatabaseManager->insertReference($artist, $pageid);
+        
+        echo json_encode($this->Stats->getStats($artist));
+           
     }
     
     /**

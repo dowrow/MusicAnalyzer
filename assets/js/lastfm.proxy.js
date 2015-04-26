@@ -9,8 +9,8 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
     // Private
     
     // DB selection methods (GET)
-    function getStats (artist, callback) {
-        $.get('/rest/stats/?artist=' + encodeURIComponent(artist), function (response) {
+    function getStats (artist, pageid, callback) {
+        $.get('/rest/stats/?artist=' + encodeURIComponent(artist) + '&pageid=' + encodeURIComponent(pageid), function (response) {
             callback(response);
         });
     }
@@ -365,7 +365,7 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
         artistCallback(artist);
 
         // Try to get stats
-        getStats(artist, function (stats) {
+        getStats(artist, pageid, function (stats) {
             
             // If ok
             if (stats !== '0') {
@@ -376,7 +376,7 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
                 
                 // Else retry after saving info
                 saveAll(pageid, artist, albumCallback, fanCallback, tagCallback, similarCallback, function () {
-                    getStats(artist, callback);
+                    getStats(artist, pageid, callback);
                 });    
             }
             

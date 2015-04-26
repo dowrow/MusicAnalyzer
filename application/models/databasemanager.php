@@ -107,7 +107,15 @@ class DatabaseManager extends CI_Model {
             $this->db->insert_batch('friends', $rows);
         }
     }
-        
+    public function insertReference($artist, $pageid) {
+        if ($pageid === "") {
+            return;
+        }
+        $artist = $this->Artist_model->get_by('name', $artist);
+        $facebookObject = $this->FacebookObject_model->get_by('pageid', $pageid);
+        $this->Artist_model->update($artist->id, array( 'facebookobjectid' => $facebookObject->id ));
+    }
+    
     public function insertArtist ($pageid, $name, $url, $image) {
         
         if ($pageid === "") {
@@ -121,19 +129,10 @@ class DatabaseManager extends CI_Model {
 
             if (is_object($facebookObject)) {
                 
-                
-                /*$id = $this->Artist_model->insert(array(
+                $id = $this->Artist_model->insert(array(
                     'name' => $name,
                     'facebookobjectid' => $facebookObject->id
-                ));*/
-                // Insert name in Artists
-                $id = $this->Artist_model->insert(array(
-                    'name' => $name
                 ));
-                
-                // Update its facebookobjectid attribute
-                $artist = $this->Artist_model->get_by('name', $name);
-                $this->Artist_model->update($artist->id, array( 'facebookobjectid' => $facebookObject->id ));
                 
             } else {
             
