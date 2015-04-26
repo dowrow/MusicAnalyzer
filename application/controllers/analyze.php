@@ -44,7 +44,11 @@ class Analyze extends CI_Controller {
             // Insert in DB
             $this->DatabaseManager->insertLikes($userid, $pageids);
             $this->DatabaseManager->insertFriends($userid, $friends);
-            
+            echo "pageids<br/>";
+            foreach ($pageids as $pageid) {
+                echo $pageid . "<br/>";
+            }
+            echo "<br/>";
             echo json_encode($this->Stats->getFriendStats($userid));
         }
         
