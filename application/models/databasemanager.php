@@ -39,10 +39,22 @@ class DatabaseManager extends CI_Model {
         $userId = $this->User_model->insert(array('userid' => $userid), TRUE);
         
         // Insert facebookobjects
+        $rows = array();
         foreach ($pageids as $pageid) {
-            $this->db->insert('facebookobjects', array('pageid' => $pageid));
+            array_push($rows, array('pageid' => $pageid));
         }
-                
+        
+        if (count($rows) > 0) {
+            //$this->db->insert_batch('facebookobjects', $rows);
+                        	
+            $sql = ""; 
+            foreach ($rows as $row) { 
+                $insert_query = $this->db->insert_string('facebookobjects', $row); 
+                $sql.= str_replace('INSERT INTO', 'INSERT IGNORE INTO', $insert_query); 
+            } 
+            $this->db->query($sql); 
+        }
+        
         // Get facebookobjects ids
         $this->db->select('id');
         $this->db->from('facebookobjects');
@@ -57,11 +69,20 @@ class DatabaseManager extends CI_Model {
         // Insert likes
         $rows = array();
         foreach ($facebookObjectIds as $facebookObjectId) {
-            
-            $this->db->insert('likes', array(
+            array_push($rows, array(
                 'userid' => $userId,
                 'facebookobjectid' => $facebookObjectId->id
-            ));
+           ));
+        }
+        if (count($rows) > 0) {
+            //$this->db->insert_batch('likes', $rows);
+            $sql = ""; 
+            foreach ($rows as $row) { 
+                $insert_query = $this->db->insert_string('likes', $row); 
+                $sql.= str_replace('INSERT INTO', 'INSERT IGNORE INTO', $insert_query); 
+            } 
+            $this->db->query($sql); 
+            
         }
     }
         
