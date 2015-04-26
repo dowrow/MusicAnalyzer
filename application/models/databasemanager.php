@@ -120,7 +120,7 @@ class DatabaseManager extends CI_Model {
                 );
                 //$this->db->like('LOWER(artists.name)', strtolower($artist));
                 $artist = strtolower($artist);
-                $this->db->where("(LOWER(artists.name) LIKE '%{$artist}%')");
+                $this->db->where("(LOWER(artists.name) LIKE '{$artist}')");
                 $this->db->update('artists', $data);
                 
             }
