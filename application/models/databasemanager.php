@@ -119,7 +119,8 @@ class DatabaseManager extends CI_Model {
                     'facebookobjectid' => $facebookObject->id,
                 );
                 //$this->db->like('LOWER(artists.name)', strtolower($artist));
-                $this->db->where("(LOWER(artists.name) LIKE '" . strtolower($artist) . "'");
+                $artist = strtolower($artist);
+                $this->db->where("(LOWER(artists.name) LIKE '%{$artist}%')");
                 $this->db->update('artists', $data);
                 
             }
