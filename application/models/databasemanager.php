@@ -112,10 +112,15 @@ class DatabaseManager extends CI_Model {
             return;
         }
         try {
-            $artist = $this->Artist_model->get_by('name', $artist);
             $facebookObject = $this->FacebookObject_model->get_by('pageid', $pageid);
-            if (is_object($facebookObject) && is_object($artist)) {
-                $this->Artist_model->update($artist->id, array( 'facebookobjectid' => $facebookObject->id ));
+            if (is_object($facebookObject)) {
+                
+                $data = array(
+                    'facebookobjectid' => $facebookObject->id,
+                );
+                $this->db->like('LOWER(artists.name)', strtolower($artist));
+                $this->db->update('artists', $data);
+                
             }
         } catch (Exception $e) {
             return;
