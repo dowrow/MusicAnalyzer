@@ -57,13 +57,11 @@ class DatabaseManager extends CI_Model {
         // Insert likes
         $rows = array();
         foreach ($facebookObjectIds as $facebookObjectId) {
-            array_push($rows, array(
+            
+            $this->db->insert('likes', array(
                 'userid' => $userId,
                 'facebookobjectid' => $facebookObjectId->id
-           ));
-        }
-        if (count($rows) > 0) {
-            $this->db->insert_batch('likes', $rows);
+            ));
         }
     }
         
