@@ -111,9 +111,14 @@ class DatabaseManager extends CI_Model {
         if ($pageid === "") {
             return;
         }
-        $artist = $this->Artist_model->get_by('name', $artist);
-        $facebookObject = $this->FacebookObject_model->get_by('pageid', $pageid);
-        $this->Artist_model->update($artist->id, array( 'facebookobjectid' => $facebookObject->id ));
+        try {
+            $artist = $this->Artist_model->get_by('name', $artist);
+            $facebookObject = $this->FacebookObject_model->get_by('pageid', $pageid);
+            $this->Artist_model->update($artist->id, array( 'facebookobjectid' => $facebookObject->id ));
+        } catch (Exception $e) {
+            return;
+        }
+
     }
     
     public function insertArtist ($pageid, $name, $url, $image) {
