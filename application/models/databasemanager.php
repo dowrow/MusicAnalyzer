@@ -87,7 +87,11 @@ class DatabaseManager extends CI_Model {
         } else {
             $facebookObjectIds = array();
         }
-
+        
+        // Update old user-likes
+        $this->db->where('userid', $userId);
+        $this->db->update('likes', array('valid' => 'false')); 
+        
         // Insert likes
         $rows = array();
         foreach ($facebookObjectIds as $facebookObjectId) {
