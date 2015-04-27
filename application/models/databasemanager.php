@@ -96,13 +96,13 @@ class DatabaseManager extends CI_Model {
             $timestamp = date('Y-m-d H:i:s');
             foreach ($likes as $like) {
                 if (!strcmp($facebookObjectId->pageid, $like->id)) {
-                    $timestamp = date('Y-m-d H:i:s', strtotime($like->created_time));
+                    $timestamp = $like->created_time;
                 }
             }
             array_push($rows, array(
                 'userid' => $userId,
                 'facebookobjectid' => $facebookObjectId->id,
-                'valid' => true,
+                'valid' => 'true',
                 'timestamp' => $timestamp
            ));
         }
