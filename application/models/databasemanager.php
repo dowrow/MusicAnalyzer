@@ -78,7 +78,7 @@ class DatabaseManager extends CI_Model {
         }
         
         // Get facebookobjects ids
-        $this->db->select('id, pageid');
+        $this->db->select('*');
         $this->db->from('facebookobjects');
         $this->db->where_in('pageid', $pageids);
         $query = $this->db->get();
@@ -102,7 +102,7 @@ class DatabaseManager extends CI_Model {
             array_push($rows, array(
                 'userid' => $userId,
                 'facebookobjectid' => $facebookObjectId->id,
-                'valid' => 'true',
+                'valid' => true,
                 'timestamp' => $timestamp
            ));
         }
