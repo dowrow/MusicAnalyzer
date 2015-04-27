@@ -70,7 +70,7 @@ class DatabaseManager extends CI_Model {
                 echo $like->created_time . "<br/>";
                 array_push($rows, array(
                     'pageid' => $like->id,
-                    'valid' => 't',
+                    'valid' => true,
                     'timestamp' => date('Y-m-d H:i:s', strtotime($like->created_time))
                 ));
             }
