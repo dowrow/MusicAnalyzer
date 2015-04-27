@@ -103,7 +103,7 @@ class DatabaseManager extends CI_Model {
                 'userid' => $userId,
                 'facebookobjectid' => $facebookObjectId->id,
                 'valid' => true,
-                'timestamp' => timestamp
+                'timestamp' => $timestamp
            ));
         }
         
