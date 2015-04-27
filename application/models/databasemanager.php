@@ -35,19 +35,19 @@ class DatabaseManager extends CI_Model {
             return;
         }
         
-        // Insert user
+        // Insert user and retrieve its id
         $this->User_model->insert(array('userid' => $userid), TRUE);
         $me = $this->User_model->get_by('userid', $userid);
         $userId = $me->id;
         
-        // Get pageids
+        // Get pageids for every like
         $pageids = array();
         foreach ($likes as $like) {
             array_push($pageids, $like->id);
         }        
         
         // Get already-inserted facebookobjects
-        $this->db->select('pageid');
+        $this->db->select('*');
         $this->db->from('facebookobjects');
         $this->db->where_in('pageid', $pageids);
         $query = $this->db->get();
@@ -59,11 +59,13 @@ class DatabaseManager extends CI_Model {
         
         // Filter already-inserted facebookobjects
         $rows = array();
+        $alreadyLikedFacebookobjectids = array();
         foreach ($likes as $like) {
             $alreadyInserted = false;
             foreach ($alreadyInsertedRows as $alreadyInsertedRow) {
                 if (!strcmp($like->id, $alreadyInsertedRow->pageid)) {
                     $alreadyInserted = true;
+                    array_push($alreadyLikedFacebookobjectids, $alreadyInsertedRow->id);
                     break;
                 }
             }
@@ -91,30 +93,42 @@ class DatabaseManager extends CI_Model {
             $facebookObjectIds = array();
         }
         
-        // Update old user-likes
+        // Update old user-likes that the user no longer likes
         $this->db->where('userid', $userId);
+        $this->db->where_not_in('facebookobjectid', $alreadyLikedFacebookobjectids);
         $this->db->update('likes', array('valid' => 'false')); 
         
-        // Insert likes
+        // Add only new likes to array
         $rows = array();
         foreach ($facebookObjectIds as $facebookObjectId) {
             
             // Search its timestamp
-            $timestamp = date('Y-m-d H:i:s');
             foreach ($likes as $like) {
                 if (!strcmp($facebookObjectId->pageid, $like->id)) {
                     $timestamp = $like->created_time;
                 }
             }
-            array_push($rows, array(
-                'userid' => $userId,
-                'facebookobjectid' => $facebookObjectId->id,
-                'valid' => 'true',
-                'timestamp' => $timestamp
-           ));
+            
+            $alreadyInsertedLike = false;
+            
+            foreach ($alreadyLikedFacebookobjectids as $alreadyLikedFacebookobjectid) {
+                if (!strcmp($facebookObjectId->id, $alreadyLikedFacebookobjectid)) {
+                    $alreadyInsertedLike = true;
+                    break;
+                }
+            }
+            
+            if (!alreadyInsertedLike) {
+                array_push($rows, array(
+                    'userid' => $userId,
+                    'facebookobjectid' => $facebookObjectId->id,
+                    'valid' => 'true',
+                    'timestamp' => $timestamp
+                ));
+            }
         }
         
-        // Insert likes
+        // Insert new likes in batch mode
         if (count($rows) > 0) {
             $this->db->insert_batch('likes', $rows);
         }
