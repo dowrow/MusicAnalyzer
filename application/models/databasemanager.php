@@ -66,12 +66,8 @@ class DatabaseManager extends CI_Model {
                 }
             }
             if (!$alreadyInserted) {
-                echo $like->id . "<br/>";
-                echo $like->created_time . "<br/>";
                 array_push($rows, array(
-                    'pageid' => $like->id,
-                    'valid' => true,
-                    'timestamp' => date('Y-m-d H:i:s', strtotime($like->created_time))
+                    'pageid' => $like->id
                 ));
             }
         }
@@ -82,7 +78,7 @@ class DatabaseManager extends CI_Model {
         }
         
         // Get facebookobjects ids
-        $this->db->select('id');
+        $this->db->select('id, pageid');
         $this->db->from('facebookobjects');
         $this->db->where_in('pageid', $pageids);
         $query = $this->db->get();
@@ -95,9 +91,19 @@ class DatabaseManager extends CI_Model {
         // Insert likes
         $rows = array();
         foreach ($facebookObjectIds as $facebookObjectId) {
+            
+            // Search its timestamp
+            $timestamp = date('Y-m-d H:i:s');
+            foreach ($likes as $like) {
+                if (!strcmp($facebookObjectId->pageid, $like->id)) {
+                    $timestamp = date('Y-m-d H:i:s', strtotime($like->created_time));
+                }
+            }
             array_push($rows, array(
                 'userid' => $userId,
-                'facebookobjectid' => $facebookObjectId->id
+                'facebookobjectid' => $facebookObjectId->id,
+                'valid' => true,
+                'timestamp' => timestamp
            ));
         }
         
