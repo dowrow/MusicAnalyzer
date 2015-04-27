@@ -69,7 +69,7 @@ class DatabaseManager extends CI_Model {
                 array_push($rows, array(
                     'pageid' => $like->id,
                     'valid' => true,
-                    'timestamp' => $like->created_time
+                    'timestamp' => date('Y-m-d H:i:s', strtotime($like->created_time))
                 ));
             }
         }
