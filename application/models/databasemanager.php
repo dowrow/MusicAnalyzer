@@ -69,7 +69,8 @@ class DatabaseManager extends CI_Model {
             }
             if (!$alreadyInserted) {
                 array_push($rows, array(
-                    'pageid' => $like->id
+                    'pageid' => $like->id,
+                    'category' => $like->category
                 ));
             }
         }
