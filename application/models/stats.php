@@ -64,6 +64,9 @@ class Stats extends CI_Model {
         $this->db->join('artistfans', 'artists.id = artistfans.artistid');
         $this->db->join('fans', 'artistfans.fanid = fans.id');
         $this->db->where('users.userid', $userid);
+        $this->db->where('likes.valid', 'true');
+        $this->db->where('fans.age >', '0');
+        $this->db->where('fans.age <', '100');
         $query = $this->db->get();
         if ($query) {
             return $query->result();
