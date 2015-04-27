@@ -66,6 +66,7 @@ class DatabaseManager extends CI_Model {
                 }
             }
             if (!$alreadyInserted) {
+                echo $like->id . "<br/>";
                 array_push($rows, array(
                     'pageid' => $like->id,
                     'valid' => 't',
