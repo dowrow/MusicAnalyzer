@@ -102,7 +102,7 @@ class DatabaseManager extends CI_Model {
             array_push($rows, array(
                 'userid' => $userId,
                 'facebookobjectid' => $facebookObjectId->id,
-                'valid' => true,
+                'valid' => 'true',
                 'timestamp' => $timestamp
            ));
         }
