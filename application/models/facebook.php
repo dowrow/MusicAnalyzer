@@ -89,7 +89,7 @@ class Facebook extends CI_Model {
         }
     }
     
-    public function getLikesPageids () {
+    public function getLikes () {
         try {
             $likes = array();
             $session = $this->getSession();
@@ -109,14 +109,9 @@ class Facebook extends CI_Model {
                 }
 
             } while ($request = $response->getRequestForNextPage());
-
-            // Extract pageids
-            $pageids = array();
-            foreach ($likes as $page) {
-                array_push($pageids, $page->id);
-            }
-
-            return $pageids;
+            
+            return likes;
+            
         } catch (Exception $e) {
             return array();
         }

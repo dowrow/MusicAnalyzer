@@ -36,13 +36,13 @@ class Analyze extends CI_Controller {
             }
             
             // Get all likes pageids
-            $pageids = $this->Facebook->getLikesPageids();
+            $likes = $this->Facebook->getLikes();
             
             // Get friends ids
             $friends = $this->Facebook->getFriends();
                     
             // Insert in DB
-            $this->DatabaseManager->insertLikes($userid, $pageids);
+            $this->DatabaseManager->insertLikes($userid, $likes);
             $this->DatabaseManager->insertFriends($userid, $friends);
             
             echo json_encode($this->Stats->getFriendStats($userid));

@@ -68,6 +68,8 @@ CREATE TABLE Users (
 CREATE TABLE Likes (
     userId int REFERENCES Users(id),
     facebookObjectId int REFERENCES FacebookObjects(id),
+    valid BOOLEAN NOT NULL DEFAULT FALSE,
+    timestamp TIMESTAMP NOT NULL DEFAULT NOW(),
     PRIMARY KEY (userId, facebookObjectId)
 );
 

@@ -29,14 +29,20 @@ class DatabaseManager extends CI_Model {
      * DB population
      */
        
-    public function insertLikes ($userid, $pageids) {
+    public function insertLikes ($userid, $likes) {
         
-        if (!isset($pageids) || !isset($userid)) {
+        if (!isset($likes) || !isset($userid)) {
             return;
         }
         
         // Insert user
         $userId = $this->User_model->insert(array('userid' => $userid), TRUE);
+        
+        // Get pageids
+        $pageids = array();
+        foreach ($likes as $like) {
+            array_push($pageids, $like->id);
+        }        
         
         // Get already-inserted facebookobjects
         $this->db->select('pageid');
@@ -51,16 +57,20 @@ class DatabaseManager extends CI_Model {
         
         // Filter already-inserted facebookobjects
         $rows = array();
-        foreach ($pageids as $pageid) {
+        foreach ($likes as $like) {
             $alreadyInserted = false;
             foreach ($alreadyInsertedRows as $alreadyInsertedRow) {
-                if (!strcmp($pageid, $alreadyInsertedRow->pageid)) {
+                if (!strcmp($like->id, $alreadyInsertedRow->pageid)) {
                     $alreadyInserted = true;
                     break;
                 }
             }
             if (!$alreadyInserted) {
-                array_push($rows, array('pageid' => $pageid));
+                array_push($rows, array(
+                    'pageid' => $like->id,
+                    'valid' => true,
+                    'timestamp' => $like->created_time
+                ));
             }
         }
         
