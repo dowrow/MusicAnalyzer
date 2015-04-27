@@ -9,7 +9,8 @@ CREATE TABLE LastfmArtists (
 
 CREATE TABLE FacebookObjects (
     id serial PRIMARY KEY,
-    pageId varchar(100) UNIQUE
+    pageId varchar(100) UNIQUE,
+    category VARCHAR(200)
 );
 
 CREATE TABLE Artists (
