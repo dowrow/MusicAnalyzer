@@ -36,7 +36,9 @@ class DatabaseManager extends CI_Model {
         }
         
         // Insert user
-        $userId = $this->User_model->insert(array('userid' => $userid), TRUE);
+        $this->User_model->insert(array('userid' => $userid), TRUE);
+        $me = $this->User_model->get_by('userid', $userid);
+        $userId = $me->id;
         
         // Get pageids
         $pageids = array();
