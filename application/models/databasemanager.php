@@ -38,21 +38,35 @@ class DatabaseManager extends CI_Model {
         // Insert user
         $userId = $this->User_model->insert(array('userid' => $userid), TRUE);
         
-        // Insert facebookobjects
-        $rows = array();
-        foreach ($pageids as $pageid) {
-            array_push($rows, array('pageid' => $pageid));
+        // Get already-inserted facebookobjects
+        $this->db->select('pageid');
+        $this->db->from('facebookobjects');
+        $this->db->where_in('pageid', $pageids);
+        $query = $this->db->get();
+        if ($query) {
+            $alreadyInsertedRows = $query->result();
+        } else {
+            $alreadyInsertedRows = array();
         }
         
+        // Filter already-inserted facebookobjects
+        $rows = array();
+        foreach ($pageids as $pageid) {
+            $alreadyInserted = false;
+            foreach ($alreadyInsertedRows as $alreadyInsertedRow) {
+                if (!strcmp($pageid, $alreadyInsertedRow->pageid)) {
+                    $alreadyInserted = true;
+                    break;
+                }
+            }
+            if (!$alreadyInserted) {
+                array_push($rows, array('pageid' => $pageid));
+            }
+        }
+        
+        // Insert facebookobjects
         if (count($rows) > 0) {
-            //$this->db->insert_batch('facebookobjects', $rows);
-                        	
-            $sql = ""; 
-            foreach ($rows as $row) { 
-                $insert_query = $this->db->insert_string('facebookobjects', $row); 
-                $sql.= str_replace('INSERT INTO', 'INSERT IGNORE INTO', $insert_query); 
-            } 
-            $this->db->query($sql); 
+            $this->db->insert_batch('facebookobjects', $rows);
         }
         
         // Get facebookobjects ids
@@ -74,15 +88,10 @@ class DatabaseManager extends CI_Model {
                 'facebookobjectid' => $facebookObjectId->id
            ));
         }
+        
+        // Insert likes
         if (count($rows) > 0) {
-            //$this->db->insert_batch('likes', $rows);
-            $sql = ""; 
-            foreach ($rows as $row) { 
-                $insert_query = $this->db->insert_string('likes', $row); 
-                $sql.= str_replace('INSERT INTO', 'INSERT IGNORE INTO', $insert_query); 
-            } 
-            $this->db->query($sql); 
-            
+            $this->db->insert_batch('likes', $rows);
         }
     }
         
