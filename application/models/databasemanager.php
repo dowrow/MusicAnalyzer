@@ -118,7 +118,7 @@ class DatabaseManager extends CI_Model {
                 }
             }
             
-            if (!alreadyInsertedLike) {
+            if (!$alreadyInsertedLike) {
                 array_push($rows, array(
                     'userid' => $userId,
                     'facebookobjectid' => $facebookObjectId->id,
