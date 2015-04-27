@@ -110,7 +110,7 @@ class Facebook extends CI_Model {
 
             } while ($request = $response->getRequestForNextPage());
             
-            return likes;
+            return $likes;
             
         } catch (Exception $e) {
             return array();
