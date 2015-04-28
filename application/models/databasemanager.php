@@ -93,8 +93,8 @@ class DatabaseManager extends CI_Model {
             $facebookObjects = array();
         }
         
-        echo "debug"
-        var_dump($alreadyLikedFacebookobjects);
+        echo "debug";
+        var_dump($alreadyLikedFacebookobjectids);
         
         
         // Update old user-likes that the user no longer likes
@@ -104,11 +104,11 @@ class DatabaseManager extends CI_Model {
         
         // Add only new likes to array
         $rows = array();
-        foreach ($facebookObjectIds as $facebookObjectId) {
+        foreach ($facebookObjects as $facebookObject) {
             
             // Search its timestamp
             foreach ($likes as $like) {
-                if (!strcmp($facebookObjectId->pageid, $like->id)) {
+                if (!strcmp($facebookObject->pageid, $like->id)) {
                     $timestamp = $like->created_time;
                 }
             }
@@ -116,7 +116,7 @@ class DatabaseManager extends CI_Model {
             $alreadyInsertedLike = false;
             
             foreach ($alreadyLikedFacebookobjectids as $alreadyLikedFacebookobjectid) {
-                if (!strcmp($facebookObjectId->id, $alreadyLikedFacebookobjectid)) {
+                if (!strcmp($facebookObject->id, $alreadyLikedFacebookobjectid)) {
                     $alreadyInsertedLike = true;
                     break;
                 }
@@ -125,7 +125,7 @@ class DatabaseManager extends CI_Model {
             if (!$alreadyInsertedLike) {
                 array_push($rows, array(
                     'userid' => $userId,
-                    'facebookobjectid' => $facebookObjectId->id,
+                    'facebookobjectid' => $facebookObject->id,
                     'valid' => 'true',
                     'timestamp' => $timestamp
                 ));
