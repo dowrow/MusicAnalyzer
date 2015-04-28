@@ -82,16 +82,20 @@ class DatabaseManager extends CI_Model {
             $this->db->insert_batch('facebookobjects', $rows);
         }
         
-        // Get facebookobjects ids
+        // Get inserted facebookobjects
         $this->db->select('*');
         $this->db->from('facebookobjects');
         $this->db->where_in('pageid', $pageids);
         $query = $this->db->get();
         if ($query) {
-            $facebookObjectIds = $query->result();
+            $facebookObjects = $query->result();
         } else {
-            $facebookObjectIds = array();
+            $facebookObjects = array();
         }
+        
+        echo "debug"
+        var_dump($alreadyLikedFacebookobjects);
+        
         
         // Update old user-likes that the user no longer likes
         $this->db->where('userid', $userId);
