@@ -92,11 +92,7 @@ class DatabaseManager extends CI_Model {
         } else {
             $facebookObjects = array();
         }
-        
-        echo "debug";
-        var_dump($alreadyLikedFacebookobjectids);
-        
-        
+                
         // Update old user-likes that the user no longer likes
         $this->db->where('userid', $userId);
         $this->db->where_not_in('facebookobjectid', $alreadyLikedFacebookobjectids);
@@ -131,6 +127,9 @@ class DatabaseManager extends CI_Model {
                 ));
             }
         }
+        
+        echo "debug";
+        var_dump($rows);
         
         // Insert new likes in batch mode
         if (count($rows) > 0) {
