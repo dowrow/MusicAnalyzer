@@ -246,13 +246,13 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer', 'SweetAlert'], fu
                     },
                     xAxis: {
                         categories: names,
-                        labels: {
-                          enabled: false
+                        title: {
+                            enabled: false
                         }
                     },
                     yAxis: {
-                        labels: {
-                          enabled: false
+                        title: {
+                            enabled: false
                         }
                     },
                     series: [{
