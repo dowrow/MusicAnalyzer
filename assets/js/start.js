@@ -27,6 +27,9 @@ define (['jquery', 'facebook', 'analyze'], function ($, facebook, Analyze) {
     }
     
     function onStartClick () {
+        
+        FB.AppEvents.logEvent('Start');
+        
         checkLoginState();
         
         // Hide logo
@@ -54,6 +57,9 @@ define (['jquery', 'facebook', 'analyze'], function ($, facebook, Analyze) {
         
     }
     function inviteFriends () {
+        
+        FB.AppEvents.logEvent('InviteFriends');
+        
         // Use FB.ui to send the Request(s)
         FB.ui({
             method: 'apprequests',

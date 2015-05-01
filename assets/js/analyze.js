@@ -202,15 +202,19 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer', 'SweetAlert'], fu
         // Ad "How does it work?" links
         $('#howAge').click(function () { 
             showModal($('#how-button').val(), $('#how-age').val()); 
+            FB.AppEvents.logEvent('HowAge');
         });
         $('#howStyle').click(function () { 
             showModal($('#how-button').val(), $('#how-style').val()); 
+            FB.AppEvents.logEvent('HowStyle');
         });
         $('#howEpoch').click(function () { 
             showModal($('#how-button').val(), $('#how-epoch').val()); 
+            FB.AppEvents.logEvent('HowEpoch');
         });
         $('#howSimilar').click(function () { 
             showModal($('#how-button').val(), $('#how-similar').val()); 
+            FB.AppEvents.logEvent('HowSimilar');
         });
         
         
