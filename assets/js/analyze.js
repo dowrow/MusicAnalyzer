@@ -182,10 +182,22 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer', 'SweetAlert'], fu
         $('#similar_result').text(similarText);
         
         // Add sharing event handlers shareResult('prueba');
-        $('#share_age').click(function () { shareResult(ageText); });
-        $('#share_epoch').click(function () { shareResult(epochText); });
-        $('#share_style').click(function () { shareResult(styleText); });
-        $('#share_similar').click(function () { shareResult(similarText); });
+        $('#share_age').click(function () { 
+            shareResult(ageText);
+            FB.AppEvents.logEvent(FB.AppEvents.EventNames.SHARE_AGE);
+        });
+        $('#share_epoch').click(function () { 
+            shareResult(epochText); 
+            FB.AppEvents.logEvent(FB.AppEvents.EventNames.SHARE_EPOCH);
+        });
+        $('#share_style').click(function () { 
+            shareResult(styleText); 
+            FB.AppEvents.logEvent(FB.AppEvents.EventNames.SHARE_STYLE);
+        });
+        $('#share_similar').click(function () { 
+            shareResult(similarText); 
+            FB.AppEvents.logEvent(FB.AppEvents.EventNames.SHARE_SIMILAR);
+        });
         
         // Ad "How does it work?" links
         $('#howAge').click(function () { 
