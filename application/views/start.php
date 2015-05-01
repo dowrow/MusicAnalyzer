@@ -50,7 +50,7 @@
                 </h1>
                 
                 <p class="lead text-center" id="status"><?php echo $this->lang->line('start_description'); ?></p>
-                <p><a id="start" class="btn btn-primary btn-lg" href="javascript:void(0);" role="button"><?php echo $this->lang->line('start_button'); ?></a></p>
+                <p><a id="start" class="btn btn-primary btn-lg hidden" href="javascript:void(0);" role="button"><?php echo $this->lang->line('start_button'); ?></a></p>
                 <img id="loading" class="hidden center-block" src="assets/img/loading.gif" alt="Loading..."/>
                 
                 <!-- Analyze -->
