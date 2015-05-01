@@ -112,7 +112,7 @@
                     <p><?php echo $this->lang->line('your_musical_age'); ?></p>
                     <div id="chart"><?php echo $this->lang->line('you_are_the_first'); ?></div>
                     <span class="actions">
-                        <button class="btn btn-primary btn-lg text-right" id="invite"></button>
+                        <button class="btn btn-primary btn-lg text-right" id="invite"><?php echo $this->lang->line('invite_friends'); ?></button>
                     </span>
                 </div>
 
