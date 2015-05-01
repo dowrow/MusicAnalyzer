@@ -230,8 +230,7 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer', 'SweetAlert'], fu
         });
         
         // Add own values
-        var myName = "Tú"; // TO DO
-        
+        var myName = $('#you').val();        
         names.push(myName);
         values.push(StatsAnalyzer.getMusicalAge());
         
@@ -251,7 +250,7 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer', 'SweetAlert'], fu
                     yAxis: {
                     },
                     series: [{
-                        name: 'Edad musical',
+                        name: $('#musical-age').val(),
                         data: values,
                         color: '#337ab7'
                     }]

@@ -101,7 +101,6 @@ class DatabaseManager extends CI_Model {
         // Add only new likes to array
         $likeRows = array();
         
-        // $likeRows está vacío y no debería
         foreach ($insertedFacebookObjects as $facebookObject) {
             
             // Search its timestamp

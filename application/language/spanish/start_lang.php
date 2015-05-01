@@ -44,3 +44,9 @@ $lang['how_age'] = "Buscamos los fans de cada artista que te gusta y promediamos
 $lang['how_style'] = "Buscamos los géneros de cada artista que te gusta y los agregamos.";
 $lang['how_epoch'] = "Buscamos el album más antiguo de los artistas que te gustan.";
 $lang['how_similar'] = "Utilizamos las recomendaciones de Last.fm.";
+
+$lang['your_musical_age'] = "Tu edad musical";
+$lang['musical_age'] = "Edad musical";
+$lang['you_are_the_first'] = "Eres el primero de tus amigos en usar esta app. ¡Invita a tus amigos y compara tus resultados!";
+$lang['invite_friends'] = "Invitar a amigos";
+$lang['you'] = "Tú";

@@ -58,8 +58,6 @@ define (['jquery', 'facebook', 'analyze'], function ($, facebook, Analyze) {
     function inviteFriends () {
         // Use FB.ui to send the Request(s)
         FB.ui({method: 'apprequests',
-            title: 'Deberías probar esta app',
-            message: '\Check out this Awesome App!'
         }, function (){});
    }
    

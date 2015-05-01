@@ -46,3 +46,12 @@ $lang['how_age'] = "We find the fans of every artist you like and calculate thei
 $lang['how_style'] = "We find the genres of every artist you like and aggregate them.";
 $lang['how_epoch'] = "We find the oldest album released by the artists you like.";
 $lang['how_similar'] = "We use Last.fm recommendations.";
+
+$lang['your_musical_age'] = "Your musical age";
+$lang['musical_age'] = "Musical age";
+$lang['you_are_the_first'] = "You are the first of your friends to try this app. Invite friends and compare your results!";
+$lang['invite_friends'] = "Invite friends";
+$lang['you'] = "You";
+
+
+

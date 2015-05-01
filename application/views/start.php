@@ -92,23 +92,27 @@
                 <input id="how-style" type="hidden" value="<?php echo $this->lang->line('how_style'); ?>"/>
                 <input id="how-epoch" type="hidden" value="<?php echo $this->lang->line('how_epoch'); ?>"/>
                 <input id="how-similar" type="hidden" value="<?php echo $this->lang->line('how_similar'); ?>"/>
-                                
+                
+                <input id="musical-age" type="hidden" value="<?php echo $this->lang->line('musical_age'); ?>"/>
+                <input id="you" type="hidden" value="<?php echo $this->lang->line('you'); ?>"/>
+                
+                
                 <!-- End of hidden inputs -->
                 
             </div>
             
             <!-- Results template -->
             <div class="hidden" id="results">
+                
                 <h1 class="text-center">
                     <?php echo $this->lang->line('analyze_results_title'); ?>
                 </h1>
                 <br/>
                 <div class="jumbotron">
-                    
-                    <div id="chart"></div>
-                    
+                    <p><?php echo $this->lang->line('your_musical_age'); ?></p>
+                    <div id="chart"><?php echo $this->lang->line('you_are_the_first'); ?></div>
                     <span class="actions">
-                        <button class="btn btn-primary btn-lg text-right" id="invite">Invitar a amigos</button>
+                        <button class="btn btn-primary btn-lg text-right" id="invite"></button>
                     </span>
                 </div>
 
