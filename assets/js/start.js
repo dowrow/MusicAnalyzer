@@ -57,7 +57,9 @@ define (['jquery', 'facebook', 'analyze'], function ($, facebook, Analyze) {
     }
     function inviteFriends () {
         // Use FB.ui to send the Request(s)
-        FB.ui({method: 'apprequests',
+        FB.ui({
+            method: 'apprequests',
+            message: $('#try-music-analyzer').val()
         }, function (){});
    }
    
@@ -66,6 +68,10 @@ define (['jquery', 'facebook', 'analyze'], function ($, facebook, Analyze) {
         $('#start').click(onStartClick);
         $('#invite').click(inviteFriends);
         $('#start').removeClass('hidden');
+        $('#chart').click(function (e) {
+            e.stopPropagation();
+            return false; 
+        });
     });
     
 });

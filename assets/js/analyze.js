@@ -245,9 +245,15 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer', 'SweetAlert'], fu
                         backgroundColor: '#eee'
                     },
                     xAxis: {
-                        categories: names
+                        categories: names,
+                        labels: {
+                          enabled: false
+                        }
                     },
                     yAxis: {
+                        labels: {
+                          enabled: false
+                        }
                     },
                     series: [{
                         name: $('#musical-age').val(),

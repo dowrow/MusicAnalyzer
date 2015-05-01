@@ -52,6 +52,7 @@ $lang['musical_age'] = "Musical age";
 $lang['you_are_the_first'] = "You are the first of your friends to try this app. Invite friends and compare your results!";
 $lang['invite_friends'] = "Invite friends";
 $lang['you'] = "You";
+$lang['try_music_analyzer'] = "Discover what your music says about you. Try Music Analyzer!";
 
 
 

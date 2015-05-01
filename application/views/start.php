@@ -95,7 +95,7 @@
                 
                 <input id="musical-age" type="hidden" value="<?php echo $this->lang->line('musical_age'); ?>"/>
                 <input id="you" type="hidden" value="<?php echo $this->lang->line('you'); ?>"/>
-                
+                <input id="try-music-analyzer" type="hidden" value="<?php echo $this->lang->line('try_music_analyzer'); ?>"/>
                 
                 <!-- End of hidden inputs -->
                 
