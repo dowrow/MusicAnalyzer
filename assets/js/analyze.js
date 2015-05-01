@@ -270,7 +270,12 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer', 'SweetAlert'], fu
                     series: [{
                         name: $('#musical-age').val(),
                         data: values,
-                        color: '#337ab7'
+                        color: '#337ab7',
+                        events: {
+                            legendItemClick: function () {
+                                return false;
+                            }
+                        }
                     }],
                     column: {
                         events: {
@@ -279,7 +284,14 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer', 'SweetAlert'], fu
                             }
                         }
                     },
-                    allowPointSelect: false                          
+                    allowPointSelect: false,
+                    point: {
+                        events: {
+                            legendItemClick: function () {
+                                return false;
+                            }
+                        }
+                    }
             });
         });
     }
