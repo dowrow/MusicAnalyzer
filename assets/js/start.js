@@ -66,10 +66,6 @@ define (['jquery', 'facebook', 'analyze'], function ($, facebook, Analyze) {
         $('#start').click(onStartClick);
         $('#invite').click(inviteFriends);
         $('#start').removeClass('hidden');
-        $('#chart').click(function (e) {
-            e.stopPropagation();
-            return false; 
-        });
     });
     
 });
