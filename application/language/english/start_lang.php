@@ -12,7 +12,7 @@ $lang['analyze_title'] = "Analyzing your likes";
 $lang['analyze_description'] = "Discover what your music says about you.";
 $lang['analyze_share_image'] = "https://music-analyzer.herokuapp.com/assets/img/share_image_en.jpg";
 
-$lang['analyze_status'] = "Collecting info about";
+$lang['analyze_status'] = "Collecting data about";
 $lang['analyze_status_album'] = "Searching albums by";
 $lang['analyze_status_fan'] = "Searching fans of";
 $lang['analyze_status_tag'] = "Determining the style of";
