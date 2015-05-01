@@ -251,15 +251,20 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer', 'SweetAlert'], fu
                         }
                     },
                     yAxis: {
-                        title: {
-                            enabled: false
-                        }
+                      
                     },
                     series: [{
                         name: $('#musical-age').val(),
                         data: values,
                         color: '#337ab7'
-                    }]
+                    }],
+                    column: {
+                        events: {
+                            legendItemClick: function () {
+                                return false; 
+                            }
+                        }
+                    }
             });
         });
     }
