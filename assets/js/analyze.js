@@ -251,7 +251,9 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer', 'SweetAlert'], fu
                         }
                     },
                     yAxis: {
-                      
+                        title: {
+                            enabled: false
+                        }
                     },
                     series: [{
                         name: $('#musical-age').val(),
@@ -264,7 +266,8 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer', 'SweetAlert'], fu
                                 return false; 
                             }
                         }
-                    }
+                    },
+                    allowPointSelect: false                          
             });
         });
     }
