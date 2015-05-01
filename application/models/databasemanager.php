@@ -104,15 +104,9 @@ class DatabaseManager extends CI_Model {
         // $likeRows está vacío y no debería
         foreach ($insertedFacebookObjects as $facebookObject) {
             
-            echo 'Debug foreach 1' . $facebookObject . '<br/>';
-            
             // Search its timestamp
             foreach ($likes as $like) {
                 
-                echo 'Debug foreach 2 ';
-                var_dump($facebookObject);
-                echo '<br/>';
-
                 if (!strcmp($facebookObject->pageid, $like->id)) {
                     $timestamp = $like->created_time;
                 }
@@ -121,9 +115,6 @@ class DatabaseManager extends CI_Model {
             $alreadyInsertedLike = false;
             
             foreach ($alreadyLikedFacebookobjectids as $alreadyLikedFacebookobjectid) {
-                
-                echo 'Debug foreach 3 ' . $alreadyLikedFacebookobjectid . '<br/>';
-                
                 if (!strcmp($facebookObject->id, $alreadyLikedFacebookobjectid)) {
                     $alreadyInsertedLike = true;
                     break;
@@ -139,10 +130,6 @@ class DatabaseManager extends CI_Model {
                 ));
             }
         }
-        
-        echo "debug likeRows";
-        var_dump($likeRows);
-        echo "<br/>";
         
         // Insert new likes in batch mode
         if (count($likeRows) > 0) {
