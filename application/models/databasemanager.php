@@ -165,6 +165,11 @@ class DatabaseManager extends CI_Model {
                 'userid1' => $ownId->id,
                 'userid2' => $friendId->id
            ));
+            
+            array_push($rows, array(
+                'userid2' => $ownId->id,
+                'userid1' => $friendId->id
+           ));
         }
         
         if (count($rows) > 0) {
