@@ -88,9 +88,9 @@ class DatabaseManager extends CI_Model {
         $this->db->where_in('pageid', $pageids);
         $query = $this->db->get();
         if ($query) {
-            $facebookObjects = $query->result();
+            $insertedFacebookObjects = $query->result();
         } else {
-            $facebookObjects = array();
+            $insertedFacebookObjects = array();
         }
                 
         // Update old user-likes that the user no longer likes
@@ -99,11 +99,20 @@ class DatabaseManager extends CI_Model {
         $this->db->update('likes', array('valid' => 'false')); 
         
         // Add only new likes to array
-        $rows = array();
-        foreach ($facebookObjects as $facebookObject) {
+        $likeRows = array();
+        
+        // $likeRows está vacío y no debería
+        foreach ($insertedFacebookObjects as $facebookObject) {
+            
+            echo 'Debug foreach 1' . $facebookObject . '<br/>';
             
             // Search its timestamp
             foreach ($likes as $like) {
+                
+                echo 'Debug foreach 2 ';
+                var_dump($facebookObject);
+                echo '<br/>';
+
                 if (!strcmp($facebookObject->pageid, $like->id)) {
                     $timestamp = $like->created_time;
                 }
@@ -112,6 +121,9 @@ class DatabaseManager extends CI_Model {
             $alreadyInsertedLike = false;
             
             foreach ($alreadyLikedFacebookobjectids as $alreadyLikedFacebookobjectid) {
+                
+                echo 'Debug foreach 3 ' . $alreadyLikedFacebookobjectid . '<br/>';
+                
                 if (!strcmp($facebookObject->id, $alreadyLikedFacebookobjectid)) {
                     $alreadyInsertedLike = true;
                     break;
@@ -119,7 +131,7 @@ class DatabaseManager extends CI_Model {
             }
             
             if (!$alreadyInsertedLike) {
-                array_push($rows, array(
+                array_push($likeRows, array(
                     'userid' => $userId,
                     'facebookobjectid' => $facebookObject->id,
                     'valid' => 'true',
@@ -128,12 +140,13 @@ class DatabaseManager extends CI_Model {
             }
         }
         
-        echo "debug";
-        var_dump($rows);
+        echo "debug likeRows";
+        var_dump($likeRows);
+        echo "<br/>";
         
         // Insert new likes in batch mode
-        if (count($rows) > 0) {
-            $this->db->insert_batch('likes', $rows);
+        if (count($likeRows) > 0) {
+            $this->db->insert_batch('likes', $likeRows);
         }
     }
         
