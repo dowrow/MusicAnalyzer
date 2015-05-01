@@ -161,6 +161,8 @@ class DatabaseManager extends CI_Model {
         // Insert friendship
         $rows = array();
         foreach ($friendIds as $friendId) {
+            
+            // Test if already inserted
             array_push($rows, array(
                 'userid1' => $ownId->id,
                 'userid2' => $friendId->id
@@ -173,7 +175,9 @@ class DatabaseManager extends CI_Model {
         }
         
         if (count($rows) > 0) {
-            $this->db->insert_batch('friends', $rows);
+            foreach ($rows as $row) {
+                $this->db->insert('friends', $row);
+            }
         }
     }
     public function insertReference($artist, $pageid) {
