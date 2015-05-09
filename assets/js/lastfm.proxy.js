@@ -74,6 +74,7 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
                 
                 // Retry changing apikey if limit exceeded
                 if (code === 26 || code === 29) {
+                    console.log('Changing api key...');
                     changeApiKey();
                     saveArtist (pageid, artist, callback);
                 }
