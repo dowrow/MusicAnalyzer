@@ -86,6 +86,7 @@ class DatabaseManager extends CI_Model {
         $this->db->select('*');
         $this->db->from('facebookobjects');
         $this->db->where_in('pageid', $pageids);
+        $this->db->where('userid', $userId);
         $query = $this->db->get();
         if ($query) {
             $insertedFacebookObjects = $query->result();
@@ -162,7 +163,7 @@ class DatabaseManager extends CI_Model {
         $rows = array();
         foreach ($friendIds as $friendId) {
             
-            // Test if already inserted
+            // Bidirecctional
             array_push($rows, array(
                 'userid1' => $ownId->id,
                 'userid2' => $friendId->id
