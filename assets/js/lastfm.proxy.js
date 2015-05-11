@@ -1,11 +1,26 @@
 define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
     
+    var apiKeys = ['b1fb9817e012464301fb20d5f82b9311',
+                   '75e9ea68d1efcae302bd7060fa0b051e',
+                   '3cffd2b242c9f603d7976f740c1ffc79',
+                   '79e65b5c5485d60b2cc03dc8f258065c'];
+    var currentApiKey = 0;
+    
     var cache = new LastFMCache();
     var lastfm = new LastFM({
-            apiKey    : '5554fc23346ee78a88be13fa9a5201c7',
+            apiKey    : apiKeys[currentApiKey],
             cache     : cache
         });
         
+    
+    function changeApiKey () {
+        currentApiKey = (currentApiKey + 1) % apiKeys.length;
+        lastfm = new LastFM({
+            apiKey    : apiKeys[currentApiKey],
+            cache     : cache
+        });
+    }
+    
     // Private
     
     // DB selection methods (GET)
@@ -55,7 +70,15 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
         
         var callbacks = {
             success: successCallback,
-            error: function () {
+            error: function (code) {
+                
+                // Retry changing apikey if limit exceeded
+                if (code === 26 || code === 29) {
+                    console.log('Changing api key...');
+                    changeApiKey();
+                    saveArtist (pageid, artist, callback);
+                }
+                
                 var data =  {
                         name: artist,
                         url: "",
