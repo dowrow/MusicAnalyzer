@@ -86,6 +86,10 @@ class DatabaseManager extends CI_Model {
         $pageids = $this->getPageidsFromLikes($likes);
         $this->db->select('*')->from('facebookobjects')->where_in('pageid', $pageids);
         $alreadyInsertedObjs = $this->db->get()->result_array();    
+        
+        echo 'alreadyInsertedObjs<br/>';
+        var_dump($alreadyInsertedObjs);
+        
         $newFacebookObjs = array();
         
         // For each pageid
