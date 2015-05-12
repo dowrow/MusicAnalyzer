@@ -16,6 +16,7 @@ define (['jquery', 'facebook', 'analyze'], function ($, facebook, Analyze) {
     function statusChangeCallback(response) {
           if (response.status === 'connected') {
               $.get('/analyze', function (res) {
+                  console.log(res);
                     var friendStats = JSON.parse(res);
                     Analyze.startAnalyzing(friendStats);
               });
