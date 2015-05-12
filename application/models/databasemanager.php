@@ -158,7 +158,7 @@ class DatabaseManager extends CI_Model {
             } else {
                 
                 $timestamp = $like->created_time;
-                $facebookobjectid = $this->db->select('id')->from('facebookobjects')->where('pageid', $like->id)->get()->result()->facebookobjectid;
+                $facebookobjectid = $this->db->select('id')->from('facebookobjects')->where('pageid', $like->id)->get()->result()->id;
                 
                 // Otherwise push
                 array_push($newLikes, array(
