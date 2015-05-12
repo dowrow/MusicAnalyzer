@@ -92,10 +92,10 @@ class DatabaseManager extends CI_Model {
             // Is already inserted?
             $inserted = false;
             foreach ($alreadyInsertedObjs as $alreadyInsertedObj) {
-                if ($like->id == $alreadyInsertedObj->pageid) {
+                if (!strcmp($like->id, $alreadyInsertedObj->pageid)) {
                     $inserted = true;
+                    break;
                 }
-                break;
             }
             // If it is
             if ($inserted) {
@@ -148,8 +148,8 @@ class DatabaseManager extends CI_Model {
             foreach ($insertedLikes as $insertedLike) {
                 if ($like->id == $insertedLike->pageid) {
                     $liked = true;
-                }
-                break;
+                    break;
+                }                
             }
             
             // If it is
