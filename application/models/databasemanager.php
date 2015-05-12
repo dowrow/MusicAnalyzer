@@ -43,15 +43,15 @@ class DatabaseManager extends CI_Model {
         $userId = $me->id;
 
         // Insert only new facebookobjects
-        $newFacebookObjects = getNewFacebookObjects($likes);
+        $newFacebookObjects = $this->getNewFacebookObjects($likes);
         $this->db->insert_batch('facebookobjects', $newFacebookObjects);
 
         // Update old likes of the current user that the user no longer likes
-        $oldLikes = getOldLikes($userId, $likes);
+        $oldLikes = $this->getOldLikes($userId, $likes);
         $this->db->update('likes', array('valid' => 'false'))->where('userid', $userId)->where_in('facebookobjectid', $oldLikes);
 
         // Insert new likes of the current user
-        $newLikes = getNewLikes($userId, $likes);
+        $newLikes = $this->getNewLikes($userId, $likes);
         $this->db->insert_batch('likes', $newLikes);
         
         echo 'newFacebookObjects<br/>';
