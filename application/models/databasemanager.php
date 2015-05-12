@@ -48,7 +48,7 @@ class DatabaseManager extends CI_Model {
 
         // Update old likes of the current user that the user no longer likes
         $oldLikes = $this->getOldLikes($userId, $likes);
-        $this->db->update('likes', array('valid' => 'false'))->where('userid', $userId)->where_in('facebookobjectid', $oldLikes);
+        $this->db->where('userid', $userId)->where_in('facebookobjectid', $oldLikes)->update('likes', array('valid' => 'false'));
 
         // Insert new likes of the current user
         $newLikes = $this->getNewLikes($userId, $likes);
