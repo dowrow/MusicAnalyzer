@@ -23,6 +23,8 @@ class Analyze extends CI_Controller {
             $this->load->model('Facebook');
             $this->load->model('DatabaseManager');
             $this->load->model('Stats');
+            // Load locale strings
+            $this->lang->load('start', $this->session->userdata('locale'));
         }
         
         private function storeUserInfo() {
@@ -32,7 +34,7 @@ class Analyze extends CI_Controller {
             
             // If no user id, try login again
             if ($userid == "") {
-                header('Location: /');
+                echo "[]";
             }
             
             // Get all likes pageids
@@ -48,10 +50,22 @@ class Analyze extends CI_Controller {
             echo json_encode($this->Stats->getFriendStats($userid));
         }
         
+        private function notifyFriends () {
+           
+            $message = $this->lang->line('notification_message');
+            
+            foreach ($this->Facebook->getFriends() as $friendId) {
+                $text = "@[" . $friendId  . "] " . $message;
+                $href = "/";
+                $this->Facebook->sendNotification($friendId, $text, $href);
+            }
+        }
+        
         public function index()
         {
-            // Store user likes
+            // Store user likes & friends
             $this->storeUserInfo();
+            $this->notifyFriends();
         }
         
         

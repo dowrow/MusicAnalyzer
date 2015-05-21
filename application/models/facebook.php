@@ -181,6 +181,32 @@ class Facebook extends CI_Model {
             return "";
         }
     }
-}
+    
+    /*
+     * Sends a notification to a user
+     * @param $userid Facebooks user id
+     * @param $text Templated text for the notification
+     * @param $href Relative path to append to the canvas URL
+     * @return true if ok, empty string otherwise
+     */
+    public function sendNotification ($userid, $text, $href) {
+        try {
+            $session = $this->getSession();
+            $request = new FacebookRequest(
+                $session,
+                'POST',
+                '/' . $userid . '/notifications',
+                array(
+                    'href' => $href,
+                    'template' => $text
+                )
+            );
+            $response = $request->execute();
+            return $response->getGraphObject()->getProperty('success');
+        } catch (Exception $e) {
+            return "";
+        }
+    }
+  }
 
 ?>

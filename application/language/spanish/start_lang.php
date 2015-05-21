@@ -51,3 +51,5 @@ $lang['you_are_the_first'] = "Eres el primero de tus amigos en usar esta app. ¡
 $lang['invite_friends'] = "Invitar a amigos";
 $lang['you'] = "Tú";
 $lang['try_music_analyzer'] = "Descubre lo que tu música dice de ti. ¡Prueba la app Análisis Musical!";
+
+$lang['notification_message'] = "ha actualizado su edad musical. ¡Compara vuestros resultados!";

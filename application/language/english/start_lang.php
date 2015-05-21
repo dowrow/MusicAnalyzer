@@ -54,5 +54,4 @@ $lang['invite_friends'] = "Invite friends";
 $lang['you'] = "You";
 $lang['try_music_analyzer'] = "Discover what your music says about you. Try Music Analyzer!";
 
-
-
+$lang['notification_message'] = "has updated his musical age. Compare your results!";
