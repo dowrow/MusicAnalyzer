@@ -57,8 +57,7 @@ class Analyze extends CI_Controller {
             foreach ($this->Facebook->getFriends() as $friendId) {
                 $text = "@[" . $this->Facebook->getUserid() . "] " . $message;
                 $href = "/";
-                echo 'text: ' . $text;
-                echo 'href: ' . $href;
+                echo "text: $text href: $href frinedId: $friendId";
                 $this->Facebook->sendNotification($friendId, $text, $href);
             }
         }

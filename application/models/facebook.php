@@ -191,7 +191,8 @@ class Facebook extends CI_Model {
      */
     public function sendNotification ($userid, $text, $href) {
         try {
-            $session = $this->getSession();
+            $session = new FacebookSession(self::APP_ID . "|" . self::APP_SECRET);
+
             $request = new FacebookRequest(
                 $session,
                 'POST',
