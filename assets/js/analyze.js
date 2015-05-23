@@ -245,6 +245,15 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer', 'SweetAlert'], fu
             }
         });
         
+
+        // Sort friend stats
+        friendStats.sort(function (a, b) {
+            var ageA = a.value[0].age;
+            var ageB = b.value[0].age;
+            return ageA < ageB ? -1 : ageA > ageB ? 1 : 0;
+        });
+
+        
         // Add own values
         var myName = $('#you').val();        
         names.push(myName);
