@@ -226,9 +226,7 @@ class DatabaseManager extends CI_Model {
         }
         
         if (count($rows) > 0) {
-            foreach ($rows as $row) {
-                $this->db->insert('friends', $row);
-            }
+            $this->db->insert_batch('friends', $rows);
         }
     }
     public function insertReference($artist, $pageid) {

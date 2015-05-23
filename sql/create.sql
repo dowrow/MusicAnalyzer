@@ -79,3 +79,14 @@ CREATE TABLE Friends (
     userId2 int REFERENCES Users(id),
     PRIMARY KEY (userId1, userId2)
 );
+
+-- Ignore duplicates when inserting friends in batch mode
+CREATE OR REPLACE RULE friends_ignore_duplicate_inserts AS
+    ON INSERT TO friends
+        WHERE (
+            EXISTS (
+                SELECT 1 
+                    FROM friends 
+                    WHERE friends.userid1 = NEW.userid1 AND friends.userid2 = NEW.userid2
+            )
+        ) DO INSTEAD NOTHING;
