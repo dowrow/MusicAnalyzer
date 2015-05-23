@@ -83,9 +83,10 @@ class DatabaseManager extends CI_Model {
     public function getNewFacebookObjects ($likes) {
         
         $pageids = $this->getPageidsFromLikes($likes);
-        try {
-            $alreadyInsertedObjs = $this->db->select('*')->from('facebookobjects')->where_in('pageid', $pageids)->get()->result();
-        } catch (Exception $e) {
+        $query = $this->db->select('*')->from('facebookobjects')->where_in('pageid', $pageids)->get();
+        if ($query) {
+            $alreadyInsertedObjs = $query->result();
+        } else {
             $alreadyInsertedObjs = array();
         }
         $newFacebookObjs = array();
@@ -123,9 +124,10 @@ class DatabaseManager extends CI_Model {
     public function getOldLikes ($userid, $likes) {
         $pageids = $this->getPageidsFromLikes($likes);
         $this->db->select('facebookobjectid')->from('likes')->join('facebookobjects', 'facebookobjects.id = likes.facebookobjectid');
-        try {
-            $oldRows = $this->db->where_not_in('pageid', $pageids)->where('userid', $userid)->get()->result();
-        } catch (Exception $e) {
+        $query = $this->db->where_not_in('pageid', $pageids)->where('userid', $userid)->get();
+        if ($query) {
+            $oldRows = $query->result();
+        } else {
             $oldRows = array();
         }
         $oldLikes = array();
@@ -145,9 +147,10 @@ class DatabaseManager extends CI_Model {
 
         $pageids = $this->getPageidsFromLikes($likes);
         $this->db->select('*')->from('likes')->join('facebookobjects', 'facebookobjects.id = likes.facebookobjectid');
-        try {
-            $insertedLikes = $this->db->where('userid', $userid)->where_in('pageid', $pageids)->get()->result();
-        } catch (Exception $e) {
+        $query = $this->db->where('userid', $userid)->where_in('pageid', $pageids)->get();
+        if ($query) {
+            $insertedLikes = $query->result();
+        } else {
             $insertedLikes = array();
         }
         
