@@ -51,11 +51,11 @@ class Analyze extends CI_Controller {
         }
         
         private function notifyFriends () {
-           
+            $myUserid = $this->Facebook->getUserid();
             $message = $this->lang->line('notification_message');
             
             foreach ($this->Facebook->getFriends() as $friendId) {
-                $text = "@[" . $this->Facebook->getUserid() . "] " . $message;
+                $text = "@[" . $myUserid . "] " . $message;
                 $href = "/";
                 $this->Facebook->sendNotification($friendId, $text, $href);
             }
@@ -65,7 +65,7 @@ class Analyze extends CI_Controller {
         {
             // Store user likes & friends
             $this->storeUserInfo();
-            //$this->notifyFriends();
+            $this->notifyFriends();
         }
         
         
