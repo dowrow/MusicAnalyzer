@@ -28,7 +28,7 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer', 'SweetAlert'], fu
     function getArtists(callback) {
         
         // Try to login after init is complete
-        //FB.getLoginStatus(function(response){
+        FB.getLoginStatus(function(response){
             FB.login(function () {
                 FB.api(
                     "/me/music?fields=likes,id,name,category",
@@ -47,7 +47,7 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer', 'SweetAlert'], fu
 
                 });
             }, {scope: 'user_likes'});
-        //});
+        });
        
     }
         
