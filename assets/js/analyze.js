@@ -40,7 +40,7 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer', 'SweetAlert'], fu
                           
                           // Filter by  category
                           likes.forEach(function (like) {
-                              if(like.category === "Musician/band") {
+                              if(like.category === "Musician/Band") {
                                   artists.push(like);
                               }
                           });
