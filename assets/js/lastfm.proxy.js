@@ -4,6 +4,7 @@ define (['jquery', 'LastFM', 'LastFMCache'], function ($, LastFM, LastFMCache) {
                    '75e9ea68d1efcae302bd7060fa0b051e',
                    '3cffd2b242c9f603d7976f740c1ffc79',
                    '79e65b5c5485d60b2cc03dc8f258065c'];
+               
     var currentApiKey = 0;
     
     var cache = new LastFMCache();

@@ -5,12 +5,12 @@ define (['jquery', 'aggregate'], function ($, Aggregate) {
     function build (statsParam) {
         
         stats = statsParam;
+        return true;
     }
     
     function getAgeText () {
-        
-        var part1 = $('#result-age-1').val();
-        var part2 = $('#result-age-2').val();
+        var part1 = $('#result-age-1').val() || 'part_1';
+        var part2 = $('#result-age-2').val() || 'part_2';
         var age = 0;
         var count = 0;
         
@@ -28,7 +28,7 @@ define (['jquery', 'aggregate'], function ($, Aggregate) {
             age = Math.round(age / count);
             return part1 + age + part2;
         } else {
-            return $('#result-no-age').val();
+            return ($('#result-no-age').val() || 'No age');
         }
         
         
@@ -58,9 +58,9 @@ define (['jquery', 'aggregate'], function ($, Aggregate) {
     
     function getEpochText () {
         
-        var part1 = $('#result-epoch-1').val();
-        var part2 = $('#result-epoch-2').val();
-        var part3 = $('#result-epoch-3').val();
+        var part1 = $('#result-epoch-1').val() || 'part1';
+        var part2 = $('#result-epoch-2').val() || 'part2';
+        var part3 = $('#result-epoch-3').val() || 'part3';
         
         var oldestYear = (new Date()).getFullYear();
         var oldestArtist = "";
@@ -84,14 +84,14 @@ define (['jquery', 'aggregate'], function ($, Aggregate) {
         if (oldestArtist !== "") {
             return part1 + oldestYear + part2 + oldestArtist + part3 + oldestAlbum;
         } else {
-            return $('#result-no-epoch').val();
+            return ($('#result-no-epoch').val() || 'No epoch');
         }
         
     }
     
     function getStyleText () {
         
-        var part1 = $('#result-style').val();
+        var part1 = $('#result-style').val() || 'part1';
         var styles = "";
         
         // Get all the tags
@@ -108,7 +108,7 @@ define (['jquery', 'aggregate'], function ($, Aggregate) {
         
         // If no tags
         if (!tags.length) {
-            return $('#result-no-style').val();
+            return ($('#result-no-style').val() || 'no tags');
         }
         
         var sortedTags = Aggregate.sortByFrequency(tags);
@@ -134,7 +134,7 @@ define (['jquery', 'aggregate'], function ($, Aggregate) {
     }
     
     function getSimilarText () {
-        var part1 = $('#result-similar').val();
+        var part1 = $('#result-similar').val() || 'part1';
         var similar = "";
         
         // Get all similar artists
@@ -150,7 +150,7 @@ define (['jquery', 'aggregate'], function ($, Aggregate) {
         }
         
         if (allSimilar.length === 0) {
-            return $('#result-no-similar').val();
+            return ($('#result-no-similar').val() || 'no similar');
         }
         
         similar = allSimilar.splice(0,3).join(", ");

@@ -37,7 +37,7 @@ O),s=s.replace(Q,""),g.jsExtRegExp.test(s)&&(s=I),q.deps=q.deps?q.deps.concat(s)
 
 // Configuration
 require.config({
-    baseUrl: 'assets/js/',
+    baseUrl: '/assets/js/',
     shim: {
         'facebook' : {
             exports: 'FB'
@@ -61,6 +61,7 @@ require.config({
         aggregate: 'aggregate',
         StatsAnalyzer: 'statsanalyzer',
         Analyze: 'analyze',
-        SweetAlert: 'sweet-alert.min'
+        SweetAlert: 'sweet-alert.min',
+        tests: 'tests'
     }
 });
