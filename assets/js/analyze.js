@@ -44,7 +44,8 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer', 'SweetAlert'], fu
                                   artists.push(like);
                               }
                           });
-                                                    
+                          console.log('artists:');
+                          console.log(artists);
                           callback(artists); 
 
                 });
