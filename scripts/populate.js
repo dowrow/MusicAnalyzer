@@ -1,13 +1,13 @@
-// Incrementa nº sockets
 var http = require('http');
+
+// Increase socket number
 http.globalAgent.maxSockets = 100;
 
 var request = require('request');
 var LastfmAPI = require('lastfmapi');
 
 var lfm = new LastfmAPI({
-    api_key : '5554fc23346ee78a88be13fa9a5201c7',
-    secret : ''
+    api_key : '5554fc23346ee78a88be13fa9a5201c7'
 });
 
 var web = 'https://music-analyzer.herokuapp.com';
@@ -16,11 +16,16 @@ var tags = ["acoustic", "ambient", "blues", "classical", "country",
             "electronic", "emo", "folk", "hardcore", "hip hop", "indie", 
             "jazz", "latin", "metal", "pop", "pop punk", "punk", "reggae", 
             "rnb", "rock", "soul", "world", "60s", "70s", "80s", "90s"];
+        
 var max = ARTISTS_PER_TAG * tags.length;
 var count = 0;
 
-tags.forEach(getTopArtists);
-
+/**
+ * Get top artists for a given tag (genre) and save all
+ * of its information to the database
+ * @param {void} tag Genre to get artists from
+ * @returns {void}
+ */
 function getTopArtists (tag) {
     lfm.tag.getTopArtists({
         tag: tag,
@@ -38,6 +43,16 @@ function getTopArtists (tag) {
     });
 };
 
+// Get top artists for each tag
+tags.forEach(getTopArtists);
+
+
+/**
+ * 
+ * @param {type} artist
+ * @param {type} callback
+ * @returns {undefined}
+ */
 function saveAll (artist, callback) {
     try {
         saveArtist(artist, function(err, res, body) {
@@ -61,6 +76,12 @@ function saveAll (artist, callback) {
     }
 }
     
+/**
+ * 
+ * @param {type} artist
+ * @param {type} callback
+ * @returns {undefined}
+ */
 function saveArtist (artist, callback) { 
     
     var query = {
@@ -100,6 +121,12 @@ function saveArtist (artist, callback) {
     lfm.artist.getInfo(query, successCallback);
 }
 
+/**
+ * 
+ * @param {type} artist
+ * @param {type} callback
+ * @returns {undefined}
+ */
 function saveAlbums (artist, callback) {
     var max = 3;
     var query = {
@@ -130,6 +157,12 @@ function saveAlbums (artist, callback) {
 }
 
 // Save every album recursively
+/**
+ * 
+ * @param {type} albums
+ * @param {type} callback
+ * @returns {unresolved}
+ */
 function saveEveryAlbum (albums, callback) {
 
     // Race condition
@@ -179,6 +212,12 @@ function saveEveryAlbum (albums, callback) {
     lfm.album.getInfo(query, successCallback);
 }
 
+/**
+ * 
+ * @param {type} artist
+ * @param {type} callback
+ * @returns {undefined}
+ */
 function saveFans (artist, callback) {
     var max = 3;
     var query = {
@@ -208,6 +247,13 @@ function saveFans (artist, callback) {
     lfm.artist.getTopFans(query, successCallback);
 }
 
+/**
+ * 
+ * @param {type} artist
+ * @param {type} fans
+ * @param {type} callback
+ * @returns {unresolved}
+ */
 function saveEveryFan (artist, fans, callback) {
 
     // Race condition
@@ -252,6 +298,12 @@ function saveEveryFan (artist, fans, callback) {
     lfm.user.getInfo(fan.name, successCallback);
 }
 
+/**
+ * 
+ * @param {type} artist
+ * @param {type} callback
+ * @returns {undefined}
+ */
 function saveTags (artist, callback) {
     var max = 3;
     var query = {
@@ -281,6 +333,13 @@ function saveTags (artist, callback) {
     lfm.artist.getTopTags(query, successCallback);
 }
 
+/**
+ * 
+ * @param {type} artist
+ * @param {type} tags
+ * @param {type} callback
+ * @returns {unresolved}
+ */
 function saveEveryTag (artist, tags, callback) {
 
     // Race condition
@@ -325,6 +384,12 @@ function saveEveryTag (artist, tags, callback) {
     lfm.tag.getInfo(tag.name, successCallback);
 }
 
+/**
+ * 
+ * @param {type} artist
+ * @param {type} callback
+ * @returns {undefined}
+ */
 function saveSimilar (artist, callback) {
     var max = 3;
     var query = {
@@ -352,6 +417,13 @@ function saveSimilar (artist, callback) {
     lfm.artist.getSimilar(query, successCallback);
 }
 
+/**
+ * 
+ * @param {type} artist
+ * @param {type} similars
+ * @param {type} callback
+ * @returns {unresolved}
+ */
 function saveEverySimilar (artist, similars, callback) {
 
     // Race condition
