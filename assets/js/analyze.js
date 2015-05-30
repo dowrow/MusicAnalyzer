@@ -33,8 +33,6 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer', 'SweetAlert'], fu
                 FB.api(
                     "/me/music?fields=likes,id,name,category",
                     function (response) {
-                        console.log('debug');
-                        console.log(response);
                           var likes = response.data || [];
                           var artists = [];
                           
@@ -44,8 +42,7 @@ define (['jquery', 'facebook', 'LastFMProxy', 'StatsAnalyzer', 'SweetAlert'], fu
                                   artists.push(like);
                               }
                           });
-                          console.log('artists:');
-                          console.log(artists);
+                          
                           callback(artists); 
 
                 });
