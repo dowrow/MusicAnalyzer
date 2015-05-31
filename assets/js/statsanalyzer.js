@@ -124,8 +124,8 @@ define (['jquery', 'aggregate'], function ($, Aggregate) {
         } else { // Otherwise take the most frequent
             
             var frequentTags = [];
-            for (var i = 0; i < longestTags.length; i++) {
-                frequentTags.push(longestTags[i][0]);
+            for (var i = 0; i < sortedTags.length; i++) {
+                frequentTags.push(sortedTags[i][0]);
             }
             styles = frequentTags.splice(0,3).join(", ");
         }
