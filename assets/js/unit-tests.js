@@ -1,20 +1,19 @@
 define (['statsanalyzer', 'aggregate', 'LastFMProxy'], function (StatsAnalyzer, Aggregate, LastFMProxy) {
     
     /**
-     * LastFM Proxy
+     * LastFM Proxy tests
      */
-    
-        var dummyCallback = function (){};
-        LastFMProxy.getStats('112915798740840', 'Cher', dummyCallback, dummyCallback, dummyCallback, dummyCallback, dummyCallback, function (stats) {
-            QUnit.test("LastFMProxy get Cher stats", function( assert ) {
-                assert.ok(stats.length > 1, "Passed!" );
-            });
+    var dummyCallback = function (){};
+    LastFMProxy.getStats('112915798740840', 'Cher', dummyCallback, dummyCallback, dummyCallback, dummyCallback, dummyCallback, function (stats) {
+        QUnit.test("LastFMProxy get Cher stats", function( assert ) {
+            assert.ok(stats.length > 1, "Passed!" );
         });
-        LastFMProxy.getStats('0', 'asdasdasdsdfsdf', dummyCallback, dummyCallback, dummyCallback, dummyCallback, dummyCallback, function (stats) {
-            QUnit.test("LastFMProxy get unknown stats", function( assert ) {
-                assert.ok(stats === '1', "Passed!" );
-            });
+    });
+    LastFMProxy.getStats('0', 'asdasdasdsdfsdf', dummyCallback, dummyCallback, dummyCallback, dummyCallback, dummyCallback, function (stats) {
+        QUnit.test("LastFMProxy get unknown stats", function( assert ) {
+            assert.ok(stats === '1', "Passed!" );
         });
+    });
     
     /**
      * Aggregate tests
@@ -81,6 +80,5 @@ define (['statsanalyzer', 'aggregate', 'LastFMProxy'], function (StatsAnalyzer, 
     QUnit.test("StatsAnalyzer get similar text empty", function( assert ) {
       assert.equal(StatsAnalyzer.getSimilarText(), 'no similar', "Passed!" );
     });
-    
     
 });

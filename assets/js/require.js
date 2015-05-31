@@ -62,6 +62,7 @@ require.config({
         StatsAnalyzer: 'statsanalyzer',
         Analyze: 'analyze',
         SweetAlert: 'sweet-alert.min',
-        tests: 'tests'
+        UnitTests: 'unit-tests',
+        IntegrationTests: 'integration-tests'
     }
 });
