@@ -1,15 +1,20 @@
-define (['statsanalyzer', 'aggregate', 'LastFMProxy'], function (StatsAnalyzer, Aggregate, LastFMProxy) {
+define (['statsanalyzer', 'aggregate', 'LastFMProxy'], function (StatsAnalyzer, 
+                                                       Aggregate, LastFMProxy) {
     
     /**
      * LastFM Proxy tests
      */
     var dummyCallback = function (){};
-    LastFMProxy.getStats('112915798740840', 'Cher', dummyCallback, dummyCallback, dummyCallback, dummyCallback, dummyCallback, function (stats) {
+    LastFMProxy.getStats('112915798740840', 'Cher', dummyCallback, 
+                        dummyCallback, dummyCallback, dummyCallback, 
+                        dummyCallback, function (stats) {
         QUnit.test("LastFMProxy get Cher stats", function( assert ) {
             assert.ok(stats.length > 1, "Passed!" );
         });
     });
-    LastFMProxy.getStats('0', 'asdasdasdsdfsdf', dummyCallback, dummyCallback, dummyCallback, dummyCallback, dummyCallback, function (stats) {
+    LastFMProxy.getStats('0', 'asdasdasdsdfsdf', dummyCallback, dummyCallback, 
+                        dummyCallback, dummyCallback, dummyCallback, 
+                        function (stats) {
         QUnit.test("LastFMProxy get unknown stats", function( assert ) {
             assert.ok(stats === '1', "Passed!" );
         });
@@ -21,7 +26,8 @@ define (['statsanalyzer', 'aggregate', 'LastFMProxy'], function (StatsAnalyzer, 
     var list1 = ['d', 'a', 'c', 'c', 'b', 'd', 'c', 'b', 'd', 'd'];
     var sorted1 = [['d', 4], ['c', 3], ['b', 2], ['a', 1]];
     QUnit.test("Aggregate sort list", function( assert ) {
-      assert.equal(Aggregate.sortByFrequency(list1).join(), sorted1.join(), "Passed!");
+      assert.equal(Aggregate.sortByFrequency(list1).join(), 
+        sorted1.join(), "Passed!");
     });
     QUnit.test("Aggregate sort empty", function( assert ) {
       assert.equal(Aggregate.sortByFrequency([]).join(), '', "Passed!");
@@ -57,13 +63,16 @@ define (['statsanalyzer', 'aggregate', 'LastFMProxy'], function (StatsAnalyzer, 
       assert.equal(StatsAnalyzer.getAgeText(),'part_12part_2', "Passed!" );
     });
     QUnit.test("StatsAnalyzer get epoch text", function( assert ) {
-      assert.equal(StatsAnalyzer.getEpochText(), 'part12013part2Melendipart3album1', "Passed!" );
+      assert.equal(StatsAnalyzer.getEpochText(), 
+        'part12013part2Melendipart3album1', "Passed!" );
     });
     QUnit.test("StatsAnalyzer get style text", function( assert ) {
-      assert.equal(StatsAnalyzer.getStyleText(), 'part1Gitaneo, Cani, Reggae', "Passed!" );
+      assert.equal(StatsAnalyzer.getStyleText(), 
+        'part1Gitaneo, Cani, Reggae', "Passed!" );
     });
     QUnit.test("StatsAnalyzer get similar text", function( assert ) {
-      assert.equal(StatsAnalyzer.getSimilarText(), 'part1Bob Marley, Justin Bieber, King Africa', "Passed!" );
+      assert.equal(StatsAnalyzer.getSimilarText(), 
+        'part1Bob Marley, Justin Bieber, King Africa', "Passed!" );
     });
     QUnit.test("StatsAnalyzer build empty", function( assert ) {
       assert.ok(StatsAnalyzer.build({}), "Passed!" );
