@@ -65,7 +65,7 @@ class Analyze extends CI_Controller {
         {
             // Store user likes & friends
             $this->storeUserInfo();
-            $this->notifyFriends();
+            // $this->notifyFriends();
         }
         
         
