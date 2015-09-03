@@ -90,3 +90,14 @@ CREATE OR REPLACE RULE friends_ignore_duplicate_inserts AS
                     WHERE friends.userid1 = NEW.userid1 AND friends.userid2 = NEW.userid2
             )
         ) DO INSTEAD NOTHING;
+
+-- Ignore duplicates when inserting tags in batch mode
+CREATE OR REPLACE RULE tags_ignore_duplicate_inserts AS
+    ON INSERT TO tags
+        WHERE (
+            EXISTS (
+                SELECT 1 
+                    FROM tags 
+                    WHERE tags.id = NEW.id
+            )
+        ) DO INSTEAD NOTHING;
